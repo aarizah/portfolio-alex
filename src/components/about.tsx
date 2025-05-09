@@ -8,7 +8,7 @@ export default function About() {
             </div>
             <div>
                 <Image
-                src="/images/profile.jpg"
+                src="/Images/profile.jpg"
                 alt="Profile Picture"
                 width={150}
                 height={150}
