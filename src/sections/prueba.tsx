@@ -19,47 +19,28 @@ export default function Prueba() {
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={4}
-        initialSlide={3}
+        slidesPerView="auto"
+        initialSlide={2}
         slideToClickedSlide={true}
         coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
+          rotate: 30,
+          stretch: 20,
           depth: 100,
           modifier: 1,
           slideShadows: true,
         }}
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
-        className="mySwiper "
+        className="mySwiper"
       >
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-        </SwiperSlide>
+       {
+        projects.map((project,index)=>(
+          <SwiperSlide key={index} className="!w-sm">
+            <ProjectCard project={project} />
+          </SwiperSlide>
+        ))
+       }
+
       </Swiper>
         </div>
     </>
