@@ -1,12 +1,38 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 
+interface VantaEffect {
+  destroy: () => void;
+  el?: HTMLElement;
+}
+
+interface VantaBirdsOptions {
+  el: HTMLElement;
+  mouseControls: boolean;
+  touchControls: boolean;
+  gyroControls: boolean;
+  minHeight: number;
+  minWidth: number;
+  scale: number;
+  scaleMobile: number;
+  backgroundColor: number;
+  separation: number;
+}
+
+declare global {
+  interface Window {
+    VANTA: {
+      BIRDS: (options: VantaBirdsOptions) => VantaEffect;
+    };
+    THREE: unknown;
+  }
+}
 
 export default function Hero() {
   const vantaRef = useRef<HTMLDivElement>(null);
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const vantaEffectRef = useRef<VantaEffect | null>(null);
   const { resolvedTheme } = useTheme(); // accedemos al tema activo
 
   // efecto secundario para inicializar o reinicializar Vanta
@@ -14,9 +40,8 @@ export default function Hero() {
     if (!vantaRef.current || typeof window === "undefined" || !window.VANTA || !window.THREE) return;
 
     // si ya hay un efecto, lo destruimos antes de crear uno nuevo
-    if (vantaEffect) {
-      vantaEffect.destroy();
-      setVantaEffect(null);
+    if (vantaEffectRef.current) {
+      vantaEffectRef.current.destroy();
     }
 
     const newEffect = window.VANTA.BIRDS({
@@ -42,7 +67,7 @@ export default function Hero() {
       canvas.style.pointerEvents = "none";
     }
 
-    setVantaEffect(newEffect);
+    vantaEffectRef.current = newEffect;
 
     return () => {
       newEffect?.destroy();
