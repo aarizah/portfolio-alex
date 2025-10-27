@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-import Prueba from "./prueba";
 
 
 export default function Hero() {
