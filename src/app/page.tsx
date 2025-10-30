@@ -1,22 +1,39 @@
-import Hero from "@/sections/hero";
-import About from "@/sections/about";
-import Contact from "@/sections/contact";
-import Togle from "@/components/ui/togle";
-import Prueba from "@/sections/prueba";
+import { Navigation } from "@/components/Navigation";
+import { Hero } from '@/components/Hero';
+import { About } from '@/components/About';
+import { Projects } from '@/components/Projects';
+import { AISolutions } from '@/components/AISolutions';
+import { Process } from '@/components/Process';
+import { Skills } from '@/components/Skills';
+import { Contact } from '@/components/Contact';
+import { Footer } from '@/components/Footer';
 
-//NOTAS:
-//1. Hay que agregar más interactividad al bajar por la página, como animaciones o efectos.
-//2. Revisar el tema de la navegación, que no se vea el scroll horizontal al hacer scroll vertical.
-//3 Misma fuente para todo el sitio. Incluyendo tamaño de títulos y subtítulos.
-
-export default function Home() {
+export default function App() {
   return (
-    <>
-      <Hero />
-      <Prueba/>
-      <About />
-      <Contact />
-      <Togle />
-    </>
+    <div className="min-h-screen bg-black text-white">
+      <Navigation />
+      
+      <main>
+        <section id="home">
+          <Hero />
+        </section>
+        
+        <Projects />
+        
+        <section id="skills">
+          <Skills />
+        </section>
+        
+        <About />
+        
+        <AISolutions />
+        
+        <Process />
+        
+        <Contact />
+      </main>
+
+      <Footer />
+    </div>
   );
 }

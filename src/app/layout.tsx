@@ -43,8 +43,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <>
       <html lang="en" suppressHydrationWarning>
         <head>
-          <Script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" strategy="beforeInteractive" />
-          <Script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js" strategy="beforeInteractive" />
+          {/* Load VANTA scripts with afterInteractive for better timing */}
+          <Script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" 
+            strategy="afterInteractive" 
+          />
+          <Script 
+            src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js" 
+            strategy="afterInteractive" 
+          />
         </head>
         
         <body>
