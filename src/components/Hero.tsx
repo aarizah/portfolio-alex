@@ -6,16 +6,16 @@ import { Button } from './ui/button';
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
       {/* Animated background grid */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-900 to-black">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:64px_64px]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
       </div>
 
-      {/* Glowing orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Glowing orbs - adjusted to prevent overflow */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '1s' }} />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         <motion.div

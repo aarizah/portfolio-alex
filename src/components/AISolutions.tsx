@@ -59,7 +59,7 @@ const solutions: Solution[] = [
 
 export function AISolutions() {
   return (
-    <section className="py-24 bg-black relative overflow-hidden">
+    <section className="py-24 bg-black relative overflow-hidden w-full">
       {/* Background effects */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />

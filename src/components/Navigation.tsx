@@ -29,10 +29,10 @@ export function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full border-b ${
         isScrolled
-          ? 'bg-black/80 backdrop-blur-lg border-b border-white/10'
-          : 'bg-transparent'
+          ? 'bg-black/80 backdrop-blur-lg border-white/10'
+          : 'bg-transparent border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">

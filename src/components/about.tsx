@@ -7,7 +7,7 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 
 export function About() {
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden">
+    <section id="about" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden w-full">
       {/* Background elements */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:48px_48px]" />
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />

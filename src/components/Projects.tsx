@@ -98,7 +98,7 @@ export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative">
+    <section id="projects" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden w-full">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:48px_48px]" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -173,7 +173,7 @@ export function Projects() {
                     <ImageWithFallback
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                      className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
                     
