@@ -35,7 +35,6 @@ function Badge({
   const Comp = asChild ? Slot : "span";
 
   return (
-    // @ts-expect-error - Radix UI Slot type compatibility with React 19
     <Comp
       data-slot="badge"
       className={cn(badgeVariants({ variant }), className)}

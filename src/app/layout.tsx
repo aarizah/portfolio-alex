@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/fix/theme-provider"
+import { ThemeProvider } from "../components/fix/theme-provider"
 import Script from "next/script";
 
 
