@@ -24,7 +24,7 @@ export function About() {
             Why Work With Me
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Specialized expertise in AI/ML integration with a track record of building production-ready solutions
+            Full-stack developer focused on LLM/RAG integration, measured performance, and production readiness.
           </p>
         </motion.div>
 
@@ -41,7 +41,7 @@ export function About() {
               <Card className="relative bg-white/5 border-white/10 backdrop-blur-sm p-8">
                 <div className="aspect-square rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/10 flex items-center justify-center mb-6">
                   <ImageWithFallback
-                    src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&h=400&fit=crop"
+                    src="/profile2.jpg"
                     alt="AI Engineer Profile"
                     className="w-full h-full object-cover rounded-xl"
                   />
@@ -51,15 +51,15 @@ export function About() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center p-4 bg-white/5 rounded-lg border border-white/10">
                     <div className="text-2xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
-                      100%
+                      3
                     </div>
-                    <div className="text-xs text-gray-400">Project Success Rate</div>
+                    <div className="text-xs text-gray-400">Shipped AI builds</div>
                   </div>
                   <div className="text-center p-4 bg-white/5 rounded-lg border border-white/10">
                     <div className="text-2xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
-                      Fast
+                      E2E
                     </div>
-                    <div className="text-xs text-gray-400">Delivery Focused</div>
+                    <div className="text-xs text-gray-400">Frontend · Backend · Cloud</div>
                   </div>
                 </div>
               </Card>
@@ -77,17 +77,13 @@ export function About() {
             {/* Main value prop */}
             <div className="space-y-4">
               <h3 className="text-2xl text-white">
-                AI Engineer who delivers production-ready solutions
+                Full-Stack + AI builder who ships production-ready features
               </h3>
               <p className="text-gray-300 leading-relaxed">
-                I specialize in transforming complex AI concepts into practical, scalable applications. 
-                My expertise spans the entire development lifecycle—from integrating cutting-edge LLMs 
-                to deploying robust full-stack systems that users love.
+                I translate business needs into measurable requirements (latency, cost, accuracy) and build the stack to support them. From frontend UX to backend APIs, vector search, and cloud delivery, I ship features that users can trust.
               </p>
               <p className="text-gray-300 leading-relaxed">
-                What sets me apart is my ability to bridge the gap between AI/ML potential and 
-                real-world implementation. I don&apos;t just build features—I engineer intelligent 
-                solutions that solve actual business problems and deliver measurable results.
+                My sweet spot: LLM/RAG integrations with guardrails, clear observability, and deployment on managed platforms with CI/CD so teams can iterate safely and maximize conversion (low latency, reliable rollouts).
               </p>
             </div>
 
@@ -106,8 +102,7 @@ export function About() {
                 <div>
                   <h4 className="text-white mb-1">AI/ML Specialist</h4>
                   <p className="text-gray-400 text-sm">
-                    Deep expertise in LLMs, RAG systems, and AI model integration. I stay current 
-                    with the latest developments to leverage the best tools for each project.
+                    LLMs, RAG systems, embeddings, and retrieval tuning (chunking, metadata) to keep answers grounded in your data.
                   </p>
                 </div>
               </motion.div>
@@ -125,8 +120,7 @@ export function About() {
                 <div>
                   <h4 className="text-white mb-1">Full-Stack Excellence</h4>
                   <p className="text-gray-400 text-sm">
-                    End-to-end development expertise ensures your AI features are wrapped in 
-                    polished, performant applications that scale.
+                    Next.js + React frontends, Node/NestJS or FastAPI backends, PostgreSQL/Mongo, and managed cloud delivery (e.g., Vercel for frontends, Supabase or a preferred provider for data) so the AI feature ships with the app and performs well for users.
                   </p>
                 </div>
               </motion.div>
@@ -142,10 +136,9 @@ export function About() {
                   <Shield className="h-5 w-5 text-green-400" />
                 </div>
                 <div>
-                  <h4 className="text-white mb-1">Proven Track Record</h4>
+                  <h4 className="text-white mb-1">Measured Outcomes</h4>
                   <p className="text-gray-400 text-sm">
-                    Every project in my portfolio demonstrates real-world problem solving with 
-                    documented results and live deployments.
+                    Obsessed with latency p95, token cost, and accuracy. I add logging, tracing, and evals so we know what&apos;s working.
                   </p>
                 </div>
               </motion.div>
@@ -154,9 +147,7 @@ export function About() {
             {/* Unique differentiator */}
             <div className="pt-4 border-t border-white/10">
               <p className="text-gray-300">
-                <span className="text-blue-400">💡 My approach:</span> I combine rapid prototyping 
-                with production-grade practices. You get speed without sacrificing quality, 
-                innovation without unnecessary complexity.
+                <span className="text-blue-400">💡 My approach:</span> rapid prototyping + production discipline. Speed to value, with security, observability, and sensible costs baked in.
               </p>
             </div>
           </motion.div>

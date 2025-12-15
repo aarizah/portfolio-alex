@@ -28,69 +28,49 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "AI-Powered Customer Support System",
-    description: "Intelligent chatbot that reduced support costs by 73% while improving response times.",
-    image: "https://images.unsplash.com/photo-1745674684463-62f62cb88d4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhaSUyMGFydGlmaWNpYWwlMjBpbnRlbGxpZ2VuY2V8ZW58MXx8fHwxNzYxNjQ2NDA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    link: "https://aicustomerservice.com",
-    problem: "E-commerce company spending $50K/month on customer support with 24-hour average response time. Customer satisfaction declining due to slow responses.",
-    solution: "Built custom GPT-4 powered chatbot with RAG system trained on company knowledge base. Integrated with existing CRM and order management systems. Implemented intelligent routing to human agents for complex issues.",
-    result: "Reduced support costs from $50K to $13.5K/month (73% reduction). Average response time dropped to 3 seconds. Customer satisfaction increased from 68% to 94%. AI handles 85% of inquiries autonomously.",
+    title: "Legal Copilot & Internal Knowledge Assistants",
+    description: "Citation-grounded answers from legal and internal documents with a RAG pipeline tuned for relevance.",
+    image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+    problem: "Legal and operations teams needed fast, source-linked answers from private corp/legal docs without manual search.",
+    solution: "Shipped an end-to-end MVP (Next.js + Node/NestJS + PostgreSQL/Prisma) in 3 weeks. Built ingestion with structured metadata and adaptive chunking, plus a RAG workflow to ground LLM outputs with citations.",
+    result: "Delivered citation-grounded responses, reduced hallucinations via metadata + chunking strategy, and set up auth + environments for iterative releases.",
     metrics: [
-      { label: "Cost Reduction", value: "73%" },
-      { label: "Response Time", value: "3s" },
-      { label: "CSAT Score", value: "94%" }
+      { label: "MVP Delivery", value: "3 weeks" },
+      { label: "Retrieval Quality", value: "Structured metadata + adaptive chunking" },
+      { label: "Answering", value: "Source-cited responses" }
     ],
-    technologies: ["GPT-4", "LangChain", "Pinecone", "React", "FastAPI", "PostgreSQL"],
-    github: "https://github.com",
-    demo: "https://aicustomerservice.com"
+    technologies: ["TypeScript", "Next.js", "Node.js", "NestJS", "PostgreSQL", "Prisma", "LangChain", "OpenAI", "Cloud (serverless & managed databases)"],
+    github: "https://github.com/aarizah/AI-Enterprise-Knowledge-Assistant"
   },
   {
-    title: "ML Product Recommendation Engine",
-    description: "Deep learning system that increased e-commerce revenue by 45% through personalized recommendations.",
-    image: "https://images.unsplash.com/photo-1758873271902-a63ecd5b5235?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMHByb2plY3R8ZW58MXx8fHwxNzYxNjk5MjA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    link: "https://mlrecommendations.com",
-    problem: "Online retailer with 500K+ products struggling with low conversion rates (1.2%) and high cart abandonment (78%). Generic product recommendations weren't driving sales.",
-    solution: "Developed hybrid recommendation system combining collaborative filtering, content-based filtering, and deep learning. Real-time personalization based on user behavior, purchase history, and browsing patterns. A/B tested and optimized recommendation algorithms.",
-    result: "Conversion rate increased from 1.2% to 3.1% (158% improvement). Average order value up 32%. Cart abandonment reduced to 54%. Generated additional $2.3M in revenue in first 6 months.",
+    title: "AI Caloric Estimator — CV + Embedded Prototype",
+    description: "Hardware + CV system that fuses image and weight data to estimate calories with far lower error than manual tracking.",
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+    problem: "Manual calorie tracking was highly inaccurate (often >100% error) and impractical for everyday meals.",
+    solution: "Built an ESP32-S3 device with camera + load cell, FreeRTOS/C++ client, and OpenAI API + Node/Express backend to fuse image + weight signals for calorie estimation.",
+    result: "Reduced estimation error from >100% to ~10% on non-complex meals by combining CV and weight data.",
     metrics: [
-      { label: "Revenue Increase", value: "+45%" },
-      { label: "Conversion Rate", value: "3.1%" },
-      { label: "Additional Revenue", value: "$2.3M" }
+      { label: "Error After Fusion", value: "~10% (down from >100%)" },
+      { label: "Signals Used", value: "Image + weight" },
+      { label: "Stack", value: "ESP32-S3 + OpenAI API" }
     ],
-    technologies: ["TensorFlow", "PyTorch", "Python", "Redis", "Next.js", "AWS SageMaker"],
-    github: "https://github.com"
+    technologies: ["ESP32-S3", "C++/FreeRTOS", "OpenAI API", "Node.js", "Express", "TypeScript"],
+    github: "https://github.com/aarizah/FoodTracking"
   },
   {
-    title: "AI Document Intelligence Platform",
-    description: "NLP system that automates document processing, saving 200+ hours per week.",
-    image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXNpZ258ZW58MXx8fHwxNzYxNjU4Mjc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    link: "https://docai.io",
-    problem: "Legal firm processing 1000+ documents weekly manually. Staff spending 20+ hours/week on data extraction from contracts, invoices, and legal documents. Error rate of 12% causing compliance issues.",
-    solution: "Built AI-powered document processing system using GPT-4 Vision, OCR, and custom NER models. Automated extraction of key information, classification, and validation. Integrated with existing document management system.",
-    result: "Automated 94% of document processing. Reduced processing time from 12 minutes to 45 seconds per document. Error rate dropped to 0.8%. Freed up 200+ staff hours per week for high-value work.",
+    title: "ChatterBox — Real-Time Team Chat",
+    description: "Slack/Discord-style web app with authentication, channels, and real-time messaging.",
+    image: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1200&q=80",
+    problem: "Teams needed persistent, authenticated channels with real-time delivery and message history.",
+    solution: "Built React + TypeScript front end with Node/Express + MongoDB backend, WebSockets for live messaging, and JWT + bcrypt/Argon2 for auth.",
+    result: "Delivered reliable, real-time messaging with persisted history and secure auth flows.",
     metrics: [
-      { label: "Time Saved", value: "200+ hrs/wk" },
-      { label: "Processing Speed", value: "45s" },
-      { label: "Accuracy", value: "99.2%" }
+      { label: "Delivery", value: "Real-time via WebSockets" },
+      { label: "Auth", value: "JWT + bcrypt/Argon2" },
+      { label: "Persistence", value: "Channel history stored" }
     ],
-    technologies: ["GPT-4 Vision", "OpenCV", "spaCy", "FastAPI", "React", "MongoDB"],
-    demo: "https://docai.io"
-  },
-  {
-    title: "Predictive Analytics Dashboard",
-    description: "ML-driven business intelligence platform that forecasts revenue with 96% accuracy.",
-    image: "https://images.unsplash.com/photo-1758873271902-a63ecd5b5235?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMHByb2plY3R8ZW58MXx8fHwxNzYxNjk5MjA5fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    link: "https://analytics.io",
-    problem: "SaaS company making critical business decisions based on gut feeling and lagging indicators. Sales forecasts consistently 30-40% off. Unable to identify churn risk until too late.",
-    solution: "Developed ML-powered predictive analytics platform using ensemble models (XGBoost, LSTM, Random Forest). Real-time data pipeline processing customer behavior, sales data, and market trends. Custom anomaly detection for early warning signals.",
-    result: "Revenue forecasting accuracy improved from 64% to 96%. Churn prediction model identifies at-risk customers 45 days in advance with 89% accuracy. Helped company increase revenue by 28% through data-driven decision making.",
-    metrics: [
-      { label: "Forecast Accuracy", value: "96%" },
-      { label: "Churn Prediction", value: "89%" },
-      { label: "Revenue Impact", value: "+28%" }
-    ],
-    technologies: ["XGBoost", "LSTM", "Python", "Scikit-learn", "Next.js", "PostgreSQL", "Apache Kafka"],
-    demo: "https://analytics.io"
+    technologies: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "WebSockets", "JWT", "bcrypt", "Argon2"],
+    github: "https://github.com/aarizah/chatterApp"
   },
 ];
 
@@ -98,11 +78,11 @@ export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden w-full">
+    <section id="projects" className="pt-8 pb-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden w-full">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:48px_48px]" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Stats Bar - Prominente */}
+        {/* Stats Bar */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -111,28 +91,28 @@ export function Projects() {
           className="mb-12 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
           <div className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-xl p-4 backdrop-blur-sm text-center">
-            <div className="text-3xl md:text-4xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
-              $5M+
+            <div className="text-xl md:text-2xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
+              3
             </div>
-            <div className="text-xs md:text-sm text-gray-400">Value Generated</div>
+            <div className="text-xs md:text-sm text-gray-400">End-to-end AI builds</div>
           </div>
           <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-xl p-4 backdrop-blur-sm text-center">
-            <div className="text-3xl md:text-4xl bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-1">
-              15+
+            <div className="text-xl md:text-2xl bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-1">
+              LLM/RAG
             </div>
-            <div className="text-xs md:text-sm text-gray-400">AI Projects</div>
+            <div className="text-xs md:text-sm text-gray-400">Focus area</div>
           </div>
           <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-xl p-4 backdrop-blur-sm text-center">
-            <div className="text-3xl md:text-4xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-1">
-              97%
+            <div className="text-xl md:text-2xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-1">
+              Full stack
             </div>
-            <div className="text-xs md:text-sm text-gray-400">Satisfaction</div>
+            <div className="text-xs md:text-sm text-gray-400">Front + backend + cloud</div>
           </div>
           <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border border-orange-500/30 rounded-xl p-4 backdrop-blur-sm text-center">
-            <div className="text-3xl md:text-4xl bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-1">
-              200+
+            <div className="text-xl md:text-2xl bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-1">
+              HW + CV
             </div>
-            <div className="text-xs md:text-sm text-gray-400">Hours Saved/Week</div>
+            <div className="text-xs md:text-sm text-gray-400">Embedded prototype</div>
           </div>
         </motion.div>
 
@@ -148,7 +128,7 @@ export function Projects() {
             Featured AI Projects
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            End-to-end AI solutions with proven business impact. Real metrics from real projects.
+            End-to-end AI solutions with shipped MVPs, prototypes, and real product integrations.
           </p>
         </motion.div>
 
@@ -343,7 +323,7 @@ export function Projects() {
                     {selectedProject.github && (
                       <Button
                         variant="outline"
-                        className="px-8 py-6 border-white/20 hover:bg-white/10 text-white"
+                        className="px-8 py-6 border-white/20 hover:bg-white/10 hover:text-white text-black"
                         asChild
                       >
                         <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">

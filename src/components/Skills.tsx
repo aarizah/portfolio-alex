@@ -14,42 +14,36 @@ interface Skill {
 
 const skillCategories: Skill[] = [
   {
-    category: 'AI & Machine Learning',
+    category: 'LLMs, RAG & Prompting',
     icon: <Brain className="h-8 w-8" />,
-    skills: ['OpenAI GPT-4', 'LangChain', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'Hugging Face'],
+    skills: ['OpenAI API', 'LangChain / LangGraph', 'RAG pipelines', 'Embeddings + pgvector', 'Prompt engineering', 'Retrieval evaluation'],
     color: 'from-blue-500 to-purple-500',
     featured: true,
   },
   {
-    category: 'AI Infrastructure',
+    category: 'Backend & APIs',
     icon: <Database className="h-8 w-8" />,
-    skills: ['Vector Databases', 'Pinecone', 'RAG Systems', 'Fine-tuning', 'Embeddings', 'Prompt Engineering'],
+    skills: ['Node.js / NestJS', 'FastAPI', 'PostgreSQL / Prisma', 'MongoDB', 'Auth + RBAC', 'Queues & caching basics'],
     color: 'from-purple-500 to-pink-500',
     featured: true,
   },
   {
     category: 'Frontend',
     icon: <Code2 className="h-8 w-8" />,
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vue.js'],
+    skills: ['Next.js (App Router)', 'React', 'TypeScript', 'Tailwind CSS', 'Designing clear UX for AI flows'],
     color: 'from-cyan-500 to-blue-500',
-  },
-  {
-    category: 'Backend',
-    icon: <Database className="h-8 w-8" />,
-    skills: ['Node.js', 'Python', 'FastAPI', 'PostgreSQL', 'MongoDB', 'GraphQL'],
-    color: 'from-green-500 to-emerald-500',
   },
   {
     category: 'Cloud & DevOps',
     icon: <Cloud className="h-8 w-8" />,
-    skills: ['AWS', 'Docker', 'Kubernetes', 'CI/CD', 'Terraform', 'Serverless'],
-    color: 'from-orange-500 to-red-500',
+    skills: ['Managed cloud platforms (serverless & containers)', 'Docker', 'GitHub Actions', 'CI/CD', 'API gateways & CDN basics', 'Secrets & access fundamentals'],
+    color: 'from-green-500 to-emerald-500',
   },
   {
-    category: 'Performance & Optimization',
+    category: 'Quality, Metrics & Resilience',
     icon: <Zap className="h-8 w-8" />,
-    skills: ['API Optimization', 'Model Deployment', 'Caching', 'Load Balancing', 'Monitoring'],
-    color: 'from-yellow-500 to-orange-500',
+    skills: ['Latency & cost tracking', 'Logging/monitoring', 'Testing (unit + integration)', 'Security hygiene', 'Timeouts/retries/circuit breakers'],
+    color: 'from-orange-500 to-red-500',
   },
 ];
 
@@ -72,8 +66,7 @@ export function Skills() {
             Technical Expertise
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Specialized in AI/ML technologies combined with full-stack development
-            to build intelligent, scalable applications.
+            Full-stack + AI integration: LLM/RAG features, secure APIs, and measurable performance (latency, cost, accuracy) in production-ready apps.
           </p>
         </motion.div>
 

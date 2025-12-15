@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 import { Mail, MapPin, Calendar } from 'lucide-react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
 
 export function Contact() {
   return (
@@ -21,47 +19,14 @@ export function Contact() {
           className="text-center mb-16"
         >
           <h2 className="mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Let&apos;s Build Your AI Solution
+            Let&apos;s Ship Your Next AI Feature
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Ready to leverage AI for your business? I specialize in turning ambitious ideas into 
-            production-ready applications. Let&apos;s discuss how I can help solve your challenges.
+            Ready to integrate LLMs or ship a RAG copilot? I turn ideas into production-ready apps with clear metrics on latency, cost, and accuracy.
           </p>
         </motion.div>
 
-        {/* Trust indicators - CRO Optimized */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
-        >
-          <div className="text-center p-4 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
-            <div className="text-2xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
-              Fast
-            </div>
-            <div className="text-xs text-gray-500">Turnaround Time</div>
-          </div>
-          <div className="text-center p-4 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
-            <div className="text-2xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
-              100%
-            </div>
-            <div className="text-xs text-gray-500">Client Satisfaction</div>
-          </div>
-          <div className="text-center p-4 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
-            <div className="text-2xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
-              Modern
-            </div>
-            <div className="text-xs text-gray-500">Tech Stack</div>
-          </div>
-          <div className="text-center p-4 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
-            <div className="text-2xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
-              24h
-            </div>
-            <div className="text-xs text-gray-500">Response Time</div>
-          </div>
-        </motion.div>
+
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
@@ -79,8 +44,8 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="mb-2 text-white">Email</h3>
-                    <p className="text-gray-400">your.email@example.com</p>
-                    <p className="text-xs text-blue-400 mt-1">Fast response guaranteed</p>
+                    <p className="text-gray-400">arizah2020@gmail.com</p>
+                    <p className="text-xs text-blue-400 mt-1">Replies within 24h</p>
                   </div>
                 </div>
               </Card>
@@ -92,8 +57,8 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="mb-2 text-white">Location</h3>
-                    <p className="text-gray-400">Your City, Country</p>
-                    <p className="text-xs text-blue-400 mt-1">Available for remote work</p>
+                    <p className="text-gray-400">Colombia · Remote-first (USA/EU overlap)</p>
+                    <p className="text-xs text-blue-400 mt-1">Open to travel when needed</p>
                   </div>
                 </div>
               </Card>
@@ -106,7 +71,7 @@ export function Contact() {
                   <div>
                     <h3 className="mb-2 text-white">Availability</h3>
                     <p className="text-gray-400">Accepting new projects</p>
-                    <p className="text-xs text-green-400 mt-1">✓ Ready to start immediately</p>
+                    <p className="text-xs text-green-400 mt-1">✓ Ready to start now</p>
                   </div>
                 </div>
               </Card>
@@ -120,52 +85,28 @@ export function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="p-8 bg-white/5 border-white/10 backdrop-blur-sm">
-              <form className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block mb-2 text-gray-300">
-                    Name
-                  </label>
-                  <Input
-                    id="name"
-                    placeholder="John Doe"
-                    className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
-                  />
-                </div>
+            <Card className="p-8 bg-white/5 border-white/10 backdrop-blur-sm text-center">
+              <div className="space-y-6">
+                <h3 className="text-2xl text-white">Get in touch</h3>
+                <p className="text-gray-400 max-w-xl mx-auto">
+                  Prefer to keep things simple — reach out via email or visit my profiles. I typically reply within 24 hours.
+                </p>
 
-                <div>
-                  <label htmlFor="email" className="block mb-2 text-gray-300">
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="john@example.com"
-                    className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block mb-2 text-gray-300">
-                    Project Details
-                  </label>
-                  <Textarea
-                    id="message"
-                    placeholder="Describe your project, challenges, and goals. What AI solution are you looking to build?"
-                    rows={5}
-                    className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-blue-500 resize-none"
-                  />
-                </div>
-
-                <div>
-                  <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                    Get Free Consultation
+                <div className="flex flex-col sm:flex-row gap-3 justify-center mt-4">
+                  <Button asChild className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arizah2020@gmail.com
+">Email: arizah2020@gmail.com</a>
                   </Button>
-                  <p className="text-xs text-gray-500 text-center mt-2">
-                    I typically respond within 24 hours
-                  </p>
+
+                  <Button asChild variant="outline" className="w-full sm:w-auto">
+                    <a href="https://linkedin.com/in/alex-ariza-herrera" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                  </Button>
+
+                  <Button asChild variant="outline" className="w-full sm:w-auto">
+                    <a href="https://github.com/aarizah" target="_blank" rel="noopener noreferrer">GitHub</a>
+                  </Button>
                 </div>
-              </form>
+              </div>
             </Card>
           </motion.div>
         </div>

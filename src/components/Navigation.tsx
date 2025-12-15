@@ -43,7 +43,7 @@ export function Navigation() {
             className="text-xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
             whileHover={{ scale: 1.05 }}
           >
-            Portfolio
+            Alex Ariza · AI Product Engineer
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -64,8 +64,8 @@ export function Navigation() {
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               asChild
             >
-              <a href="/resume.pdf" download="YourName_Resume.pdf">
-                Resume
+              <a href="/Alex_CV.pdf" download="Alex_Ariza_FullStack_AI.pdf">
+                CV
               </a>
             </Button>
           </div>
@@ -107,8 +107,8 @@ export function Navigation() {
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                 asChild
               >
-                <a href="/resume.pdf" download="YourName_Resume.pdf">
-                  Resume
+                <a href="/resume.pdf" download="Alex_Ariza_FullStack_AI.pdf">
+                  CV
                 </a>
               </Button>
             </div>

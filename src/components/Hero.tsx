@@ -29,16 +29,15 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full backdrop-blur-sm"
           >
-            <span className="text-blue-400">🤖 Currently Accepting New Projects</span>
+            <span className="text-blue-400">🤖 AI Product Engineer · Full-Stack · Remote-first</span>
           </motion.div>
 
           <h1 className="mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            AI Engineer & Full Stack Developer
+            I build end-to-end apps with LLMs that move the business needle
           </h1>
           
           <p className="mb-8 text-gray-400 max-w-2xl mx-auto text-lg">
-            I transform complex AI concepts into production-ready applications that drive real business value. 
-            Specializing in LLM integration, intelligent automation, and full-stack AI solutions.
+            I’m Alex Ariza, a Full-Stack Developer focused on integrating LLMs/RAG into real products: Next.js + Node/FastAPI + managed cloud delivery, with latency, cost, and accuracy metrics from day one.
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center mb-12">
@@ -46,15 +45,15 @@ export function Hero() {
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              View My Work
+              See AI projects
             </Button>
             <Button 
               variant="outline" 
               className="border-blue-500/30 hover:bg-blue-500/10"
               asChild
             >
-              <a href="/resume.pdf" download="YourName_Resume.pdf">
-                Download Resume
+              <a href="/Alex_CV.pdf" download="Alex_Ariza_FullStack_AI.pdf">
+                Download CV
               </a>
             </Button>
             <Button 
@@ -63,13 +62,13 @@ export function Hero() {
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Mail className="mr-2 h-4 w-4" />
-              Get In Touch
+              Schedule a call
             </Button>
           </div>
 
           <div className="flex gap-4 justify-center">
             <motion.a
-              href="https://github.com/yourusername"
+              href="https://github.com/aarizah"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, rotate: 5 }}
@@ -79,7 +78,7 @@ export function Hero() {
               <Github className="h-5 w-5 text-gray-400" />
             </motion.a>
             <motion.a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://linkedin.com/in/alex-ariza-herrera"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, rotate: 5 }}
@@ -88,14 +87,6 @@ export function Hero() {
             >
               <Linkedin className="h-5 w-5 text-gray-400" />
             </motion.a>
-            <motion.a
-              href="mailto:your.email@example.com"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg backdrop-blur-sm transition-colors"
-              title="Send Email"
-            >
-              <Mail className="h-5 w-5 text-gray-400" />
-            </motion.a>
           </div>
         </motion.div>
 
@@ -103,7 +94,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="absolute bottom left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}

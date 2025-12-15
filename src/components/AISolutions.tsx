@@ -15,45 +15,45 @@ interface Solution {
 const solutions: Solution[] = [
   {
     icon: <MessageSquare className="h-6 w-6" />,
-    title: "AI Chatbots & Virtual Assistants",
-    description: "Intelligent conversational AI that understands context and provides human-like interactions.",
-    examples: ["Customer support automation", "Lead qualification bots", "Internal knowledge assistants"],
+    title: "Internal Copilots & Semantic Search",
+    description: "RAG copilots that answer from your docs with citations, filters, and relevance tuning.",
+    examples: ["Legal/ops assistants", "Knowledge bases with sources", "Semantic search over internal data"],
     color: "from-blue-500 to-cyan-500",
   },
   {
-    icon: <TrendingUp className="h-6 w-6" />,
-    title: "Predictive Analytics & Forecasting",
-    description: "ML models that predict future trends, customer behavior, and business outcomes.",
-    examples: ["Revenue forecasting", "Churn prediction", "Demand forecasting"],
-    color: "from-purple-500 to-pink-500",
-  },
-  {
     icon: <FileSearch className="h-6 w-6" />,
-    title: "Document Intelligence & OCR",
-    description: "Automated extraction and analysis of information from documents and images.",
-    examples: ["Invoice processing", "Contract analysis", "Form automation"],
+    title: "Document Automation",
+    description: "OCR + LLM pipelines to ingest, chunk, extract, and validate structured data from files.",
+    examples: ["Contract review", "Invoice/PO parsing", "Doc summarization with sources"],
     color: "from-green-500 to-emerald-500",
   },
   {
+    icon: <Workflow className="h-6 w-6" />,
+    title: "AI-Powered Operations",
+    description: "Classification, routing, and automation using LLMs with guardrails and retries.",
+    examples: ["Ticket triage", "Email intents", "Smart routing + human-in-the-loop"],
+    color: "from-yellow-500 to-orange-500",
+  },
+  {
     icon: <Brain className="h-6 w-6" />,
-    title: "Recommendation Systems",
-    description: "Personalized product and content recommendations using collaborative and deep learning.",
-    examples: ["E-commerce recommendations", "Content personalization", "Dynamic pricing"],
+    title: "Product AI Features",
+    description: "LLM add-ons for SaaS: draft generation, recommendations, or insight summaries tied to your data.",
+    examples: ["Contextual recommendations", "LLM-driven editors", "Insight cards for dashboards"],
     color: "from-orange-500 to-red-500",
   },
   {
     icon: <BarChart3 className="h-6 w-6" />,
-    title: "Computer Vision Solutions",
-    description: "Image and video analysis for automation, quality control, and insights.",
-    examples: ["Quality inspection", "Object detection", "Face recognition"],
-    color: "from-pink-500 to-rose-500",
+    title: "Quality, Cost & Observability",
+    description: "Measure accuracy, latency (p95), and token spend with logging, tracing, and eval sets.",
+    examples: ["p95 latency budgets", "Token cost dashboards", "Retrieval/LLM evals"],
+    color: "from-purple-500 to-pink-500",
   },
   {
-    icon: <Workflow className="h-6 w-6" />,
-    title: "Process Automation with AI",
-    description: "Intelligent automation that handles complex workflows and decision-making.",
-    examples: ["Email classification", "Data entry automation", "Smart routing"],
-    color: "from-yellow-500 to-orange-500",
+    icon: <TrendingUp className="h-6 w-6" />,
+    title: "Deployments that Ship",
+    description: "Deployment on managed platforms with CI/CD and secrets management, focused on reliable rollouts and conversion-safe releases.",
+    examples: ["API-first delivery", "Staging/prod parity", "Minimal cloud footprint"],
+    color: "from-pink-500 to-rose-500",
   },
 ];
 
@@ -76,8 +76,7 @@ export function AISolutions() {
             AI Solutions I Build
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Specialized in delivering production-ready AI solutions tailored to your business needs.
-            Each project combines state-of-the-art ML/AI with robust full-stack development.
+            Production-ready LLM/RAG features shipped end-to-end. Frontend + backend + cloud, with metrics on latency, cost, and accuracy.
           </p>
         </motion.div>
 
