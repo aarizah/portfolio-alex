@@ -49,12 +49,12 @@ const skillCategories: Skill[] = [
 
 export function Skills() {
   return (
-    <section className="py-24 bg-black relative overflow-hidden w-full">
+    <section className="py-12 bg-black relative overflow-hidden w-full">
       {/* Animated background elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-12 md:px-16 lg:px-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Technical Expertise
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
@@ -79,9 +79,9 @@ export function Skills() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className={`p-6 bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group ${category.featured ? 'ring-2 ring-blue-500/20' : ''}`}>
-                <div className="mb-4 flex items-center justify-between">
-                  <div className={`inline-block p-3 rounded-lg bg-gradient-to-r ${category.color} bg-opacity-10`}>
+              <Card className={`p-5 bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group h-full ${category.featured ? 'ring-2 ring-blue-500/20' : ''}`}>
+                <div className="mb-3 flex items-center justify-between">
+                  <div className={`inline-block p-2.5 rounded-lg bg-gradient-to-r ${category.color} bg-opacity-10`}>
                     <div className={`text-transparent bg-gradient-to-r ${category.color} bg-clip-text`}>
                       {category.icon}
                     </div>
@@ -93,14 +93,14 @@ export function Skills() {
                   )}
                 </div>
                 
-                <h3 className="mb-4 text-white">{category.category}</h3>
+                <h3 className="mb-3 text-white text-lg">{category.category}</h3>
                 
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <motion.span
                       key={skill}
                       whileHover={{ scale: 1.05 }}
-                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 transition-colors hover:bg-white/10"
+                      className="px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm transition-colors hover:bg-white/10"
                     >
                       {skill}
                     </motion.span>

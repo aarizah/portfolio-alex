@@ -59,12 +59,12 @@ const solutions: Solution[] = [
 
 export function AISolutions() {
   return (
-    <section className="py-24 bg-black relative overflow-hidden w-full">
+    <section className="py-12 bg-black relative overflow-hidden w-full">
       {/* Background effects */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-12 md:px-16 lg:px-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ export function AISolutions() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             AI Solutions I Build
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">

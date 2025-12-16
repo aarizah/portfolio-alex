@@ -51,10 +51,10 @@ const steps: Step[] = [
 
 export function Process() {
   return (
-    <section className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden w-full">
+    <section className="py-12 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden w-full">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:48px_48px]" />
       
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-12 md:px-16 lg:px-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export function Process() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             How I Work
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">

@@ -17,7 +17,7 @@ export function Hero() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '1s' }} />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-12 md:px-16 lg:px-20 text-center scale-110">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

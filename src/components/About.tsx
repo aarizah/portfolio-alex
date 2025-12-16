@@ -7,12 +7,12 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 
 export function About() {
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden w-full">
+    <section id="about" className="py-12 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden w-full">
       {/* Background elements */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:48px_48px]" />
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
       
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-12 md:px-16 lg:px-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export function About() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Why Work With Me
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
