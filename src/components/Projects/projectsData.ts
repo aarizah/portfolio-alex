@@ -39,7 +39,6 @@ export const projects: Project[] = [
       { label: "Concurrent Users", value: "1000+" }
     ],
     technologies: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "WebSockets", "JWT", "bcrypt", "Argon2"],
-    github: "https://github.com/aarizah/chatterApp",
-    demo: "https://github.com/aarizah/chatterApp#demo"
+    github: "https://github.com/aarizah/chatterApp"
   },
 ];

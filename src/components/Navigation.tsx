@@ -64,7 +64,7 @@ export function Navigation() {
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               asChild
             >
-              <a href="/Alex_CV.pdf" download="Alex_Ariza_FullStack_AI.pdf">
+              <a href="/Alex_CV.pdf" download="Alex_Ariza_CV.pdf">
                 CV
               </a>
             </Button>
@@ -107,7 +107,7 @@ export function Navigation() {
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                 asChild
               >
-                <a href="/resume.pdf" download="Alex_Ariza_FullStack_AI.pdf">
+                <a href="/Alex_CV.pdf" download="Alex_Ariza_CV.pdf">
                   CV
                 </a>
               </Button>

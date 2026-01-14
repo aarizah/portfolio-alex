@@ -92,7 +92,7 @@ export function Hero() {
             </Button>
             <Button 
               variant="outline" 
-              className="border-blue-500/30 hover:bg-blue-500/10"
+              className="border-blue-500/30"
               asChild
             >
               <a href="/Alex_CV.pdf" download="Alex_Ariza_FullStack_AI.pdf">
@@ -101,7 +101,7 @@ export function Hero() {
             </Button>
             <Button 
               variant="outline" 
-              className="border-blue-500/30 hover:bg-blue-500/10"
+              className="border-blue-500/30"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Mail className="mr-2 h-4 w-4" />
