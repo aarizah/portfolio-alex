@@ -3,21 +3,51 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from './ui/button';
+import { useEffect } from 'react';
 
 export function Hero() {
+  useEffect(() => {
+    let vantaEffect: any = null;
+
+    const initVanta = () => {
+      if ((window as any).VANTA) {
+        vantaEffect = (window as any).VANTA.BIRDS({
+          el: "#vanta-birds",
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          backgroundColor: 0x000000,
+          separation: 71.00,
+          birdSize: 1.40,
+          quantity: 3.00
+        });
+      }
+    };
+
+    // If VANTA already loaded, initialize immediately
+    if ((window as any).VANTA) {
+      initVanta();
+    } else {
+      // Otherwise, wait for the custom event
+      window.addEventListener('vanta-loaded', initVanta);
+    }
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('vanta-loaded', initVanta);
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
-      {/* Animated background grid */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-900 to-black">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:64px_64px]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-      </div>
 
-      {/* Glowing orbs - adjusted to prevent overflow */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDelay: '1s' }} />
-
+    <section id="vanta-birds" className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
       <div className="relative z-10 max-w-5xl mx-auto px-12 md:px-16 lg:px-20 text-center scale-110">
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -35,8 +65,8 @@ export function Hero() {
           <h1 className="mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
             I build end-to-end apps with LLMs that move the business needle
           </h1>
-          
-          <p className="mb-8 text-gray-400 max-w-2xl mx-auto text-lg">
+            
+          <p className="mb-8 text-gray max-w-2xl mx-auto text-lg ">
             I’m Alex Ariza, a Full-Stack Developer focused on integrating LLMs/RAG into real products: Next.js + Node/FastAPI + managed cloud delivery, with latency, cost, and accuracy metrics from day one.
           </p>
 
@@ -58,7 +88,7 @@ export function Hero() {
             </Button>
             <Button 
               variant="outline" 
-              className="border-purple-500/30 hover:bg-purple-500/10"
+              className="border-blue-500/30 hover:bg-blue-500/10"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Mail className="mr-2 h-4 w-4" />

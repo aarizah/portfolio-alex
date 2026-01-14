@@ -8,7 +8,7 @@ import { Button } from './ui/button';
 export function Contact() {
   return (
     <section id="contact" className="py-12 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden w-full">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:48px_48px]" />
+      <div className="" />
       
       <div className="max-w-5xl mx-auto px-12 md:px-16 lg:px-20 relative z-10">
         <motion.div

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "../components/fix/theme-provider"
-import Script from "next/script";
+import { VantaLoader } from "../components/VantaLoader";
 
 
 
@@ -42,19 +42,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head>
-          {/* Load VANTA scripts with afterInteractive for better timing */}
-          <Script 
-            src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" 
-            strategy="afterInteractive" 
-          />
-          <Script 
-            src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js" 
-            strategy="afterInteractive" 
-          />
-        </head>
+        <head />
         
         <body className="overflow-x-hidden">
+          <VantaLoader />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

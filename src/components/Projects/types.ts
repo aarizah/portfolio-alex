@@ -8,9 +8,7 @@ export interface Project {
   description: string;
   image: string;
   link?: string;
-  problem: string;
-  solution: string;
-  result: string;
+  markdownFile: string;
   metrics: ProjectMetric[];
   technologies: string[];
   github?: string;
