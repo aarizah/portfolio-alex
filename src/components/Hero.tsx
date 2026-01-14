@@ -5,13 +5,26 @@ import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from './ui/button';
 import { useEffect } from 'react';
 
+// Type definitions for Vanta
+interface VantaEffect {
+  destroy: () => void;
+}
+
+interface WindowWithVanta extends Window {
+  VANTA?: {
+    BIRDS: (config: Record<string, unknown>) => VantaEffect;
+  };
+}
+
+declare const window: WindowWithVanta;
+
 export function Hero() {
   useEffect(() => {
-    let vantaEffect: any = null;
+    let vantaEffect: VantaEffect | null = null;
 
     const initVanta = () => {
-      if ((window as any).VANTA) {
-        vantaEffect = (window as any).VANTA.BIRDS({
+      if (window.VANTA) {
+        vantaEffect = window.VANTA.BIRDS({
           el: "#vanta-birds",
           mouseControls: true,
           touchControls: true,
@@ -29,7 +42,7 @@ export function Hero() {
     };
 
     // If VANTA already loaded, initialize immediately
-    if ((window as any).VANTA) {
+    if (window.VANTA) {
       initVanta();
     } else {
       // Otherwise, wait for the custom event
