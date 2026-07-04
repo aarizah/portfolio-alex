@@ -3,12 +3,11 @@ export interface ProjectMetric {
   value: string;
 }
 
-export interface Project {
+export interface ProjectPreview {
+  slug: string;
   title: string;
   description: string;
   image: string;
-  link?: string;
-  markdownFile: string;
   metrics: ProjectMetric[];
   technologies: string[];
   github?: string;

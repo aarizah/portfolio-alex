@@ -1,24 +1,16 @@
 "use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { StatsBar } from './StatsBar';
-import { ProjectCard } from './ProjectCard';
-import { ProjectModal } from './ProjectModal';
-import { projects } from './projectsData';
-import { Project } from './types';
+import { motion } from "framer-motion";
+import { StatsBar } from "./StatsBar";
+import { ProjectCard } from "./ProjectCard";
+import { projects } from "./projectsData";
 
 export function Projects() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
   return (
     <section id="projects" className="py-12 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden w-full">
-      <div className="" />
-      
       <div className="max-w-6xl mx-auto px-12 md:px-16 lg:px-20 relative z-10">
         <StatsBar />
 
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,41 +26,16 @@ export function Projects() {
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {projects.map((project, index) => (
             <ProjectCard
-              key={project.title}
+              key={project.slug}
               project={project}
               index={index}
-              onClick={() => setSelectedProject(project)}
             />
           ))}
         </div>
       </div>
-
-      {/* Modal */}
-      <ProjectModal 
-        project={selectedProject} 
-        onClose={() => setSelectedProject(null)} 
-      />
-
-      <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 8px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(59, 130, 246, 0.5);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(59, 130, 246, 0.7);
-        }
-      `}</style>
     </section>
   );
 }

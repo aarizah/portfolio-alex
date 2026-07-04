@@ -305,4 +305,120 @@
   .hljs-strong {
     font-weight: bold;
   }
+
+  /* Case study — Apple-style product page typography */
+  .cs-hero-title {
+    font-size: clamp(2.35rem, 6vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.028em;
+    line-height: 1.05;
+  }
+
+  .cs-headline {
+    font-size: clamp(1.65rem, 3.4vw, 2.65rem);
+    font-weight: 700;
+    letter-spacing: -0.022em;
+    line-height: 1.1;
+  }
+
+  .cs-headline-large {
+    font-size: clamp(1.45rem, 2.9vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  .cs-eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgb(107 114 128);
+  }
+
+  .cs-subheadline {
+    font-size: clamp(1rem, 1.45vw, 1.18rem);
+    color: rgb(107 114 128);
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  .case-study-root {
+    --case-study-nav-width: 0px;
+  }
+
+
+
+
+  .case-study-root {
+    background:
+      radial-gradient(circle at 22% 14%, rgba(59, 130, 246, 0.10), transparent 32%),
+      #000;
+  }
+
+  .case-study-root .cs-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 18% 18%, rgba(59, 130, 246, 0.045), transparent 30%);
+    opacity: 0.75;
+    z-index: -1;
+  }
+
+  .case-study-particle {
+    position: absolute;
+    width: 24px;
+    height: 12px;
+    opacity: 0.34;
+    clip-path: polygon(0 50%, 100% 0, 72% 50%, 100% 100%);
+    background: linear-gradient(90deg, #60a5fa, #a78bfa 70%, #f0abfc);
+    filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.18));
+    animation: caseStudyFloat 9s ease-in-out infinite;
+  }
+
+  .case-study-particle:nth-child(3n) {
+    width: 18px;
+    height: 9px;
+    opacity: 0.26;
+  }
+
+  .case-study-particle:nth-child(4n) {
+    background: linear-gradient(90deg, #93c5fd, #c4b5fd);
+  }
+
+  @keyframes caseStudyFloat {
+    0%, 100% {
+      translate: 0 0;
+      opacity: 0.16;
+    }
+    15%, 85% {
+      opacity: 0.34;
+    }
+    50% {
+      translate: 18px -26px;
+      opacity: 0.24;
+    }
+  }
+
+  .bg-radial-vignette {
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.24) 42%, rgba(0, 0, 0, 0.82) 100%);
+  }
+
+  .cs-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 760px;
+  }
+
+  .case-study-root :focus-visible {
+    outline-color: rgba(147, 197, 253, 0.85);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .case-study-root * {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
