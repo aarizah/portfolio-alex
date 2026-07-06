@@ -8,7 +8,7 @@ import type {
   EngineeringDecision,
   LessonsLearnedData,
   SecurityCard,
-} from "@/content/case-studies/types";
+} from "@/content/projects/types";
 import {
   Accordion,
   AccordionContent,
@@ -145,7 +145,7 @@ export function TechnicalDeepDiveSection({
               <div className="rounded-2xl border border-white/[0.06] bg-black/30 p-5">
                 <h3 className="text-base font-semibold text-white">Next improvements</h3>
                 <ul className="mt-4 grid gap-3">
-                  {lessonsLearned.wouldImprove.map((item) => (
+                  {(lessonsLearned.groups[1]?.items ?? []).map((item) => (
                     <li key={item} className="flex gap-2 text-sm leading-relaxed text-white/56">
                       <span className="mt-2 size-1.5 shrink-0 rounded-full bg-blue-300" />
                       <span>{item}</span>
@@ -160,3 +160,4 @@ export function TechnicalDeepDiveSection({
     </ProductSection>
   );
 }
+

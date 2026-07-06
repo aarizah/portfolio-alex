@@ -1,9 +1,9 @@
-import type { CaseStudy, CaseStudyMeta } from "@/content/case-studies/types";
+import type { CaseStudy, CaseStudyMeta } from "@/content/projects/types";
 import {
   getAllCaseStudies,
   getAllCaseStudySlugs,
   getCaseStudyFromRegistry,
-} from "@/content/case-studies/registry";
+} from "@/content/projects/registry";
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return getCaseStudyFromRegistry(slug);
@@ -26,7 +26,7 @@ export function getCaseStudyPreviews() {
     description: cs.meta.tagline,
     image: cs.meta.ogImage,
     status: cs.meta.status,
-    metrics: cs.sections.results.slice(0, 3).map((r) => ({
+    metrics: cs.sections.results.metrics.slice(0, 3).map((r) => ({
       label: r.label,
       value: r.value,
     })),
@@ -35,3 +35,4 @@ export function getCaseStudyPreviews() {
     demo: cs.sections.cta.demo,
   }));
 }
+

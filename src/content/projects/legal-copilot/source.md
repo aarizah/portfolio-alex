@@ -10,6 +10,57 @@ ChatGPT showed me a different future—asking questions in natural language and 
 
 ---
 
+# Impact
+
+The value of EKA goes beyond applying LLMs to enterprise documents. It addresses one of the most persistent productivity challenges in knowledge work: finding the right information at the right time.
+
+## Information Retrieval Is Still a Major Productivity Bottleneck
+
+Research from the McKinsey Global Institute estimates that knowledge workers spend approximately **1.8 hours every day (9.3 hours per week)** searching for or gathering internal information [1].
+
+More recently, Microsoft's 2024 Work Trend Index found that **62% of employees say they spend too much time searching for information**, while **68% report not having enough uninterrupted focus time during the workday** [2]. Microsoft's latest telemetry also shows that employees are interrupted by meetings, emails, or notifications **every two minutes on average**, making information retrieval even more fragmented [3].
+
+Together, these studies suggest that information access remains a significant productivity bottleneck despite the widespread adoption of collaboration tools.
+
+---
+
+## Business Opportunity
+
+EKA was designed to reduce this friction by allowing employees to retrieve organizational knowledge through natural language instead of manually navigating folders, PDFs, and documentation portals.
+
+Instead of replacing existing documentation, the platform transforms static documents into a searchable knowledge layer with grounded AI responses and verifiable citations.
+
+---
+
+## Illustrative ROI
+
+Using McKinsey's published estimates, a conservative scenario illustrates the scale of the opportunity.
+
+| Metric | Value |
+|---------|------:|
+| Knowledge workers | 100 |
+| Time spent searching | 1.8 h/day |
+| Assumed reduction | 20% |
+
+This corresponds to approximately:
+
+- **36 productive hours recovered per day**
+- **180 productive hours recovered per week**
+- **9,360 productive hours recovered per year**
+
+This calculation is illustrative and intended to demonstrate potential business value rather than measured project results.
+
+---
+
+# References
+
+[1] M. Chui et al., *The Social Economy: Unlocking Value and Productivity Through Social Technologies*, McKinsey Global Institute, 2012.
+
+[2] Microsoft, *Work Trend Index 2024 – Will AI Fix Work?*, 2024.
+
+[3] Microsoft, *Breaking Down the Infinite Workday*, Microsoft WorkLab, 2025.
+
+
 ## The Big Picture: How It All Works
 
 At its core, EKA follows a straightforward flow:
@@ -19,6 +70,51 @@ At its core, EKA follows a straightforward flow:
 **2. Query & Answer**: User asks a question → System converts question to vector → Finds similar chunks → Sends to GPT-4 with context → Streams answer back with source citations
 
 Simple concept, complex execution. Here's where the interesting decisions happen.
+
+Clean Architecture with Repository Pattern: Router → Service → Repository → Database
+
+Backend: Domain-driven modules (auth, documents, chat, analytics, users) with FastAPI dependency injection.
+
+No answer guardails very important. This is through prompt and retrieval quality.
+
+The system follows a modular architecture designed for maintainability, scalability, and future extensibility.
+
+### High-Level Components
+
+- Next.js frontend
+- FastAPI backend
+- PostgreSQL with pgvector
+- VoyageAI Embedding API
+- OpenAI LLM
+- Docker Compose deployment
+
+### Request Flow
+
+1. User uploads a PDF.
+2. The document is converted into structured Markdown.
+3. Content is chunked and enriched with metadata.
+4. Embeddings are generated and stored in PostgreSQL.
+5. User submits a question.
+6. Relevant chunks are retrieved using vector similarity.
+7. Retrieved context is sent to the language model.
+8. The response is streamed back together with source citations.
+
+### Security
+
+Security was considered from the beginning instead of being added later.
+
+- JWT-based authentication
+- Argon2 password hashing
+- User-level document ownership validation
+- Protected API endpoints
+- Environment-based secret management
+- Input validation for uploaded files
+- Separation between public metadata and protected resources
+
+### Scalability
+
+The architecture is intentionally modular, allowing future improvements without major redesigns.
+
 
 ---
 

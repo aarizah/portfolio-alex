@@ -1,6 +1,6 @@
 "use client";
 
-import type { TechStackItem } from "@/content/case-studies/types";
+import type { TechStackItem } from "@/content/projects/types";
 import { ProductSection } from "../primitives/ProductSection";
 
 interface TechStackSectionProps {
@@ -30,3 +30,4 @@ export function TechStackSection({ items }: TechStackSectionProps) {
     </ProductSection>
   );
 }
+

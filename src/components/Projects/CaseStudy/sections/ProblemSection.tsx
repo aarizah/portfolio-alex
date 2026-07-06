@@ -1,65 +1,64 @@
 "use client";
 
-import Image from "next/image";
-import type { ProblemData } from "@/content/case-studies/types";
+import { ArrowDown, Search } from "lucide-react";
+import type { ProblemData } from "@/content/projects/types";
 import { ProductSection } from "../primitives/ProductSection";
-import { Reveal, ScaleReveal } from "../primitives/Reveal";
+import { Reveal } from "../primitives/Reveal";
 
 interface ProblemSectionProps {
   data: ProblemData;
 }
 
 export function ProblemSection({ data }: ProblemSectionProps) {
-  const lead = data.paragraphs[0] ?? "";
-  const rest = data.paragraphs.slice(1);
-
   return (
     <ProductSection
       id="problem"
-      variant="fullscreen"
-      align="center"
-      className="bg-[radial-gradient(circle_at_50%_20%,rgba(239,68,68,0.10),transparent_30%),#000]"
+      variant="dark"
+      align="left"
+      className="bg-[radial-gradient(circle_at_50%_18%,rgba(59,130,246,0.10),transparent_34%),#000]"
+      containerClassName="max-w-[980px]"
     >
-      <Reveal className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
-        <p className="cs-eyebrow mb-6">Problem</p>
-        <h2 className="cs-headline-large text-balance text-white">
-          {lead}
-        </h2>
+      <Reveal>
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="cs-eyebrow mb-6 text-blue-200/65">{data.eyebrow}</p>
+          <h2 className="text-balance text-3xl font-semibold leading-[1.08] tracking-[-0.035em] text-white md:text-4xl lg:text-[3rem]">
+            {data.headline}
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/58 md:text-lg">
+            {data.lead}
+          </p>
+        </div>
       </Reveal>
 
-      <div className="grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-        {data.illustration && (
-          <ScaleReveal className="order-2 lg:order-1">
-            <div className="overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.035] p-2 shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
-              <Image
-                src={data.illustration}
-                alt="Problem context illustration"
-                width={1400}
-                height={900}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="w-full rounded-[1.5rem] object-cover opacity-85"
-              />
+      <Reveal delay={0.12}>
+        <div className="mx-auto mt-10 max-w-3xl rounded-[2rem] border border-white/[0.08] bg-white/[0.035] p-5 text-left md:p-7">
+          <div className="mb-5 flex items-center gap-3">
+            <span className="flex size-10 items-center justify-center rounded-2xl border border-white/10 bg-black/30">
+              <Search className="size-4 text-blue-200" />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-white">{data.insightLabel}</p>
+              <p className="text-xs text-white/38">{data.insightHelper}</p>
             </div>
-          </ScaleReveal>
-        )}
+          </div>
 
-        {rest.length > 0 && (
-          <Reveal className="order-1 text-left lg:order-2">
-            <div className="rounded-[2rem] border border-white/[0.08] bg-white/[0.035] p-6 md:p-8">
-              <p className="mb-5 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/35">
-                Why it matters
+          <div className="grid gap-4">
+            {data.supportingParagraphs.map((paragraph) => (
+              <p key={paragraph} className="text-base leading-relaxed text-white/62">
+                {paragraph}
               </p>
-              <div className="grid gap-5">
-                {rest.map((paragraph) => (
-                  <p key={paragraph} className="text-base leading-relaxed text-white/58 md:text-lg">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        )}
-      </div>
+            ))}
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal delay={0.2}>
+        <div className="mx-auto mt-8 flex max-w-3xl items-center justify-center gap-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-white/30">
+          <span>{data.bridgeBefore}</span>
+          <ArrowDown className="size-4" />
+          <span>{data.bridgeAfter}</span>
+        </div>
+      </Reveal>
     </ProductSection>
   );
 }

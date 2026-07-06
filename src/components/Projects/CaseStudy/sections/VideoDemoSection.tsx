@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
 import { Maximize, Play } from "lucide-react";
-import type { VideoDemoData } from "@/content/case-studies/types";
+import type { VideoDemoData } from "@/content/projects/types";
 import { ProductSection } from "../primitives/ProductSection";
 import { ScaleReveal } from "../primitives/Reveal";
 import { cn } from "@/components/ui/utils";
@@ -120,3 +120,4 @@ export function VideoDemoSection({ data }: VideoDemoSectionProps) {
     </ProductSection>
   );
 }
+

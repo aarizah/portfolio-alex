@@ -2,120 +2,148 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, GitBranch } from "lucide-react";
-import type { ArchitectureData } from "@/content/case-studies/types";
+import { BrainCircuit, CheckCircle2, GitBranch, ShieldCheck } from "lucide-react";
+import type { AIPipelineData, ArchitectureData, SecurityCard } from "@/content/projects/types";
 import { ProductSection } from "../primitives/ProductSection";
+import { Reveal } from "../primitives/Reveal";
 import { cn } from "@/components/ui/utils";
 
 interface ArchitectureSectionProps {
   data: ArchitectureData;
+  security: SecurityCard[];
+  aiPipeline?: AIPipelineData;
 }
 
-export function ArchitectureSection({ data }: ArchitectureSectionProps) {
+export function ArchitectureSection({
+  data,
+  security = [],
+  aiPipeline,
+}: ArchitectureSectionProps) {
   const [activeId, setActiveId] = useState(data.layers[0]?.id ?? "");
   const activeLayer = data.layers.find((layer) => layer.id === activeId) ?? data.layers[0];
-  const activeIndex = Math.max(0, data.layers.findIndex((layer) => layer.id === activeId));
+  const pipelineBlocks = aiPipeline?.blocks.slice(0, 4) ?? [];
 
   return (
     <ProductSection
       id="architecture"
       variant="spotlight"
-      eyebrow="Architecture"
-      headline="Make the invisible system visible."
-      subheadline="Each layer has a responsibility. Click through the stack to see the tradeoffs, boundaries, and engineering intent."
+      eyebrow={data.eyebrow}
       align="center"
+      containerClassName="max-w-[1120px]"
     >
-      <div className="grid grid-cols-1 gap-8 text-left lg:grid-cols-[1fr_0.92fr] lg:gap-12 lg:items-stretch">
-        <div className="rounded-[2rem] border border-white/[0.08] bg-black/40 p-4 md:p-6">
-          <div className="mb-6 flex items-center justify-between">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-semibold text-white/55">
-              <GitBranch className="size-4 text-blue-300" />
-              System layers
-            </div>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/30">
-              {String(activeIndex + 1).padStart(2, "0")} / {String(data.layers.length).padStart(2, "0")}
-            </span>
+      <div className="grid gap-6 text-left lg:grid-cols-[340px_1fr] lg:gap-8">
+        <div className="rounded-[2rem] border border-white/[0.08] bg-black/38 p-4 md:p-5">
+          <div className="mb-5 flex items-center gap-2 text-sm font-semibold text-white/70">
+            <GitBranch className="size-4 text-blue-200" />
+            {data.layersNavLabel}
           </div>
-
-          <div className="flex flex-col gap-0">
+          <div className="grid gap-2">
             {data.layers.map((layer, index) => {
               const active = activeId === layer.id;
-
               return (
-                <div key={layer.id} className="flex flex-col">
-                  <button
-                    type="button"
-                    onClick={() => setActiveId(layer.id)}
-                    onMouseEnter={() => setActiveId(layer.id)}
-                    onFocus={() => setActiveId(layer.id)}
-                    className={cn(
-                      "group grid grid-cols-[42px_1fr_auto] items-center gap-4 rounded-2xl border px-4 py-4 text-left transition-all duration-200 md:px-5 md:py-5",
-                      active
-                        ? "border-white/30 bg-white text-black shadow-[0_18px_70px_rgba(255,255,255,0.10)]"
-                        : "border-white/[0.08] bg-white/[0.035] text-white/65 hover:border-white/18 hover:bg-white/[0.06] hover:text-white"
-                    )}
-                    aria-pressed={active}
-                  >
-                    <span
-                      className={cn(
-                        "flex size-10 items-center justify-center rounded-full text-xs font-bold",
-                        active ? "bg-black text-white" : "bg-white/8 text-white/45 group-hover:bg-white/12"
-                      )}
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="font-semibold">{layer.label}</span>
-                    <span
-                      className={cn(
-                        "h-px w-8 transition-all",
-                        active ? "bg-black/40" : "bg-white/18 group-hover:w-12 group-hover:bg-white/45"
-                      )}
-                    />
-                  </button>
-                  {index < data.layers.length - 1 && (
-                    <div className="ml-[38px] h-6 w-px bg-gradient-to-b from-white/22 to-white/5" />
+                <button
+                  key={layer.id}
+                  type="button"
+                  onClick={() => setActiveId(layer.id)}
+                  onMouseEnter={() => setActiveId(layer.id)}
+                  onFocus={() => setActiveId(layer.id)}
+                  className={cn(
+                    "grid grid-cols-[34px_1fr] items-center gap-3 rounded-2xl border px-3 py-3 text-left transition-all",
+                    active
+                      ? "border-white/28 bg-white text-black"
+                      : "border-white/[0.07] bg-white/[0.025] text-white/55 hover:bg-white/[0.055] hover:text-white"
                   )}
-                </div>
+                  aria-pressed={active}
+                >
+                  <span
+                    className={cn(
+                      "flex size-8 items-center justify-center rounded-full text-xs font-bold",
+                      active ? "bg-black text-white" : "bg-white/8 text-white/38"
+                    )}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-sm font-semibold">{layer.label}</span>
+                </button>
               );
             })}
           </div>
         </div>
 
-        <motion.aside
+        <motion.article
           key={activeLayer?.id}
-          initial={{ opacity: 0, x: 18 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.28 }}
-          className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.045] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] md:p-8"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.24 }}
+          className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.045] p-6 md:p-8"
         >
-          <div className="absolute right-0 top-0 size-56 translate-x-1/3 -translate-y-1/3 rounded-full bg-blue-500/14 blur-3xl" />
+          <div className="absolute right-0 top-0 size-64 translate-x-1/3 -translate-y-1/3 rounded-full bg-blue-500/12 blur-3xl" />
           {activeLayer && (
             <div className="relative z-10">
               <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-blue-200/55">
-                Active layer
+                {data.selectedLayerLabel}
               </p>
-              <h3 className="text-xl font-semibold tracking-tight text-white md:text-2xl">
+              <h3 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">
                 {activeLayer.panel.title}
               </h3>
-              <p className="mt-4 text-base leading-relaxed text-white/60">
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/62 md:text-lg">
                 {activeLayer.panel.why}
               </p>
-
-              <ul className="mt-7 grid gap-3">
+              <ul className="mt-7 grid gap-3 md:grid-cols-3">
                 {activeLayer.panel.bullets.map((bullet) => (
                   <li
                     key={bullet}
-                    className="flex gap-3 rounded-2xl border border-white/[0.06] bg-black/28 p-4 text-sm leading-relaxed text-white/70"
+                    className="flex gap-3 rounded-2xl border border-white/[0.06] bg-black/24 p-4 text-sm leading-relaxed text-white/62"
                   >
-                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-blue-300" />
+                    <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-blue-200" />
                     <span>{bullet}</span>
                   </li>
                 ))}
               </ul>
             </div>
           )}
-        </motion.aside>
+        </motion.article>
       </div>
+
+      {(security.length > 0 || pipelineBlocks.length > 0) && (
+        <Reveal>
+          <div className="mt-8 grid gap-4 text-left md:grid-cols-2">
+            {security.length > 0 && (
+              <details className="group rounded-[2rem] border border-white/[0.08] bg-white/[0.025] p-5 open:bg-white/[0.04]">
+                <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-semibold text-white">
+                  <ShieldCheck className="size-4 text-emerald-200" /> {data.securityPanelTitle}
+                </summary>
+                <div className="mt-5 grid gap-3">
+                  {security.slice(0, 4).map((card) => (
+                    <div key={card.title} className="rounded-2xl border border-white/[0.06] bg-black/24 p-3">
+                      <p className="text-sm font-semibold text-white">{card.title}</p>
+                      <p className="mt-1 text-xs leading-relaxed text-white/48">{card.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            )}
+
+            {pipelineBlocks.length > 0 && (
+              <details className="group rounded-[2rem] border border-white/[0.08] bg-white/[0.025] p-5 open:bg-white/[0.04]">
+                <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-semibold text-white">
+                  <BrainCircuit className="size-4 text-blue-200" /> {data.aiFlowPanelTitle}
+                </summary>
+                <div className="mt-5 grid gap-3">
+                  {pipelineBlocks.map((block, index) => (
+                    <div key={block.id} className="rounded-2xl border border-white/[0.06] bg-black/24 p-3">
+                      <p className="text-sm font-semibold text-white">
+                        {String(index + 1).padStart(2, "0")} · {block.label}
+                      </p>
+                      <p className="mt-1 text-xs leading-relaxed text-white/48">{block.content}</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            )}
+          </div>
+        </Reveal>
+      )}
     </ProductSection>
   );
 }

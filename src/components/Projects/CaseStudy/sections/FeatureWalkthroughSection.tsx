@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import type { FeatureWalkthroughData } from "@/content/case-studies/types";
+import type { FeatureWalkthroughData } from "@/content/projects/types";
 import { ProductSection } from "../primitives/ProductSection";
 import { cn } from "@/components/ui/utils";
 
@@ -96,3 +96,4 @@ export function FeatureWalkthroughSection({ data }: FeatureWalkthroughSectionPro
     </ProductSection>
   );
 }
+

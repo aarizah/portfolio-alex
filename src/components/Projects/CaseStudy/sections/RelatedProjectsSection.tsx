@@ -2,22 +2,29 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import type { CaseStudyMeta } from "@/content/case-studies/types";
+import type { CaseStudyMeta, RelatedSectionData } from "@/content/projects/types";
 import { ProductSection } from "../primitives/ProductSection";
 import { Reveal } from "../primitives/Reveal";
 
 interface RelatedProjectsSectionProps {
+  copy: RelatedSectionData;
   projects: CaseStudyMeta[];
 }
 
-export function RelatedProjectsSection({ projects }: RelatedProjectsSectionProps) {
+function shortTitle(title: string) {
+  const normalized = title.replace(/â€”/g, "—");
+  const [name] = normalized.split(/\s+(?:—|–|-)\s+/, 2);
+  return name || normalized;
+}
+
+export function RelatedProjectsSection({ copy, projects }: RelatedProjectsSectionProps) {
   if (projects.length === 0) return null;
 
   return (
     <ProductSection
       variant="dark"
-      eyebrow="Keep exploring"
-      headline="More case studies."
+      eyebrow={copy.eyebrow}
+      headline={copy.headline}
       align="center"
       className="!pb-28"
     >
@@ -30,7 +37,7 @@ export function RelatedProjectsSection({ projects }: RelatedProjectsSectionProps
             >
               <div>
                 <p className="text-lg font-semibold text-white transition-colors group-hover:text-blue-200">
-                  {project.title.split(" ? ")[0]}
+                  {shortTitle(project.title)}
                 </p>
                 <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-white/45">
                   {project.tagline}

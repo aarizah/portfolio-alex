@@ -1,18 +1,13 @@
 import dynamic from "next/dynamic";
-import type { CaseStudy } from "@/content/case-studies/types";
+import type { CaseStudy } from "@/content/projects/types";
 import { getRelatedCaseStudies } from "@/lib/case-studies";
 import { CaseStudyExperience } from "./CaseStudyExperience";
 import { ProblemSection } from "./sections/ProblemSection";
 import { SolutionOverviewSection } from "./sections/SolutionOverviewSection";
-import { AIPipelineSection } from "./sections/AIPipelineSection";
-import { SecuritySection } from "./sections/SecuritySection";
-import { ChallengesSection } from "./sections/ChallengesSection";
 import { ResultsSection } from "./sections/ResultsSection";
 import { LessonsLearnedSection } from "./sections/LessonsLearnedSection";
-import { TechStackSection } from "./sections/TechStackSection";
 import { CTASection } from "./sections/CTASection";
 import { RelatedProjectsSection } from "./sections/RelatedProjectsSection";
-import { TechnicalDeepDiveSection } from "./sections/TechnicalDeepDiveSection";
 import { CaseStudyFooter } from "./sections/CaseStudyFooter";
 
 const HeroSection = dynamic(
@@ -21,13 +16,6 @@ const HeroSection = dynamic(
 
 const VideoDemoSection = dynamic(
   () => import("./sections/VideoDemoSection").then((m) => m.VideoDemoSection)
-);
-
-const FeatureWalkthroughSection = dynamic(
-  () =>
-    import("./sections/FeatureWalkthroughSection").then(
-      (m) => m.FeatureWalkthroughSection
-    )
 );
 
 const ArchitectureSection = dynamic(
@@ -39,10 +27,6 @@ const EngineeringDecisionsSection = dynamic(
     import("./sections/EngineeringDecisionsSection").then(
       (m) => m.EngineeringDecisionsSection
     )
-);
-
-const ScreenshotsSection = dynamic(
-  () => import("./sections/ScreenshotsSection").then((m) => m.ScreenshotsSection)
 );
 
 interface CaseStudyPageProps {
@@ -62,31 +46,22 @@ export function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
         overview={sections.quickOverview}
         videoDemo={sections.videoDemo}
       />
-      <VideoDemoSection data={sections.videoDemo} />
+      {sections.videoDemo.src && <VideoDemoSection data={sections.videoDemo} />}
       <ProblemSection data={sections.problem} />
-      <SolutionOverviewSection data={sections.solutionOverview} />
-      <FeatureWalkthroughSection data={sections.featureWalkthrough} />
-      <ArchitectureSection data={sections.architecture} />
-      {sections.aiPipeline && (
-        <AIPipelineSection data={sections.aiPipeline} />
-      )}
-      <EngineeringDecisionsSection decisions={sections.engineeringDecisions} />
-      <SecuritySection cards={sections.security} />
-      <ScreenshotsSection data={sections.screenshots} />
-      <ChallengesSection steps={sections.challenges} />
-      <ResultsSection results={sections.results} />
-      <LessonsLearnedSection data={sections.lessonsLearned} />
-      <TechStackSection items={sections.techStack} />
-      <TechnicalDeepDiveSection
-        architecture={sections.architecture}
-        aiPipeline={sections.aiPipeline}
-        engineeringDecisions={sections.engineeringDecisions}
-        security={sections.security}
-        challenges={sections.challenges}
-        lessonsLearned={sections.lessonsLearned}
+      <SolutionOverviewSection
+        data={sections.solutionOverview}
+        walkthrough={sections.featureWalkthrough}
       />
+      <ResultsSection data={sections.results} />
+      <ArchitectureSection
+        data={sections.architecture}
+        security={sections.security}
+        aiPipeline={sections.aiPipeline}
+      />
+      <EngineeringDecisionsSection data={sections.engineeringDecisions} />
+      <LessonsLearnedSection data={sections.lessonsLearned} />
       <CTASection data={sections.cta} />
-      <RelatedProjectsSection projects={related} />
+      <RelatedProjectsSection copy={sections.relatedSection} projects={related} />
       <CaseStudyFooter />
     </CaseStudyExperience>
   );

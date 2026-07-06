@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import type { ChallengeStep } from "@/content/case-studies/types";
+import type { ChallengeStep } from "@/content/projects/types";
 import { ProductSection } from "../primitives/ProductSection";
 import { Reveal } from "../primitives/Reveal";
 
@@ -47,3 +47,4 @@ export function ChallengesSection({ steps }: ChallengesSectionProps) {
     </ProductSection>
   );
 }
+

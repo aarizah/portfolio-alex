@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, ExternalLink, Github, PlayCircle, Sparkles } from "lucide-react";
-import type { HeroData, QuickOverviewData, VideoDemoData } from "@/content/case-studies/types";
+import type { HeroData, QuickOverviewData, VideoDemoData } from "@/content/projects/types";
 import { Reveal } from "../primitives/Reveal";
 
 interface HeroSectionProps {
@@ -234,3 +234,4 @@ export function HeroSection({ title, data, overview, videoDemo }: HeroSectionPro
     </section>
   );
 }
+

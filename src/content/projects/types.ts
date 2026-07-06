@@ -41,7 +41,14 @@ export interface VideoDemoData {
 }
 
 export interface ProblemData {
-  paragraphs: string[];
+  eyebrow: string;
+  headline: string;
+  lead: string;
+  supportingParagraphs: string[];
+  insightLabel: string;
+  insightHelper: string;
+  bridgeBefore: string;
+  bridgeAfter: string;
   illustration?: string;
 }
 
@@ -51,6 +58,10 @@ export interface SolutionCard {
 }
 
 export interface SolutionOverviewData {
+  eyebrow: string;
+  headline: string;
+  subheadline: string;
+  capabilitiesLabel: string;
   cards: SolutionCard[];
 }
 
@@ -76,6 +87,11 @@ export interface ArchitectureLayer {
 }
 
 export interface ArchitectureData {
+  eyebrow: string;
+  layersNavLabel: string;
+  selectedLayerLabel: string;
+  securityPanelTitle: string;
+  aiFlowPanelTitle: string;
   layers: ArchitectureLayer[];
 }
 
@@ -96,6 +112,17 @@ export interface EngineeringDecision {
   tradeoffs: string;
   alternatives: string;
   rejected: string;
+}
+
+export interface EngineeringDecisionsData {
+  eyebrow: string;
+  labels: {
+    why: string;
+    tradeoff: string;
+    alternative: string;
+    rejected: string;
+  };
+  items: EngineeringDecision[];
 }
 
 export interface SecurityCard {
@@ -119,12 +146,31 @@ export interface ChallengeStep {
 export interface ResultCard {
   label: string;
   value: string;
+  description?: string;
+}
+
+export interface ImpactStoryStep {
+  label: string;
+  body: string;
+}
+
+export interface ResultsData {
+  eyebrow: string;
+  impactStory: ImpactStoryStep[];
+  supportingLabel: string;
+  metrics: ResultCard[];
+  proofChallenge?: ChallengeStep;
+}
+
+export interface LessonGroup {
+  title: string;
+  description: string;
+  items: string[];
 }
 
 export interface LessonsLearnedData {
-  wentWell: string[];
-  wouldImprove: string[];
-  learned: string[];
+  eyebrow: string;
+  groups: LessonGroup[];
 }
 
 export interface TechStackItem {
@@ -132,9 +178,20 @@ export interface TechStackItem {
 }
 
 export interface CTAData {
+  eyebrow: string;
+  headline: string;
+  subheadline: string;
+  githubLabel: string;
+  demoLabel: string;
+  contactLabel: string;
   github?: string;
   demo?: string;
   contactHref: string;
+}
+
+export interface RelatedSectionData {
+  eyebrow: string;
+  headline: string;
 }
 
 export interface CaseStudySections {
@@ -144,16 +201,16 @@ export interface CaseStudySections {
   problem: ProblemData;
   solutionOverview: SolutionOverviewData;
   featureWalkthrough: FeatureWalkthroughData;
+  results: ResultsData;
   architecture: ArchitectureData;
   aiPipeline?: AIPipelineData;
-  engineeringDecisions: EngineeringDecision[];
+  engineeringDecisions: EngineeringDecisionsData;
   security: SecurityCard[];
   screenshots: ScreenshotsData;
-  challenges: ChallengeStep[];
-  results: ResultCard[];
   lessonsLearned: LessonsLearnedData;
   techStack: TechStackItem[];
   cta: CTAData;
+  relatedSection: RelatedSectionData;
   relatedProjects: string[];
 }
 

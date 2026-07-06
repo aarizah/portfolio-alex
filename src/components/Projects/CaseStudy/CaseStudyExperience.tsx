@@ -109,7 +109,7 @@ export function CaseStudyExperience({
       </div>
 
       <header className="fixed inset-x-0 top-0 z-50 border-b border-blue-400/15 bg-black/72 shadow-[0_10px_42px_rgba(37,99,235,0.16)] backdrop-blur-2xl transition-all duration-300">
-        <div className="flex h-[4.25rem] items-center justify-between px-6 sm:px-8 md:px-[5.25rem]">
+        <div className="flex h-[4.25rem] items-center justify-between px-5 sm:px-7 md:px-14">
           <Link
             href="/#projects"
             className="group inline-flex items-center gap-2.5 rounded-full px-3 py-1.5 text-sm font-semibold text-white/64 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
@@ -137,7 +137,7 @@ export function CaseStudyExperience({
 
         <nav
           aria-label="Case study chapter navigation"
-          className="hidden border-t border-blue-400/10 px-6 py-2.5 md:px-[5.25rem] md:block"
+          className="hidden border-t border-blue-400/10 px-5 py-2.5 sm:px-7 md:px-14 md:block"
         >
           <div className="mx-auto flex max-w-[1590px] gap-2 overflow-x-auto scrollbar-hide">
             {visibleSections.map((section, index) => {

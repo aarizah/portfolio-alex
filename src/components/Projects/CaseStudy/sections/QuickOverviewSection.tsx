@@ -1,6 +1,6 @@
 "use client";
 
-import type { QuickOverviewData } from "@/content/case-studies/types";
+import type { QuickOverviewData } from "@/content/projects/types";
 import { Reveal } from "../primitives/Reveal";
 
 interface QuickOverviewSectionProps {
@@ -73,3 +73,4 @@ export function QuickOverviewSection({ data }: QuickOverviewSectionProps) {
     </section>
   );
 }
+

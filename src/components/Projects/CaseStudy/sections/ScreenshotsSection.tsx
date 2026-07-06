@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import type { ScreenshotsData } from "@/content/case-studies/types";
+import type { ScreenshotsData } from "@/content/projects/types";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProductSection } from "../primitives/ProductSection";
 import { ScaleReveal } from "../primitives/Reveal";
@@ -64,3 +64,4 @@ export function ScreenshotsSection({ data }: ScreenshotsSectionProps) {
     </ProductSection>
   );
 }
+

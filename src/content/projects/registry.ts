@@ -1,7 +1,7 @@
 import type { CaseStudy } from "./types";
-import { legalCopilot } from "./legal-copilot";
-import { caloricEstimator } from "./caloric-estimator";
-import { chatterbox } from "./chatterbox";
+import { legalCopilot } from "./legal-copilot/content";
+import { caloricEstimator } from "./caloric-estimator/content";
+import { chatterbox } from "./chatterbox/content";
 
 const caseStudies: Record<string, CaseStudy> = {
   [legalCopilot.meta.slug]: legalCopilot,
