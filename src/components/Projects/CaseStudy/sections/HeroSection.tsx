@@ -15,7 +15,9 @@ interface HeroSectionProps {
 }
 
 function splitTitle(title: string) {
-  const normalizedTitle = title.replace(/â€”/g, "—");
+  const normalizedTitle = title
+    .replace(/\u00e2\u20ac[\u201c\u201d]|\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac[\u009c\u009d]|[–—]/g, "—")
+    .replace(/\s+-\s+/g, " — ");
   const [name, descriptor] = normalizedTitle.split(/\s+(?:—|–|-)\s+/, 2);
 
   return {
@@ -50,6 +52,8 @@ export function HeroSection({ title, data, overview, videoDemo }: HeroSectionPro
   const hasLiveDemo = Boolean(data.demo);
   const hasVideoDemo = Boolean(videoDemo?.src);
   const githubIsPrimary = Boolean(data.github) && !hasLiveDemo && !hasVideoDemo;
+  const nextSectionHref = hasVideoDemo ? "#demo" : "#problem";
+  const nextSectionLabel = hasVideoDemo ? "Continue to demo" : "Continue to problem";
 
   useEffect(() => {
     setLoaded(true);
@@ -61,9 +65,9 @@ export function HeroSection({ title, data, overview, videoDemo }: HeroSectionPro
       className="relative isolate flex min-h-screen scroll-mt-24 items-center overflow-hidden bg-black px-6 pb-10 pt-[8.25rem] text-white sm:px-8 md:px-[5.25rem] md:pt-[8.6rem]"
     >
       <div className="absolute inset-0 -z-10" aria-hidden="true">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_42%_12%,rgba(59,130,246,0.18),transparent_32%),linear-gradient(180deg,#020204_0%,#000_62%,#050505_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_38%_10%,rgba(96,165,250,0.16),transparent_31%),radial-gradient(circle_at_70%_16%,rgba(168,85,247,0.14),transparent_30%),radial-gradient(circle_at_86%_64%,rgba(236,72,153,0.08),transparent_28%),linear-gradient(180deg,#020204_0%,#000_62%,#050505_100%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:72px_72px] opacity-14 [mask-image:radial-gradient(circle_at_center,black,transparent_74%)]" />
-        <div className="absolute left-1/2 top-1/2 size-[680px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute left-1/2 top-1/2 size-[680px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/10 blur-3xl" />
         {brandParticles.map((particle) => (
           <span
             key={particle.id}
@@ -85,9 +89,9 @@ export function HeroSection({ title, data, overview, videoDemo }: HeroSectionPro
             initial={{ opacity: 0, y: 10 }}
             animate={loaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.45, delay: 0.05 }}
-            className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-400/[0.08] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-100/76 backdrop-blur"
+            className="mb-3 inline-flex items-center gap-2 rounded-full border border-purple-300/20 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-purple-100/80 backdrop-blur"
           >
-            <Sparkles className="size-3.5 text-blue-300" />
+            <Sparkles className="size-3.5 text-pink-300" />
             {data.status} case study
           </motion.div>
 
@@ -105,7 +109,7 @@ export function HeroSection({ title, data, overview, videoDemo }: HeroSectionPro
               initial={{ opacity: 0, y: 8 }}
               animate={loaded ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.45, delay: 0.24 }}
-              className="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-blue-200/70 md:text-[15px]"
+              className="mt-2 bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-sm font-semibold uppercase tracking-[0.16em] text-transparent md:text-[15px]"
             >
               {descriptor}
             </motion.p>
@@ -131,7 +135,7 @@ export function HeroSection({ title, data, overview, videoDemo }: HeroSectionPro
                 href={data.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-[1.125rem] py-2.5 text-[13px] font-semibold text-white shadow-[0_12px_34px_rgba(99,102,241,0.28)] transition-transform hover:-translate-y-0.5 hover:from-blue-500 hover:to-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 px-[1.125rem] py-2.5 text-[13px] font-semibold text-white shadow-[0_12px_34px_rgba(168,85,247,0.28)] transition-transform hover:-translate-y-0.5 hover:from-blue-500 hover:via-purple-500 hover:to-pink-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 Live demo <ExternalLink className="size-4" />
               </a>
@@ -139,7 +143,7 @@ export function HeroSection({ title, data, overview, videoDemo }: HeroSectionPro
             {hasVideoDemo && (
               <a
                 href="#demo"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-[1.125rem] py-2.5 text-[13px] font-semibold text-white shadow-[0_12px_34px_rgba(99,102,241,0.28)] transition-transform hover:-translate-y-0.5 hover:from-blue-500 hover:to-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 px-[1.125rem] py-2.5 text-[13px] font-semibold text-white shadow-[0_12px_34px_rgba(168,85,247,0.28)] transition-transform hover:-translate-y-0.5 hover:from-blue-500 hover:via-purple-500 hover:to-pink-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               >
                 Video demo <PlayCircle className="size-4" />
               </a>
@@ -151,8 +155,8 @@ export function HeroSection({ title, data, overview, videoDemo }: HeroSectionPro
                 rel="noopener noreferrer"
                 className={
                   githubIsPrimary
-                    ? "inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-[1.125rem] py-2.5 text-[13px] font-semibold text-white shadow-[0_12px_34px_rgba(99,102,241,0.28)] transition-transform hover:-translate-y-0.5 hover:from-blue-500 hover:to-purple-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                    : "inline-flex items-center gap-2 rounded-full border border-blue-400/25 bg-blue-400/[0.08] px-[1.125rem] py-2.5 text-[13px] font-semibold text-blue-100 transition-colors hover:border-purple-300/35 hover:bg-purple-400/[0.12] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300"
+                    ? "inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 px-[1.125rem] py-2.5 text-[13px] font-semibold text-white shadow-[0_12px_34px_rgba(168,85,247,0.28)] transition-transform hover:-translate-y-0.5 hover:from-blue-500 hover:via-purple-500 hover:to-pink-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                    : "inline-flex items-center gap-2 rounded-full border border-purple-300/25 bg-purple-400/[0.08] px-[1.125rem] py-2.5 text-[13px] font-semibold text-purple-100 transition-colors hover:border-pink-300/35 hover:bg-pink-400/[0.12] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-300"
                 }
               >
                 GitHub <Github className="size-4" />
@@ -222,13 +226,13 @@ export function HeroSection({ title, data, overview, videoDemo }: HeroSectionPro
         </Reveal>
 
         <motion.a
-          href="#demo"
+          href={nextSectionHref}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="absolute bottom-4 left-1/2 z-10 inline-flex -translate-x-1/2 items-center gap-2 rounded-full border border-blue-300/20 bg-black/45 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-blue-100/55 backdrop-blur transition-colors hover:text-white"
+          className="absolute bottom-4 left-1/2 z-10 inline-flex -translate-x-1/2 items-center gap-2 rounded-full border border-purple-300/20 bg-black/45 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-purple-100/60 backdrop-blur transition-colors hover:border-pink-300/30 hover:text-white"
         >
-          Continue reading <ArrowDown className="size-3.5 animate-bounce" />
+          {nextSectionLabel} <ArrowDown className="size-3.5 animate-bounce" />
         </motion.a>
       </div>
     </section>

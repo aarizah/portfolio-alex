@@ -108,7 +108,8 @@ export function CaseStudyExperience({
         />
       </div>
 
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-blue-400/15 bg-black/72 shadow-[0_10px_42px_rgba(37,99,235,0.16)] backdrop-blur-2xl transition-all duration-300">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-purple-300/15 bg-black/70 shadow-[0_10px_42px_rgba(168,85,247,0.14)] backdrop-blur-2xl transition-all duration-300">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(96,165,250,0.10),transparent_38%),radial-gradient(circle_at_72%_0%,rgba(236,72,153,0.06),transparent_30%)]" />
         <div className="flex h-[4.25rem] items-center justify-between px-5 sm:px-7 md:px-14">
           <Link
             href="/#projects"
@@ -128,7 +129,7 @@ export function CaseStudyExperience({
 
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2.5 rounded-full border border-blue-400/25 bg-blue-400/10 px-4 py-2 text-sm font-semibold text-blue-100 transition-colors hover:border-blue-300/45 hover:bg-blue-400/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-300"
+            className="inline-flex items-center gap-2.5 rounded-full border border-purple-300/25 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 px-4 py-2 text-sm font-semibold text-purple-100 transition-colors hover:border-pink-300/45 hover:bg-purple-400/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-300"
           >
             <Mail className="hidden size-4 sm:block" />
             Contact
@@ -137,7 +138,7 @@ export function CaseStudyExperience({
 
         <nav
           aria-label="Case study chapter navigation"
-          className="hidden border-t border-blue-400/10 px-5 py-2.5 sm:px-7 md:px-14 md:block"
+          className="hidden border-t border-purple-300/10 px-5 py-2.5 sm:px-7 md:px-14 md:block"
         >
           <div className="mx-auto flex max-w-[1590px] gap-2 overflow-x-auto scrollbar-hide">
             {visibleSections.map((section, index) => {
@@ -151,8 +152,8 @@ export function CaseStudyExperience({
                   className={cn(
                     "shrink-0 rounded-full px-4 py-2 text-[13px] font-semibold transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70",
                     active
-                      ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-[0_0_30px_rgba(99,102,241,0.28)]"
-                      : "text-white/48 hover:bg-blue-400/[0.08] hover:text-white"
+                      ? "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-[0_0_30px_rgba(168,85,247,0.28)]"
+                      : "text-white/48 hover:bg-purple-400/[0.08] hover:text-white"
                   )}
                   aria-current={active ? "location" : undefined}
                 >
@@ -202,7 +203,7 @@ export function CaseStudyExperience({
                   active ? "text-white" : "text-white/30 group-hover:text-white/65"
                 )}
               >
-                {section.shortLabel ?? String(index + 1).padStart(2, "0")} - {section.label}
+                {String(index + 1).padStart(2, "0")} - {section.label}
               </span>
             </button>
           );
@@ -226,7 +227,7 @@ export function CaseStudyExperience({
                 onClick={() => scrollTo(section.id)}
                 className={cn(
                   "shrink-0 rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider transition-colors",
-                  active ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white" : "text-white/55 hover:text-white"
+                  active ? "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white" : "text-white/55 hover:text-white"
                 )}
                 aria-current={active ? "location" : undefined}
               >

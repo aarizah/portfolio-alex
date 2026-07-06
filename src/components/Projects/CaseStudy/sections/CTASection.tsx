@@ -7,9 +7,11 @@ import { ProductSection } from "../primitives/ProductSection";
 
 interface CTASectionProps {
   data: CTAData;
+  github?: string;
+  demo?: string;
 }
 
-export function CTASection({ data }: CTASectionProps) {
+export function CTASection({ data, github, demo }: CTASectionProps) {
   return (
     <ProductSection
       id="explore"
@@ -22,9 +24,9 @@ export function CTASection({ data }: CTASectionProps) {
         <h2 className="cs-headline-large text-balance text-white">{data.headline}</h2>
         <p className="cs-subheadline mx-auto mt-5 max-w-2xl">{data.subheadline}</p>
         <div className="mt-9 flex flex-wrap justify-center gap-3">
-          {data.github && (
+          {github && (
             <a
-              href={data.github}
+              href={github}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5 hover:bg-blue-50"
@@ -33,9 +35,9 @@ export function CTASection({ data }: CTASectionProps) {
               {data.githubLabel}
             </a>
           )}
-          {data.demo && (
+          {demo && (
             <a
-              href={data.demo}
+              href={demo}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-blue-500"

@@ -36,7 +36,10 @@ interface CaseStudyPageProps {
 export function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
   const { meta, sections } = caseStudy;
   const related = getRelatedCaseStudies(sections.relatedProjects);
-  const displayName = meta.title.split(" — ")[0] ?? meta.title;
+  const normalizedTitle = meta.title
+    .replace(/\u00e2\u20ac[\u201c\u201d]|\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac[\u009c\u009d]|[–—]/g, "—")
+    .replace(/\s+-\s+/g, " — ");
+  const displayName = normalizedTitle.split(/\s+—\s+/)[0] ?? normalizedTitle;
 
   return (
     <CaseStudyExperience projectName={displayName}>
@@ -60,7 +63,11 @@ export function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
       />
       <EngineeringDecisionsSection data={sections.engineeringDecisions} />
       <LessonsLearnedSection data={sections.lessonsLearned} />
-      <CTASection data={sections.cta} />
+      <CTASection
+        data={sections.cta}
+        github={sections.hero.github}
+        demo={sections.hero.demo}
+      />
       <RelatedProjectsSection copy={sections.relatedSection} projects={related} />
       <CaseStudyFooter />
     </CaseStudyExperience>

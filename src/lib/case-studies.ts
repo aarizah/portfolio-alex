@@ -26,13 +26,14 @@ export function getCaseStudyPreviews() {
     description: cs.meta.tagline,
     image: cs.meta.ogImage,
     status: cs.meta.status,
+    recruiterShortcut: cs.meta.recruiterShortcut,
     metrics: cs.sections.results.metrics.slice(0, 3).map((r) => ({
       label: r.label,
       value: r.value,
     })),
     technologies: cs.sections.techStack.map((t) => t.name),
-    github: cs.sections.cta.github,
-    demo: cs.sections.cta.demo,
+    github: cs.sections.hero.github,
+    demo: cs.sections.hero.demo,
   }));
 }
 

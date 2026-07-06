@@ -6,7 +6,12 @@ export const chatterbox: CaseStudy = {
     title: "ChatterBox — Real-Time Team Chat",
     tagline: "Slack/Discord-style web app with authentication, channels, and real-time messaging.",
     status: "Live",
-    ogImage: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1200&q=80"
+    ogImage: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1200&q=80",
+    recruiterShortcut: {
+      label: "Recruiter shortcut",
+      summary:
+        "Two-minute read: real-time messaging problem, auth model, WebSocket architecture, and delivery tradeoffs.",
+    },
   },
   sections: {
     hero: {
@@ -350,7 +355,6 @@ export const chatterbox: CaseStudy = {
       githubLabel: "Repository",
       demoLabel: "Live Demo",
       contactLabel: "Contact Me",
-      github: "https://github.com/aarizah/chatterApp",
       contactHref: "/#contact"
     },
     relatedProjects: [

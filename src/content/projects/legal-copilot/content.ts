@@ -6,7 +6,12 @@ export const legalCopilot: CaseStudy = {
     title: "AI Internal Knowledge Copilot - Enterprise RAG System",
     tagline: "A production-grade RAG assistant that turns internal PDFs into cited, streaming answers.",
     status: "Production",
-    ogImage: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
+    ogImage: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+    recruiterShortcut: {
+      label: "Recruiter shortcut",
+      summary:
+        "Two-minute read: product problem, business impact, architecture, decisions, and lessons.",
+    },
   },
   sections: {
     hero: {
@@ -22,11 +27,11 @@ export const legalCopilot: CaseStudy = {
       ],
       backgroundImage: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
       github: "https://github.com/aarizah/AI-Enterprise-Knowledge-Assistant",
-      demo: "https://github.com/aarizah/AI-Enterprise-Knowledge-Assistant#demo"
+      demo: "https://eka-ten.vercel.app/home"
     },
     quickOverview: {
       role: "Full Stack + AI Engineer",
-      duration: "3 weeks",
+      duration: "4 weeks",
       status: "Production",
       users: "Knowledge workers",
       country: "Colombia",
@@ -35,6 +40,7 @@ export const legalCopilot: CaseStudy = {
       tech: "Next.js - FastAPI - PostgreSQL - pgvector - VoyageAI - OpenAI"
     },
     videoDemo: {
+      src: "/projects/legal-copilot/demo.mp4",
       poster: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
       chapters: [
         {
@@ -459,8 +465,6 @@ export const legalCopilot: CaseStudy = {
       githubLabel: "Repository",
       demoLabel: "Live Demo",
       contactLabel: "Contact Me",
-      github: "https://github.com/aarizah/AI-Enterprise-Knowledge-Assistant",
-      demo: "https://github.com/aarizah/AI-Enterprise-Knowledge-Assistant#demo",
       contactHref: "/#contact"
     },
     relatedProjects: [

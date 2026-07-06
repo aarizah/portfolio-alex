@@ -352,7 +352,9 @@
 
   .case-study-root {
     background:
-      radial-gradient(circle at 22% 14%, rgba(59, 130, 246, 0.10), transparent 32%),
+      radial-gradient(circle at 22% 14%, rgba(96, 165, 250, 0.10), transparent 32%),
+      radial-gradient(circle at 76% 10%, rgba(168, 85, 247, 0.08), transparent 30%),
+      radial-gradient(circle at 84% 54%, rgba(236, 72, 153, 0.045), transparent 28%),
       #000;
   }
 
@@ -362,7 +364,8 @@
     inset: 0;
     pointer-events: none;
     background:
-      radial-gradient(circle at 18% 18%, rgba(59, 130, 246, 0.045), transparent 30%);
+      radial-gradient(circle at 18% 18%, rgba(96, 165, 250, 0.04), transparent 30%),
+      radial-gradient(circle at 78% 12%, rgba(168, 85, 247, 0.035), transparent 28%);
     opacity: 0.75;
     z-index: -1;
   }
@@ -374,7 +377,7 @@
     opacity: 0.34;
     clip-path: polygon(0 50%, 100% 0, 72% 50%, 100% 100%);
     background: linear-gradient(90deg, #60a5fa, #a78bfa 70%, #f0abfc);
-    filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.18));
+    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.18));
     animation: caseStudyFloat 9s ease-in-out infinite;
   }
 
@@ -385,7 +388,7 @@
   }
 
   .case-study-particle:nth-child(4n) {
-    background: linear-gradient(90deg, #93c5fd, #c4b5fd);
+    background: linear-gradient(90deg, #93c5fd, #c4b5fd 60%, #f9a8d4);
   }
 
   @keyframes caseStudyFloat {
@@ -412,7 +415,7 @@
   }
 
   .case-study-root :focus-visible {
-    outline-color: rgba(147, 197, 253, 0.85);
+    outline-color: rgba(216, 180, 254, 0.85);
   }
 
   @media (prefers-reduced-motion: reduce) {

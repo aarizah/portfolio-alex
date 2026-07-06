@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ProjectCard } from "./ProjectCard";
 import { projects } from "./projectsData";
+import { ScrollReveal, ScrollStagger, StaggerChild } from "@/components/motion/ScrollReveal";
+import { fadeInUpTight, scaleIn } from "@/lib/motion";
 
 export function Projects() {
   const [featuredProject, ...secondaryProjects] = projects;
@@ -20,38 +21,33 @@ export function Projects() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-300/25 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 grid gap-8 md:mb-16 lg:grid-cols-[0.82fr_1fr] lg:items-end"
-        >
-          <div>
+        <ScrollStagger className="mb-12 grid gap-8 md:mb-16 lg:grid-cols-[0.82fr_1fr] lg:items-end">
+          <StaggerChild variants={fadeInUpTight}>
             <p className="mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-sm font-semibold uppercase tracking-[0.28em] text-transparent">
               Selected Projects
             </p>
-          </div>
+          </StaggerChild>
 
-          <div className="max-w-xl lg:justify-self-end">
-            <p className="text-base leading-8 text-gray-400 md:text-lg">
-              Selected AI and full-stack projects with demos, implementation details, architecture decisions, and measurable product outcomes.
+          <StaggerChild variants={fadeInUpTight}>
+            <p className="max-w-xl text-base leading-8 text-gray-400 md:text-lg lg:justify-self-end">
+              Selected AI and full-stack projects with demos, implementation details, architecture
+              decisions, and measurable product outcomes.
             </p>
-          </div>
-        </motion.div>
+          </StaggerChild>
+        </ScrollStagger>
 
-        <ProjectCard project={featuredProject} index={0} variant="spotlight" />
+        <ScrollReveal variants={scaleIn}>
+          <ProjectCard project={featuredProject} index={0} variant="spotlight" />
+        </ScrollReveal>
 
         {secondaryProjects.length > 0 && (
-          <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <ScrollStagger className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
             {secondaryProjects.map((project, index) => (
-              <ProjectCard
-                key={project.slug}
-                project={project}
-                index={index + 1}
-              />
+              <StaggerChild key={project.slug} variants={fadeInUpTight}>
+                <ProjectCard project={project} index={index + 1} variant="compact" staggered />
+              </StaggerChild>
             ))}
-          </div>
+          </ScrollStagger>
         )}
       </div>
     </section>

@@ -1,11 +1,17 @@
 export type ProjectStatus = "Production" | "Live" | "Research" | "Prototype";
 
+export interface RecruiterShortcut {
+  label: string;
+  summary: string;
+}
+
 export interface CaseStudyMeta {
   slug: string;
   title: string;
   tagline: string;
   status: ProjectStatus;
   ogImage: string;
+  recruiterShortcut: RecruiterShortcut;
 }
 
 export interface HeroData {
@@ -184,8 +190,6 @@ export interface CTAData {
   githubLabel: string;
   demoLabel: string;
   contactLabel: string;
-  github?: string;
-  demo?: string;
   contactHref: string;
 }
 

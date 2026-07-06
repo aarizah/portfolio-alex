@@ -1,15 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight, Github, LineChart, Play, Sparkles } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { ProjectPreview } from "./types";
+import { appleRevealFast, viewportOnce } from "@/lib/motion";
+import { motion } from "framer-motion";
 
 interface ProjectCardProps {
   project: ProjectPreview;
   index: number;
   variant?: "spotlight" | "compact";
+  staggered?: boolean;
 }
 
 function ProjectActions({ project, compact = false }: { project: ProjectPreview; compact?: boolean }) {
@@ -82,16 +84,15 @@ function ProjectMetrics({ project, compact = false }: { project: ProjectPreview;
   );
 }
 
-export function ProjectCard({ project, index, variant = "compact" }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  index,
+  variant = "compact",
+  staggered = false,
+}: ProjectCardProps) {
   if (variant === "spotlight") {
     return (
-      <motion.article
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-120px" }}
-        transition={{ duration: 0.7, delay: index * 0.08 }}
-        className="group relative overflow-hidden rounded-[2rem] border border-purple-300/10 bg-white/[0.035] shadow-[0_30px_120px_rgba(15,23,42,0.45)] backdrop-blur-xl"
-      >
+      <article className="group relative overflow-hidden rounded-[2rem] border border-purple-300/10 bg-white/[0.035] shadow-[0_30px_120px_rgba(15,23,42,0.45)] backdrop-blur-xl transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:shadow-[0_36px_120px_rgba(15,23,42,0.55)]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(96,165,250,0.13),transparent_31%),radial-gradient(circle_at_72%_10%,rgba(168,85,247,0.13),transparent_28%),radial-gradient(circle_at_88%_72%,rgba(236,72,153,0.08),transparent_24%)] opacity-90" />
         <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-purple-300/35 to-pink-300/20" />
 
@@ -139,32 +140,51 @@ export function ProjectCard({ project, index, variant = "compact" }: ProjectCard
             <ImageWithFallback
               src={project.image}
               alt={project.title}
-              className="h-full min-h-[320px] w-full object-cover opacity-90 saturate-[0.92] transition duration-700 group-hover:scale-[1.025]"
+              className="h-full min-h-[320px] w-full object-cover opacity-90 saturate-[0.92] transition-transform duration-[1.1s] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-purple-950/10 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-purple-300/10 bg-black/45 p-4 backdrop-blur-md">
               <p className="bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-xs font-semibold uppercase tracking-[0.22em] text-transparent">
-                Recruiter shortcut
+                {project.recruiterShortcut.label}
               </p>
               <p className="mt-2 text-sm leading-6 text-gray-200">
-                Two-minute read: product problem, business impact, architecture, decisions, and lessons.
+                {project.recruiterShortcut.summary}
               </p>
             </div>
           </Link>
         </div>
-      </motion.article>
+      </article>
+    );
+  }
+
+  if (staggered) {
+    return (
+      <div className="h-full">
+        <div className="group/card relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-purple-300/10 bg-white/[0.03] p-4 backdrop-blur-sm transition-[transform,border-color,background-color] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-purple-300/20 hover:bg-white/[0.045]">
+          {renderCompactBody(project)}
+        </div>
+      </div>
     );
   }
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, delay: index * 0.08 }}
+      viewport={viewportOnce}
+      transition={{ ...appleRevealFast, delay: index * 0.05 }}
       className="h-full"
     >
-      <div className="group/card relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-purple-300/10 bg-white/[0.03] p-4 backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-purple-300/25 hover:bg-white/[0.05]">
+      <div className="group/card relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-purple-300/10 bg-white/[0.03] p-4 backdrop-blur-sm transition-[transform,border-color,background-color] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-purple-300/20 hover:bg-white/[0.045]">
+        {renderCompactBody(project)}
+      </div>
+    </motion.article>
+  );
+}
+
+function renderCompactBody(project: ProjectPreview) {
+  return (
+    <>
         <Link
           href={`/projects/${project.slug}`}
           className="relative h-52 overflow-hidden rounded-[1.15rem] border border-purple-300/10 bg-black/30"
@@ -173,7 +193,7 @@ export function ProjectCard({ project, index, variant = "compact" }: ProjectCard
           <ImageWithFallback
             src={project.image}
             alt={project.title}
-            className="h-full w-full object-cover opacity-80 saturate-[0.88] transition-transform duration-500 group-hover/card:scale-[1.035]"
+            className="h-full w-full object-cover opacity-80 saturate-[0.88] transition-transform duration-[1s] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/card:scale-[1.02]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-purple-950/20 to-transparent" />
           <div className="absolute left-4 top-4 rounded-full border border-purple-300/15 bg-black/45 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-purple-100 backdrop-blur-md">
@@ -209,7 +229,6 @@ export function ProjectCard({ project, index, variant = "compact" }: ProjectCard
             <ProjectActions project={project} compact />
           </div>
         </div>
-      </div>
-    </motion.article>
+    </>
   );
 }

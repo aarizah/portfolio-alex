@@ -19,7 +19,7 @@ public/projects/{slug}/
 
 Rules:
 
-- Put **all** narrative copy, section eyebrows, headlines, impact story, CTA text, and structured data in `content.ts`.
+- Put **all** narrative copy, section eyebrows, headlines, impact story, CTA text, home-card copy (`meta.recruiterShortcut`), and structured data in `content.ts`.
 - Section React components must not contain project-specific fallbacks — they only render props from `content.ts`.
 - Keep raw long-form project notes in `source.md`; use it as input when expanding or rewriting `content.ts`.
 - Keep only public media assets in `public/projects/{slug}`.

@@ -4,9 +4,8 @@ import { caloricEstimator } from "./caloric-estimator/content";
 import { chatterbox } from "./chatterbox/content";
 
 const caseStudies: Record<string, CaseStudy> = {
-  [legalCopilot.meta.slug]: legalCopilot,
   [caloricEstimator.meta.slug]: caloricEstimator,
-  [chatterbox.meta.slug]: chatterbox,
+  [legalCopilot.meta.slug]: legalCopilot
 };
 
 export function getCaseStudyFromRegistry(slug: string): CaseStudy | undefined {

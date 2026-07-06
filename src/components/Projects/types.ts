@@ -9,6 +9,10 @@ export interface ProjectPreview {
   description: string;
   image: string;
   status: string;
+  recruiterShortcut: {
+    label: string;
+    summary: string;
+  };
   metrics: ProjectMetric[];
   technologies: string[];
   github?: string;

@@ -6,7 +6,12 @@ export const caloricEstimator: CaseStudy = {
     title: "AI Caloric Estimator — CV + Embedded Prototype",
     tagline: "Hardware + CV system that fuses image and weight data to estimate calories with far lower error than manual tracking.",
     status: "Prototype",
-    ogImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80"
+    ogImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+    recruiterShortcut: {
+      label: "Recruiter shortcut",
+      summary:
+        "Two-minute read: accuracy problem, sensor fusion approach, embedded + cloud split, and prototype results.",
+    },
   },
   sections: {
     hero: {
@@ -337,7 +342,6 @@ export const caloricEstimator: CaseStudy = {
       githubLabel: "Repository",
       demoLabel: "Live Demo",
       contactLabel: "Contact Me",
-      github: "https://github.com/aarizah/FoodTracking",
       contactHref: "/#contact"
     },
     relatedProjects: [
