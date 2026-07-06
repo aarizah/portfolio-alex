@@ -1,8 +1,5 @@
 import type { CaseStudy } from "../types";
 
-const img =
-  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80";
-
 export const caloricEstimator: CaseStudy = {
   meta: {
     slug: "caloric-estimator",

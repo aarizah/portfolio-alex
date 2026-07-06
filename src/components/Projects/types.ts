@@ -8,6 +8,7 @@ export interface ProjectPreview {
   title: string;
   description: string;
   image: string;
+  status: string;
   metrics: ProjectMetric[];
   technologies: string[];
   github?: string;

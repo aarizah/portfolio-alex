@@ -1,8 +1,5 @@
 import type { CaseStudy } from "../types";
 
-const img =
-  "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1200&q=80";
-
 export const chatterbox: CaseStudy = {
   meta: {
     slug: "chatterbox",
