@@ -22,11 +22,15 @@ export function ResultsSection({ data }: ResultsSectionProps) {
       containerClassName="max-w-[1040px]"
     >
       <Reveal>
-        <p className="cs-eyebrow mb-6 text-emerald-200/70">{data.eyebrow}</p>
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="cs-eyebrow mb-6 text-emerald-200/70">{data.eyebrow}</p>
+          <h2 className="cs-headline text-white">{data.headline}</h2>
+          <p className="cs-subheadline mt-5 text-white/56">{data.subheadline}</p>
+        </div>
       </Reveal>
 
-      <Reveal delay={0.14}>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-3 text-left md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-stretch">
+      <Reveal delay={0.1}>
+        <div className="mx-auto mt-10 grid max-w-4xl gap-3 text-left md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-stretch">
           {data.impactStory.map((step, index, array) => (
             <div key={step.label} className="contents">
               <article className="rounded-[2rem] border border-white/[0.08] bg-white/[0.035] p-5 md:p-6">

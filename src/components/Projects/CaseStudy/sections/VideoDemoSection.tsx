@@ -31,6 +31,8 @@ function getChapterIndexForTime(
 export function VideoDemoSection({ data }: VideoDemoSectionProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const chapterRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const chaptersScrollRef = useRef<HTMLDivElement>(null);
+  const skipChapterScrollRef = useRef(true);
   const [activeChapter, setActiveChapter] = useState(0);
 
   const handleTimeUpdate = useCallback(() => {
@@ -41,10 +43,28 @@ export function VideoDemoSection({ data }: VideoDemoSectionProps) {
   }, [data.chapters]);
 
   useEffect(() => {
-    chapterRefs.current[activeChapter]?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-    });
+    if (skipChapterScrollRef.current) {
+      skipChapterScrollRef.current = false;
+      return;
+    }
+
+    const button = chapterRefs.current[activeChapter];
+    const container = chaptersScrollRef.current;
+    if (!button || !container) return;
+
+    const buttonTop = button.offsetTop;
+    const buttonBottom = buttonTop + button.offsetHeight;
+    const visibleTop = container.scrollTop;
+    const visibleBottom = visibleTop + container.clientHeight;
+
+    if (buttonTop < visibleTop) {
+      container.scrollTo({ top: buttonTop, behavior: "smooth" });
+    } else if (buttonBottom > visibleBottom) {
+      container.scrollTo({
+        top: buttonBottom - container.clientHeight,
+        behavior: "smooth",
+      });
+    }
   }, [activeChapter]);
 
   const seekTo = useCallback((time: number, index: number) => {
@@ -107,7 +127,10 @@ export function VideoDemoSection({ data }: VideoDemoSectionProps) {
               <p className="mb-3 shrink-0 text-[9px] font-medium uppercase tracking-[0.2em] text-purple-200/40">
                 Demo beats
               </p>
-              <div className="min-h-0 flex-1 overflow-x-auto overflow-y-hidden pb-1 scrollbar-hide lg:overflow-x-hidden lg:overflow-y-auto lg:pr-0.5">
+              <div
+                ref={chaptersScrollRef}
+                className="min-h-0 flex-1 overflow-x-auto overflow-y-hidden pb-1 scrollbar-hide lg:overflow-x-hidden lg:overflow-y-auto lg:pr-0.5"
+              >
                 <div className="flex gap-1.5 lg:flex-col">
                   {data.chapters.map((chapter, i) => (
                     <button

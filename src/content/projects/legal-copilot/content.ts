@@ -1,12 +1,14 @@
 import type { CaseStudy } from "../types";
 
+const HERO_IMAGE = "/projects/legal-copilot/hero.jpg";
+
 export const legalCopilot: CaseStudy = {
   meta: {
     slug: "legal-copilot",
     title: "AI Internal Knowledge Copilot - Enterprise RAG System",
     tagline: "A production-grade RAG assistant that turns internal PDFs into cited, streaming answers.",
     status: "Production",
-    ogImage: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+    ogImage: HERO_IMAGE,
     recruiterShortcut: {
       label: "Recruiter shortcut",
       summary:
@@ -25,7 +27,7 @@ export const legalCopilot: CaseStudy = {
         "VoyageAI",
         "OpenAI"
       ],
-      backgroundImage: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+      backgroundImage: HERO_IMAGE,
       github: "https://github.com/aarizah/AI-Enterprise-Knowledge-Assistant",
       demo: "https://eka-ten.vercel.app/home"
     },
@@ -41,25 +43,14 @@ export const legalCopilot: CaseStudy = {
     },
     videoDemo: {
       src: "/projects/legal-copilot/demo.mp4",
-      poster: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+      poster: "/projects/legal-copilot/thumbnail.png",
       chapters: [
-        {
-          time: 0,
-          label: "Upload & Index"
-        },
-        {
-          time: 20,
-          label: "Ask a question"
-        },
-        {
-          time: 45,
-          label: "Retrieve context"
-        },
-        {
-          time: 75,
-          label: "Stream cited answer"
-        }
-      ]
+        { time: 0, label: "First grounded answer" },
+        { time: 10, label: "Source verification" },
+        { time: 29, label: "Follow-up question" },
+        { time: 35, label: "Citation drill-down" },
+        { time: 42, label: "No-answer guardrail" },
+      ],
     },
     problem: {
       eyebrow: "Problem",
@@ -73,7 +64,7 @@ export const legalCopilot: CaseStudy = {
       insightHelper: "One mental model for the user problem — not scattered symptoms across tools.",
       bridgeBefore: "Understand the pain",
       bridgeAfter: "Then see the product response",
-      illustration: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
+      illustration: HERO_IMAGE
     },
     solutionOverview: {
       eyebrow: "Solution",
@@ -112,115 +103,111 @@ export const legalCopilot: CaseStudy = {
         {
           id: "upload",
           label: "Upload",
-          screenshot: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+          screenshot: HERO_IMAGE,
           explanation: "A user uploads a PDF. The backend extracts text, preserves hierarchy, and attaches page-level metadata."
         },
         {
           id: "index",
           label: "Index",
-          screenshot: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+          screenshot: HERO_IMAGE,
           explanation: "The system chunks the document, generates embeddings, and stores vectors plus metadata in PostgreSQL with pgvector."
         },
         {
           id: "ask",
           label: "Ask",
-          screenshot: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+          screenshot: HERO_IMAGE,
           explanation: "The user asks a natural-language question. The query is embedded and matched against the most relevant chunks."
         },
         {
           id: "answer",
           label: "Answer",
-          screenshot: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+          screenshot: HERO_IMAGE,
           explanation: "The answer streams back with source citations, so the user can verify where the information came from."
         }
       ]
     },
     architecture: {
       eyebrow: "Architecture",
-      layersNavLabel: "System path",
-      selectedLayerLabel: "Selected layer",
-      securityPanelTitle: "Security lives inside the architecture",
-      aiFlowPanelTitle: "AI flow details",
-      layers: [
-        {
-          id: "frontend",
-          label: "Next.js UI",
-          panel: {
-            title: "Next.js frontend",
-            why: "The frontend focuses on upload, question flow, streaming responses, and citation visibility without exposing retrieval complexity to the user.",
-            bullets: [
-              "Upload and chat UX",
-              "Streaming answer surface",
-              "Citation-first response display"
+      headline: "How the system is built.",
+      subheadline: "Six views — stack, containers, security, runtime flow, data model, and where it runs.",
+      systemOverview: {
+        title: "System Overview",
+        description: "A browser question flows through the frontend, API, database, and LLM — with citations mapped back to source chunks.",
+        nodes: [
+          { id: "browser", label: "Browser", description: "Upload PDFs, ask questions, read cited answers.", technologies: ["React"] },
+          { id: "nextjs", label: "Next.js", description: "Chat UI, streaming responses, citation display.", technologies: ["Next.js", "TypeScript"] },
+          { id: "fastapi", label: "FastAPI", description: "Auth, ingestion, retrieval, and chat orchestration.", technologies: ["FastAPI", "Python"] },
+          { id: "postgres", label: "Postgres", description: "Documents, chunks, vectors, and sessions.", technologies: ["PostgreSQL", "pgvector"] },
+          { id: "s3", label: "S3", description: "PDF files and generated artifacts.", technologies: ["S3"] },
+          { id: "llm", label: "LLM", description: "Grounded generation with citation rules.", technologies: ["OpenAI", "VoyageAI"] }
+        ],
+        tableColumns: { layer: "Layer", role: "Role", stack: "Stack" },
+        technologies: ["Next.js", "FastAPI", "PostgreSQL", "pgvector", "S3", "VoyageAI", "OpenAI"]
+      },
+      c4Model: {
+        title: "C4 Model",
+        description: "Container diagram — how the UI, API, storage, and model services connect.",
+        src: "/projects/legal-copilot/c4.svg",
+        alt: "C4 diagram for AI Internal Knowledge Copilot"
+      },
+      security: {
+        title: "Security",
+        description: "Document ownership, protected API access, and server-side credentials.",
+        items: [
+          { id: "authentication", label: "Authentication", description: "JWT access tokens; Argon2id password hashing.", technologies: ["JWT", "Argon2id"] },
+          { id: "authorization", label: "Authorization", description: "Documents scoped to owner accounts before retrieval.", technologies: ["User ownership"] },
+          { id: "encryption", label: "Encryption", description: "HTTPS in transit; provider keys server-side only.", technologies: ["HTTPS"] },
+          { id: "secrets", label: "Secrets", description: "OpenAI and VoyageAI keys never in frontend bundles.", technologies: [".env"] }
+        ]
+      },
+      coreWorkflows: {
+        title: "Core Workflows",
+        description: "The RAG loop from upload to cited answer.",
+        workflows: [
+          {
+            id: "rag-answer",
+            label: "RAG Answer Flow",
+            description: "",
+            steps: [
+              { id: "upload", label: "Upload", description: "User uploads a PDF; backend creates document metadata with ownership." },
+              { id: "chunk", label: "Chunk & embed", description: "Extract text, split by structure, generate embeddings into pgvector." },
+              { id: "retrieve", label: "Retrieve", description: "Embed the question, search top chunks with ownership filters." },
+              { id: "generate", label: "Generate & cite", description: "LLM answers from retrieved context only; UI maps claims to source pages." }
             ]
           }
-        },
-        {
-          id: "api",
-          label: "FastAPI backend",
-          panel: {
-            title: "FastAPI application layer",
-            why: "Domain modules keep auth, documents, chat, analytics, and users separated while dependency injection wires use cases cleanly.",
-            bullets: [
-              "Domain-driven modules",
-              "Dependency injection",
-              "Protected API endpoints"
+        ]
+      },
+      dataModel: {
+        title: "Data Model",
+        description: "Users, documents, chunks, conversations, and analytics events.",
+        src: "/projects/legal-copilot/db-diagram.svg",
+        alt: "Database diagram for AI Internal Knowledge Copilot"
+      },
+      deployment: {
+        title: "Deployment",
+        description: "Frontend hosted on Vercel. API and database run via Docker Compose for demos. Production path maps to AWS ECS + RDS.",
+        hosting: "Vercel · Docker Compose · AWS-ready",
+        environments: [
+          {
+            label: "Demo / portfolio",
+            services: [
+              { name: "Frontend", tech: "Vercel" },
+              { name: "API", tech: "Docker · FastAPI" },
+              { name: "Database", tech: "PostgreSQL · pgvector" },
+              { name: "Files", tech: "Local / S3-compatible" }
+            ]
+          },
+          {
+            label: "Production path",
+            services: [
+              { name: "API", tech: "ECS / Fargate" },
+              { name: "Database", tech: "RDS PostgreSQL" },
+              { name: "Files", tech: "S3 + CloudFront" },
+              { name: "Secrets", tech: "AWS Secrets Manager" }
             ]
           }
-        },
-        {
-          id: "services",
-          label: "Service layer",
-          panel: {
-            title: "Router to service to repository",
-            why: "Clean Architecture keeps business logic out of routes and persistence details out of use cases, making the system easier to test and evolve.",
-            bullets: [
-              "Router -> Service",
-              "Service -> Repository",
-              "Repository -> Database"
-            ]
-          }
-        },
-        {
-          id: "retrieval",
-          label: "RAG pipeline",
-          panel: {
-            title: "Retrieval and generation pipeline",
-            why: "Document structure, chunk metadata, embeddings, similarity search, and prompts work together to produce grounded answers.",
-            bullets: [
-              "Markdown-aware chunks",
-              "Metadata filters",
-              "Cited LLM responses"
-            ]
-          }
-        },
-        {
-          id: "data",
-          label: "PostgreSQL + pgvector",
-          panel: {
-            title: "One operational database",
-            why: "PostgreSQL stores users, document metadata, analytics events, and vector embeddings, avoiding the operational cost of a separate vector database for MVP scale.",
-            bullets: [
-              "Relational data",
-              "Vector embeddings",
-              "Analytics events"
-            ]
-          }
-        },
-        {
-          id: "deployment",
-          label: "Docker Compose",
-          panel: {
-            title: "Local-first deployment path",
-            why: "Docker Compose keeps onboarding simple and makes the stack reproducible while the product is still evolving.",
-            bullets: [
-              "Fast onboarding",
-              "Reproducible services",
-              "Environment-based secrets"
-            ]
-          }
-        }
-      ]
+        ]
+      }
     },
     aiPipeline: {
       blocks: [
@@ -333,19 +320,15 @@ export const legalCopilot: CaseStudy = {
       }
     ],
     screenshots: {
-      desktop: [
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
-      ],
-      tablet: [
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
-      ],
-      mobile: [
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80"
-      ]
+      desktop: [HERO_IMAGE, HERO_IMAGE],
+      tablet: [HERO_IMAGE],
+      mobile: [HERO_IMAGE]
     },
     results: {
       eyebrow: "Impact",
+      headline: "Potential to recover 9,360 hours/year for a 100-worker team.",
+      subheadline:
+        "Illustrative scenario with a conservative 20% reduction in daily search time — supporting benchmarks below.",
       impactStory: [
         {
           label: "Friction",
@@ -468,8 +451,8 @@ export const legalCopilot: CaseStudy = {
       contactHref: "/#contact"
     },
     relatedProjects: [
-      "caloric-estimator",
-      "chatterbox"
+      "local-rag",
+      "clinic-hc",
     ],
     relatedSection: {
       eyebrow: "Keep exploring",

@@ -59,15 +59,15 @@ export function TechnicalDeepDiveSection({
           </AccordionTrigger>
           <AccordionContent>
             <div className="grid gap-3 pb-5 md:grid-cols-2">
-              {architecture.layers.map((layer) => (
-                <article key={layer.id} className="rounded-2xl border border-white/[0.06] bg-black/30 p-5">
-                  <h3 className="text-base font-semibold text-white">{layer.panel.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-white/58">{layer.panel.why}</p>
+              {architecture.systemOverview.nodes.map((node) => (
+                <article key={node.id} className="rounded-2xl border border-white/[0.06] bg-black/30 p-5">
+                  <h3 className="text-base font-semibold text-white">{node.label}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/58">{node.description}</p>
                   <ul className="mt-4 grid gap-2">
-                    {layer.panel.bullets.map((bullet) => (
-                      <li key={bullet} className="flex gap-2 text-sm text-white/52">
+                    {(node.technologies ?? []).map((tech) => (
+                      <li key={tech} className="flex gap-2 text-sm text-white/52">
                         <span className="mt-2 size-1.5 shrink-0 rounded-full bg-blue-300" />
-                        <span>{bullet}</span>
+                        <span>{tech}</span>
                       </li>
                     ))}
                   </ul>
@@ -160,4 +160,3 @@ export function TechnicalDeepDiveSection({
     </ProductSection>
   );
 }
-

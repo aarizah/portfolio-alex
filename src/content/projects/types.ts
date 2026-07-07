@@ -1,4 +1,9 @@
-export type ProjectStatus = "Production" | "Live" | "Research" | "Prototype";
+export type ProjectStatus =
+  | "Production"
+  | "Live"
+  | "Internal"
+  | "Research"
+  | "Prototype";
 
 export interface RecruiterShortcut {
   label: string;
@@ -82,23 +87,102 @@ export interface FeatureWalkthroughData {
   items: WalkthroughItem[];
 }
 
-export interface ArchitectureLayer {
-  id: string;
-  label: string;
-  panel: {
-    title: string;
-    why: string;
-    bullets: string[];
-  };
-}
-
 export interface ArchitectureData {
   eyebrow: string;
-  layersNavLabel: string;
-  selectedLayerLabel: string;
-  securityPanelTitle: string;
-  aiFlowPanelTitle: string;
-  layers: ArchitectureLayer[];
+  headline: string;
+  subheadline: string;
+  defaultTab?: "overview" | "c4" | "security" | "workflows" | "data" | "deployment";
+  systemOverview: ArchitectureSystemOverview;
+  c4Model: ArchitectureC4Model;
+  security: ArchitectureDetailGroup;
+  coreWorkflows: ArchitectureWorkflowGroup;
+  dataModel: ArchitectureDataModel;
+  deployment: ArchitectureDeployment;
+}
+
+export interface ArchitectureDetailItem {
+  id: string;
+  label: string;
+  description: string;
+  technologies?: string[];
+}
+
+export interface ArchitectureFlowNode {
+  id: string;
+  label: string;
+  description: string;
+  technologies?: string[];
+}
+
+export interface ArchitectureTableColumns {
+  layer: string;
+  role: string;
+  stack: string;
+}
+
+export interface ArchitectureSystemOverview {
+  title: string;
+  description: string;
+  nodes: ArchitectureFlowNode[];
+  tableColumns: ArchitectureTableColumns;
+  technologies: string[];
+}
+
+export interface ArchitectureC4Model {
+  title: string;
+  description: string;
+  src?: string;
+  alt: string;
+}
+
+export interface ArchitectureDetailGroup {
+  title: string;
+  description: string;
+  items: ArchitectureDetailItem[];
+}
+
+export interface ArchitectureWorkflow {
+  id: string;
+  label: string;
+  description: string;
+  steps: ArchitectureDetailItem[];
+}
+
+export interface ArchitectureWorkflowGroup {
+  title: string;
+  description: string;
+  workflows: ArchitectureWorkflow[];
+}
+
+export interface ArchitectureDataModel {
+  title: string;
+  description: string;
+  src?: string;
+  alt: string;
+}
+
+export interface DeploymentService {
+  name: string;
+  tech: string;
+}
+
+export interface DeploymentEnvironment {
+  label: string;
+  heading?: string;
+  services: DeploymentService[];
+}
+
+export interface DeploymentPipelineStep {
+  label: string;
+}
+
+export interface ArchitectureDeployment {
+  title: string;
+  description: string;
+  hosting: string;
+  environments: DeploymentEnvironment[];
+  pipelineTitle?: string;
+  pipeline?: DeploymentPipelineStep[];
 }
 
 export interface AIPipelineBlock {
@@ -162,6 +246,8 @@ export interface ImpactStoryStep {
 
 export interface ResultsData {
   eyebrow: string;
+  headline: string;
+  subheadline: string;
   impactStory: ImpactStoryStep[];
   supportingLabel: string;
   metrics: ResultCard[];

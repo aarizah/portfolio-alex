@@ -26,33 +26,34 @@ export function CaseStudyExperience({
   const [availableIds, setAvailableIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    const sectionEls = sections
-      .map((section) => document.getElementById(section.id))
-      .filter(Boolean) as HTMLElement[];
-
-    setAvailableIds(new Set(sectionEls.map((section) => section.id)));
-
-    if (sectionEls.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visible[0]?.target.id) {
-          setActiveId(visible[0].target.id);
-        }
-      },
-      { rootMargin: "-35% 0px -55% 0px", threshold: [0, 0.2, 0.45, 0.7, 1] }
-    );
-
-    sectionEls.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, [sections]);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [projectName]);
 
   useEffect(() => {
     let frame = 0;
+
+    const updateActiveSection = () => {
+      const markerY = window.innerHeight * 0.42;
+      const sectionEls = sections
+        .map((section) => ({
+          id: section.id,
+          el: document.getElementById(section.id),
+        }))
+        .filter((section): section is { id: string; el: HTMLElement } => Boolean(section.el));
+
+      setAvailableIds(new Set(sectionEls.map((section) => section.id)));
+
+      if (sectionEls.length === 0) return;
+
+      let current = sectionEls[0].id;
+      for (const { id, el } of sectionEls) {
+        if (el.getBoundingClientRect().top <= markerY) {
+          current = id;
+        }
+      }
+
+      setActiveId(current);
+    };
 
     const onScroll = () => {
       cancelAnimationFrame(frame);
@@ -61,17 +62,27 @@ export function CaseStudyExperience({
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         setScrollProgress(docHeight > 0 ? scrollTop / docHeight : 0);
         setNavVisible(scrollTop > window.innerHeight * 0.38);
+        updateActiveSection();
       });
     };
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    const main = document.querySelector(".case-study-main");
+    const mutationObserver = main
+      ? new MutationObserver(() => onScroll())
+      : null;
+    mutationObserver?.observe(main!, { childList: true, subtree: true });
 
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      mutationObserver?.disconnect();
     };
-  }, []);
+  }, [sections]);
 
   const visibleSections = useMemo(
     () => sections.filter((section) => availableIds.has(section.id)),

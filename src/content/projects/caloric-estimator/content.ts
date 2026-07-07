@@ -130,64 +130,70 @@ export const caloricEstimator: CaseStudy = {
     },
     architecture: {
       eyebrow: "Architecture",
-      layersNavLabel: "System path",
-      selectedLayerLabel: "Selected layer",
-      securityPanelTitle: "Security lives inside the architecture",
-      aiFlowPanelTitle: "AI flow details",
-      layers: [
-        {
-          id: "embedded",
-          label: "ESP32-S3",
-          panel: {
-            title: "ESP32-S3 Firmware",
-            why: "Dual-core MCU with camera support and WiFi for API calls.",
-            bullets: [
-              "FreeRTOS tasks",
-              "HX711 driver",
-              "OV2640 capture"
+      headline: "How the system is built.",
+      subheadline: "Six views — stack, containers, security, runtime flow, data model, and where it runs.",
+      systemOverview: {
+        title: "System Overview",
+        description: "ESP32 reads weight and captures an image; the cloud API runs vision inference and returns a calorie estimate.",
+        nodes: [
+          { id: "esp32", label: "ESP32-S3", description: "Load cell + camera capture; sends weight and image to API.", technologies: ["C++", "HX711", "OV2640"] },
+          { id: "api", label: "Node.js API", description: "Receives payloads, proxies OpenAI Vision, normalizes response.", technologies: ["Node.js", "Express"] },
+          { id: "vision", label: "Vision API", description: "Identifies food and portion hints.", technologies: ["OpenAI Vision"] },
+          { id: "storage", label: "PostgreSQL", description: "Captures, estimates, calibration history.", technologies: ["PostgreSQL"] },
+          { id: "display", label: "OLED / Web", description: "Shows calories and confidence to the user.", technologies: ["OLED"] }
+        ],
+        tableColumns: { layer: "Layer", role: "Role", stack: "Stack" },
+        technologies: ["ESP32-S3", "C++", "Node.js", "OpenAI Vision", "PostgreSQL"]
+      },
+      c4Model: { title: "C4 Model", description: "Container diagram — embedded hardware, API, vision service, and storage.", src: "/projects/caloric-estimator/c4.svg", alt: "C4 diagram for AI Caloric Estimator" },
+      security: {
+        title: "Security",
+        description: "Provider keys stay in the API; device traffic over HTTPS.",
+        items: [
+          { id: "authentication", label: "Device auth", description: "Server-issued credentials for trusted devices.", technologies: ["Device token"] },
+          { id: "encryption", label: "Encryption", description: "HTTPS for device-to-cloud payloads.", technologies: ["HTTPS"] },
+          { id: "secrets", label: "Secrets", description: "OpenAI keys in API env — never in firmware.", technologies: ["Server env"] },
+          { id: "authorization", label: "Ownership", description: "Estimate history scoped to user or device.", technologies: ["Ownership checks"] }
+        ]
+      },
+      coreWorkflows: {
+        title: "Core Workflows",
+        description: "From physical measurement to calorie estimate.",
+        workflows: [{ id: "estimate", label: "Calorie Estimate", description: "", steps: [
+          { id: "place", label: "Weigh", description: "Load cell reads stable weight in grams." },
+          { id: "capture", label: "Capture", description: "Camera captures meal image; ESP32 sends weight + image to API." },
+          { id: "analyze", label: "Analyze", description: "Vision model identifies food; API fuses with weight for calorie estimate." },
+          { id: "result", label: "Display", description: "Estimate shown on OLED; history stored in PostgreSQL." }
+        ] }]
+      },
+      dataModel: {
+        title: "Data Model",
+        description: "Devices, captures, food estimates, and calibration.",
+        alt: "Database diagram for AI Caloric Estimator"
+      },
+      deployment: {
+        title: "Deployment",
+        description: "Firmware flashed to ESP32 via PlatformIO. API deployed to cloud; model calls stay server-side.",
+        hosting: "ESP32 firmware · Cloud API · PostgreSQL",
+        environments: [
+          {
+            label: "Device",
+            services: [
+              { name: "Firmware", tech: "ESP32-S3 · PlatformIO" },
+              { name: "Sensors", tech: "HX711 · OV2640" },
+              { name: "Display", tech: "OLED" }
+            ]
+          },
+          {
+            label: "Cloud",
+            services: [
+              { name: "API", tech: "Node.js · Container" },
+              { name: "Vision", tech: "OpenAI API" },
+              { name: "Database", tech: "PostgreSQL" }
             ]
           }
-        },
-        {
-          id: "api",
-          label: "Node.js API",
-          panel: {
-            title: "Express API",
-            why: "Proxies vision requests, handles auth, and stores meal history.",
-            bullets: [
-              "OpenAI proxy",
-              "Rate limiting",
-              "TypeScript"
-            ]
-          }
-        },
-        {
-          id: "vision",
-          label: "Vision API",
-          panel: {
-            title: "OpenAI Vision",
-            why: "Food identification without training a custom model.",
-            bullets: [
-              "GPT-4V",
-              "Structured output",
-              "Portion hints"
-            ]
-          }
-        },
-        {
-          id: "fusion",
-          label: "Fusion Engine",
-          panel: {
-            title: "Calorie Fusion",
-            why: "Combines weight density tables with visual portion estimates.",
-            bullets: [
-              "Density lookup",
-              "Confidence scoring",
-              "Error bounds"
-            ]
-          }
-        }
-      ]
+        ]
+      }
     },
     engineeringDecisions: {
       eyebrow: "Decisions",
@@ -243,6 +249,9 @@ export const caloricEstimator: CaseStudy = {
     },
     results: {
       eyebrow: "Impact",
+      headline: "90% error reduction with ~10% final accuracy.",
+      subheadline:
+        "Fusing load-cell weight with vision-grounded estimates in under 3 seconds.",
       impactStory: [
         {
           label: "Friction",
@@ -346,7 +355,7 @@ export const caloricEstimator: CaseStudy = {
     },
     relatedProjects: [
       "legal-copilot",
-      "chatterbox"
+      "clinic-hc"
     ],
     relatedSection: {
       eyebrow: "Keep exploring",

@@ -1,11 +1,16 @@
 import type { CaseStudy } from "./types";
+import { clinicHc } from "./clinic-hc/content";
+import { sgrMga } from "./sgr-mga/content";
 import { legalCopilot } from "./legal-copilot/content";
+import { localRag } from "./local-rag/content";
 import { caloricEstimator } from "./caloric-estimator/content";
-import { chatterbox } from "./chatterbox/content";
 
 const caseStudies: Record<string, CaseStudy> = {
+  [clinicHc.meta.slug]: clinicHc,
+  [sgrMga.meta.slug]: sgrMga,
+  [legalCopilot.meta.slug]: legalCopilot,
+  [localRag.meta.slug]: localRag,
   [caloricEstimator.meta.slug]: caloricEstimator,
-  [legalCopilot.meta.slug]: legalCopilot
 };
 
 export function getCaseStudyFromRegistry(slug: string): CaseStudy | undefined {

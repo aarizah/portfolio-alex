@@ -1,0 +1,213 @@
+<svg width="1200" height="1040" viewBox="0 0 1200 1040" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1040" fill="#09090b"/>
+
+  <!-- Title -->
+  <text x="48" y="44" fill="#fafafa" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="600" letter-spacing="-0.02em">SGR/MGA formulation pipeline</text>
+  <text x="48" y="72" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">15 deterministic steps · canon read-only · artifacts in project/</text>
+
+  <defs>
+    <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#52525b"/>
+    </marker>
+    <marker id="arrBlue" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#3b82f6"/>
+    </marker>
+  </defs>
+
+  <!-- ── System layers ── -->
+  <text x="48" y="108" fill="#52525b" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="0.1em">ORCHESTRATION</text>
+
+  <rect x="48" y="120" width="1104" height="132" rx="8" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+
+  <!-- Formulador -->
+  <rect x="72" y="152" width="128" height="68" rx="6" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+  <text x="88" y="176" fill="#a1a1aa" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.06em">FORMULADOR</text>
+  <text x="88" y="196" fill="#e4e4e7" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Case input</text>
+  <text x="88" y="212" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">Perfil / Prefact.</text>
+
+  <!-- Runner -->
+  <rect x="248" y="144" width="200" height="84" rx="6" fill="#09090b" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="268" y="168" fill="#3b82f6" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.06em">ORCHESTRATOR</text>
+  <text x="268" y="188" fill="#fafafa" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500">sgr-mga-runner</text>
+  <text x="268" y="208" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">invoke task · verify artifacts</text>
+  <text x="268" y="222" fill="#52525b" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10">does not read canon or write artifacts</text>
+
+  <!-- Canon -->
+  <rect x="496" y="152" width="160" height="68" rx="6" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+  <text x="516" y="176" fill="#a1a1aa" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.06em">CANON</text>
+  <text x="516" y="196" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">knowledge/</text>
+  <text x="516" y="212" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">read-only · SGR · MGA</text>
+
+  <!-- Artifacts -->
+  <rect x="696" y="152" width="160" height="68" rx="6" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+  <text x="716" y="176" fill="#a1a1aa" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.06em">ARTIFACTS</text>
+  <text x="716" y="196" fill="#e4e4e7" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">project/</text>
+  <text x="716" y="212" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">write zone · 00 → 09</text>
+
+  <!-- Subagents -->
+  <rect x="896" y="152" width="232" height="68" rx="6" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+  <text x="916" y="176" fill="#a1a1aa" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.06em">SUBAGENTS</text>
+  <text x="916" y="196" fill="#e4e4e7" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">25 configured agents</text>
+  <text x="916" y="212" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">15 steps · 4 reviewers · aux</text>
+
+  <!-- Layer arrows -->
+  <path d="M200 186 H244" stroke="#52525b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <path d="M448 186 H492" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrBlue)"/>
+  <text x="456" y="178" fill="#3b82f6" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10">task</text>
+  <path d="M656 186 H692" stroke="#52525b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="662" y="178" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10">write</text>
+  <path d="M656 152 L656 140 L920 140 L920 150" stroke="#52525b" stroke-width="1" stroke-dasharray="3 3" fill="none" marker-end="url(#arr)"/>
+  <text x="760" y="134" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10">read canon</text>
+
+  <!-- ── Pipeline ── -->
+  <text x="48" y="292" fill="#52525b" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="0.1em">PIPELINE (STEPS 0–14)</text>
+
+  <rect x="48" y="304" width="680" height="580" rx="8" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+
+  <!-- Phase 1 -->
+  <text x="64" y="332" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">PHASE 1 — INPUT &amp; IDENTIFICATION</text>
+  <line x1="64" y1="340" x2="712" y2="340" stroke="#27272a" stroke-width="1"/>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <rect x="64" y="356" width="72" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="76" y="376" fill="#3b82f6" font-size="10" font-weight="600">0</text>
+    <text x="72" y="394" fill="#e4e4e7" font-size="11">Preflight</text>
+
+    <rect x="156" y="356" width="72" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="168" y="376" fill="#3b82f6" font-size="10" font-weight="600">1</text>
+    <text x="172" y="394" fill="#e4e4e7" font-size="11">Intake</text>
+
+    <rect x="248" y="356" width="72" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="260" y="376" fill="#3b82f6" font-size="10" font-weight="600">2</text>
+    <text x="252" y="394" fill="#e4e4e7" font-size="11">Problems</text>
+
+    <rect x="340" y="356" width="72" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="352" y="376" fill="#3b82f6" font-size="10" font-weight="600">3</text>
+    <text x="340" y="394" fill="#e4e4e7" font-size="11">Objectives</text>
+  </g>
+  <g stroke="#3f3f46" stroke-width="1.5" marker-end="url(#arr)">
+    <path d="M136 380 H152"/><path d="M228 380 H244"/><path d="M320 380 H336"/>
+  </g>
+
+  <!-- Phase 2 -->
+  <text x="64" y="444" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">PHASE 2 — MGA PREPARATION</text>
+  <line x1="64" y1="452" x2="712" y2="452" stroke="#27272a" stroke-width="1"/>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <rect x="64" y="468" width="64" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="76" y="488" fill="#3b82f6" font-size="10" font-weight="600">4</text>
+    <text x="74" y="506" fill="#e4e4e7" font-size="11">Needs</text>
+
+    <rect x="144" y="468" width="64" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="156" y="488" fill="#3b82f6" font-size="10" font-weight="600">5</text>
+    <text x="148" y="506" fill="#e4e4e7" font-size="11">Technical</text>
+
+    <rect x="224" y="468" width="64" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="236" y="488" fill="#3b82f6" font-size="10" font-weight="600">6</text>
+    <text x="226" y="506" fill="#e4e4e7" font-size="11">Value ch.</text>
+
+    <rect x="304" y="468" width="64" height="48" rx="4" fill="#09090b" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="316" y="488" fill="#3b82f6" font-size="10" font-weight="600">7</text>
+    <text x="306" y="506" fill="#e4e4e7" font-size="11">MGA str.</text>
+
+    <rect x="384" y="468" width="64" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="396" y="488" fill="#3b82f6" font-size="10" font-weight="600">8</text>
+    <text x="396" y="506" fill="#e4e4e7" font-size="11">Risks</text>
+
+    <rect x="464" y="468" width="64" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="476" y="488" fill="#3b82f6" font-size="10" font-weight="600">9</text>
+    <text x="464" y="506" fill="#e4e4e7" font-size="11">Program</text>
+  </g>
+  <g stroke="#3f3f46" stroke-width="1.5" marker-end="url(#arr)">
+    <path d="M128 492 H140"/><path d="M208 492 H220"/><path d="M288 492 H300"/><path d="M368 492 H380"/><path d="M448 492 H460"/>
+  </g>
+
+  <!-- Step 7 reviewers — dedicated row, no overlap -->
+  <rect x="64" y="536" width="584" height="52" rx="4" fill="#09090b" stroke="#27272a" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="80" y="558" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="600">STEP 7 PARALLEL REVIEWERS</text>
+  <text x="80" y="576" fill="#a1a1aa" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">Coherence · Population · Alternatives · Supports</text>
+  <path d="M336 516 V532" stroke="#3b82f6" stroke-width="1" marker-end="url(#arrBlue)"/>
+
+  <!-- Phase 3 -->
+  <text x="64" y="620" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">PHASE 3 — EVALUATION &amp; SGR</text>
+  <line x1="64" y1="628" x2="712" y2="628" stroke="#27272a" stroke-width="1"/>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <rect x="64" y="644" width="72" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="76" y="664" fill="#3b82f6" font-size="10" font-weight="600">10</text>
+    <text x="68" y="682" fill="#e4e4e7" font-size="11">Ex-ante</text>
+
+    <rect x="156" y="644" width="72" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="168" y="664" fill="#3b82f6" font-size="10" font-weight="600">11</text>
+    <text x="158" y="682" fill="#e4e4e7" font-size="11">SGR matrix</text>
+
+    <rect x="248" y="644" width="72" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="260" y="664" fill="#3b82f6" font-size="10" font-weight="600">12</text>
+    <text x="254" y="682" fill="#e4e4e7" font-size="11">MGA Web</text>
+  </g>
+  <g stroke="#3f3f46" stroke-width="1.5" marker-end="url(#arr)">
+    <path d="M136 668 H152"/><path d="M228 668 H244"/>
+  </g>
+
+  <!-- Phase 4 -->
+  <text x="64" y="724" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" font-weight="600" letter-spacing="0.08em">PHASE 4 — REVIEW &amp; PLAN</text>
+  <line x1="64" y1="732" x2="712" y2="732" stroke="#27272a" stroke-width="1"/>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <rect x="64" y="748" width="72" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="76" y="768" fill="#3b82f6" font-size="10" font-weight="600">13</text>
+    <text x="62" y="786" fill="#e4e4e7" font-size="11">Gap review</text>
+
+    <rect x="156" y="748" width="72" height="48" rx="4" fill="#09090b" stroke="#3f3f46" stroke-width="1"/>
+    <text x="168" y="768" fill="#3b82f6" font-size="10" font-weight="600">14</text>
+    <text x="152" y="786" fill="#e4e4e7" font-size="11">Maturation</text>
+  </g>
+  <path d="M136 772 H152" stroke="#3f3f46" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Cross-phase connectors -->
+  <path d="M100 404 V466" stroke="#27272a" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+  <path d="M100 588 V642" stroke="#27272a" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+  <path d="M100 692 V746" stroke="#27272a" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arr)"/>
+
+  <!-- ── Artifact outputs (right column) ── -->
+  <text x="752" y="292" fill="#52525b" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="0.1em">KEY OUTPUTS</text>
+
+  <rect x="752" y="304" width="400" height="580" rx="8" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#a1a1aa">
+    <text x="768" y="336" fill="#71717a" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">PHASE 1</text>
+    <text x="768" y="358">00_input/elegibilidad_sgr_preliminar.md</text>
+    <text x="768" y="378">01_intake/contexto_proyecto.md</text>
+    <text x="768" y="398">02_identificacion/arbol_problemas.md</text>
+    <text x="768" y="418">02_identificacion/arbol_objetivos_y_alternativas.md</text>
+
+    <text x="768" y="456" fill="#71717a" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">PHASE 2</text>
+    <text x="768" y="478">03_preparacion/estudio_necesidades.md</text>
+    <text x="768" y="498">03_preparacion/analisis_tecnico.md</text>
+    <text x="768" y="518">03_preparacion/cadena_valor.md</text>
+    <text x="768" y="538">03_preparacion/estructura_mga.md</text>
+    <text x="768" y="558">03_preparacion/riesgos_beneficios.md</text>
+    <text x="768" y="578">04_programacion/*.md</text>
+
+    <text x="768" y="616" fill="#71717a" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">PHASE 3</text>
+    <text x="768" y="638">05_evaluacion/evaluacion_ex_ante_alcance.md</text>
+    <text x="768" y="658">06_mga_web/ruta_operativa_no_automatizada_mga_web.md</text>
+    <text x="768" y="678">07_sgr/matriz_requisitos.md</text>
+
+    <text x="768" y="716" fill="#71717a" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">PHASE 4</text>
+    <text x="768" y="738">08_revision/reporte_hallazgos.md</text>
+    <text x="768" y="758">09_plan/plan_maduracion.md</text>
+    <text x="768" y="778" fill="#52525b" font-size="10">_logs/decisiones_y_trazabilidad.md</text>
+  </g>
+
+  <!-- ── Footer: governance ── -->
+  <rect x="48" y="908" width="1104" height="96" rx="8" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+
+  <text x="64" y="936" fill="#fafafa" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600">Pipeline halts when</text>
+  <text x="64" y="958" fill="#a1a1aa" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">Missing critical input · critical finding without human decision · phase mixing · actor absent · invented data detected</text>
+
+  <text x="64" y="984" fill="#52525b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10">Field states: provisto · inferido · supuesto · vacio · no_aplica · no_verificado_en_canon</text>
+
+  <text x="720" y="936" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600">Scale path</text>
+  <text x="720" y="958" fill="#52525b" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11">Agent runtime → LangGraph DAG when flow is repeatable and volume demands it</text>
+</svg>

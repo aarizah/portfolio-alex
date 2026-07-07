@@ -56,11 +56,7 @@ export function CaseStudyPage({ caseStudy }: CaseStudyPageProps) {
         walkthrough={sections.featureWalkthrough}
       />
       <ResultsSection data={sections.results} />
-      <ArchitectureSection
-        data={sections.architecture}
-        security={sections.security}
-        aiPipeline={sections.aiPipeline}
-      />
+      <ArchitectureSection data={sections.architecture} />
       <EngineeringDecisionsSection data={sections.engineeringDecisions} />
       <LessonsLearnedSection data={sections.lessonsLearned} />
       <CTASection

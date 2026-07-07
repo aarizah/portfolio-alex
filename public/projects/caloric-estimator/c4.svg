@@ -1,0 +1,18 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="32" fill="#050505"/>
+  <text x="60" y="78" fill="#F8FAFC" font-family="Inter, Arial" font-size="34" font-weight="700">AI Caloric Estimator - C4 Container View</text>
+  <text x="60" y="116" fill="#94A3B8" font-family="Inter, Arial" font-size="18">User + ESP32-S3 device + Node.js API + AI Vision + storage</text>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3B82F6"/><stop offset="0.55" stop-color="#8B5CF6"/><stop offset="1" stop-color="#EC4899"/></linearGradient></defs>
+  <g font-family="Inter, Arial" font-size="20" font-weight="700" fill="#F8FAFC">
+    <rect x="72" y="190" width="180" height="86" rx="20" stroke="url(#g)" fill="#111827"/><text x="115" y="242">User</text>
+    <rect x="330" y="190" width="210" height="86" rx="20" stroke="url(#g)" fill="#111827"/><text x="374" y="242">ESP32-S3</text>
+    <rect x="620" y="190" width="220" height="86" rx="20" stroke="url(#g)" fill="#111827"/><text x="674" y="242">Node.js API</text>
+    <rect x="920" y="190" width="210" height="86" rx="20" stroke="url(#g)" fill="#111827"/><text x="970" y="242">AI Vision</text>
+    <rect x="330" y="430" width="210" height="86" rx="20" stroke="url(#g)" fill="#111827"/><text x="383" y="482">Storage</text>
+    <rect x="620" y="430" width="220" height="86" rx="20" stroke="url(#g)" fill="#111827"/><text x="674" y="482">Dashboard</text>
+  </g>
+  <g stroke="#A78BFA" stroke-width="3" marker-end="url(#arrow)">
+    <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#A78BFA"/></marker></defs>
+    <path d="M252 233 H326"/><path d="M540 233 H616"/><path d="M840 233 H916"/><path d="M730 276 V426"/><path d="M620 473 H544"/>
+  </g>
+</svg>
