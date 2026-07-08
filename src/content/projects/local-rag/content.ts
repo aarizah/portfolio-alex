@@ -39,10 +39,10 @@ export const localRag: CaseStudy = {
       src: "/projects/local-rag/demo.mp4",
       poster: HERO_IMAGE,
       chapters: [
-        { time: 0, label: "Upload & index" },
-        { time: 11, label: "Query & citations" },
-        { time: 26, label: "Multi-source retrieval" },
-        { time: 48, label: "Honest no-answer" },
+        { time: 0, label: "Upload PDF" },
+        { time: 20, label: "Index & library" },
+        { time: 45, label: "Ask question" },
+        { time: 70, label: "Cited answer" },
       ],
     },
     problem: {

@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# cv
+cv/Alex_CV_ES.pdf
+cv/Alex_CV_ES.tex
+cv/Alex_CV_english.pdf
+cv/Alex_CV_english.tex
