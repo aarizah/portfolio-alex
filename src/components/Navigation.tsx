@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { Button } from './ui/button';
+// import { Button } from './ui/button';
 
 const navItems = [
   { label: 'Projects', href: '#projects' },
@@ -59,7 +59,7 @@ export function Navigation() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300" />
               </motion.a>
             ))}
-            <Button
+            {/* <Button
               size="sm"
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               asChild
@@ -67,7 +67,7 @@ export function Navigation() {
               <a href="/Alex_CV.pdf" download="Alex_Ariza_CV.pdf">
                 CV
               </a>
-            </Button>
+            </Button> */}
           </div>
 
           {/* Mobile Menu Button */}
@@ -102,7 +102,7 @@ export function Navigation() {
                   {item.label}
                 </a>
               ))}
-              <Button
+              {/* <Button
                 size="sm"
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                 asChild
@@ -110,7 +110,7 @@ export function Navigation() {
                 <a href="/Alex_CV.pdf" download="Alex_Ariza_CV.pdf">
                   CV
                 </a>
-              </Button>
+              </Button> */}
             </div>
           </motion.div>
         )}

@@ -90,15 +90,15 @@ export function Hero() {
             >
               See AI projects
             </Button>
-            <Button 
-              variant="outline" 
+            {/* <Button
+              variant="outline"
               className="border-blue-500/30"
               asChild
             >
               <a href="/Alex_CV.pdf" download="Alex_Ariza_FullStack_AI.pdf">
                 Download CV
               </a>
-            </Button>
+            </Button> */}
             <Button 
               variant="outline" 
               className="border-blue-500/30"
