@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Github, LineChart, Play, Sparkles } from "lucide-react";
-import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { ProjectPreview } from "./types";
 import { appleRevealFast, viewportOnce } from "@/lib/motion";
 import { motion } from "framer-motion";
@@ -137,10 +137,12 @@ export function ProjectCard({
             className="relative min-h-[320px] overflow-hidden rounded-[1.6rem] border border-purple-300/10 bg-black/30"
             aria-label={`Open ${project.title} case study`}
           >
-            <ImageWithFallback
+            <Image
               src={project.image}
               alt={project.title}
-              className="h-full min-h-[320px] w-full object-cover opacity-90 saturate-[0.92] transition-transform duration-[1.1s] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02]"
+              fill
+              sizes="(min-width: 1024px) 46vw, 92vw"
+              className="object-cover opacity-90 saturate-[0.92] transition-transform duration-[1.1s] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-purple-950/10 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-purple-300/10 bg-black/45 p-4 backdrop-blur-md">
@@ -190,10 +192,12 @@ function renderCompactBody(project: ProjectPreview) {
           className="relative h-52 overflow-hidden rounded-[1.15rem] border border-purple-300/10 bg-black/30"
           aria-label={`Open ${project.title} case study`}
         >
-          <ImageWithFallback
+          <Image
             src={project.image}
             alt={project.title}
-            className="h-full w-full object-cover opacity-80 saturate-[0.88] transition-transform duration-[1s] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/card:scale-[1.02]"
+            fill
+            sizes="(min-width: 1024px) 46vw, 92vw"
+            className="object-cover opacity-80 saturate-[0.88] transition-transform duration-[1s] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/card:scale-[1.02]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-purple-950/20 to-transparent" />
           <div className="absolute left-4 top-4 rounded-full border border-purple-300/15 bg-black/45 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-purple-100 backdrop-blur-md">

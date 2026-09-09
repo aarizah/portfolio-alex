@@ -1,51 +1,41 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "../components/fix/theme-provider"
-import { VantaLoader } from "../components/VantaLoader";
-
-
-
+import { ThemeProvider } from "../components/fix/theme-provider";
+import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Alex Ariza | Full-Stack + AI",
-  description: "Full-Stack Developer focused on LLM/RAG integrations: Next.js + Node/FastAPI + AWS with latency, cost, and accuracy metrics from day one.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Alex Ariza — Full-Stack + AI",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
-/*
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
-}
-*/
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        
+
         <body className="overflow-x-hidden">
-          <VantaLoader />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -57,5 +47,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </body>
       </html>
     </>
-  )
+  );
 }

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from './ui/button';
+import { VantaLoader } from './VantaLoader';
 import { useEffect } from 'react';
 
 // Type definitions for Vanta
@@ -20,45 +21,70 @@ declare const window: WindowWithVanta;
 
 export function Hero() {
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     let vantaEffect: VantaEffect | null = null;
+    let heroVisible = true;
 
     const initVanta = () => {
-      if (window.VANTA) {
-        vantaEffect = window.VANTA.BIRDS({
-          el: "#vanta-birds",
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 1.00,
-          backgroundColor: 0x000000,
-          separation: 71.00,
-          birdSize: 1.40,
-          quantity: 3.00
-        });
+      if (vantaEffect || !window.VANTA || !heroVisible) return;
+      vantaEffect = window.VANTA.BIRDS({
+        el: "#vanta-birds",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        backgroundColor: 0x000000,
+        separation: 71.00,
+        birdSize: 1.40,
+        quantity: 3.00
+      });
+    };
+
+    const destroyVanta = () => {
+      if (vantaEffect) {
+        vantaEffect.destroy();
+        vantaEffect = null;
       }
     };
+
+    const handleVantaLoaded = () => initVanta();
 
     // If VANTA already loaded, initialize immediately
     if (window.VANTA) {
       initVanta();
     } else {
       // Otherwise, wait for the custom event
-      window.addEventListener('vanta-loaded', initVanta);
+      window.addEventListener('vanta-loaded', handleVantaLoaded);
     }
+
+    // Pause the animation while the hero is off-screen
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        heroVisible = entry.isIntersecting;
+        if (heroVisible) initVanta();
+        else destroyVanta();
+      },
+      { threshold: 0 }
+    );
+    const heroEl = document.getElementById('vanta-birds');
+    if (heroEl) observer.observe(heroEl);
 
     // Cleanup
     return () => {
-      window.removeEventListener('vanta-loaded', initVanta);
-      if (vantaEffect) vantaEffect.destroy();
+      window.removeEventListener('vanta-loaded', handleVantaLoaded);
+      observer.disconnect();
+      destroyVanta();
     };
   }, []);
 
   return (
 
     <section id="vanta-birds" className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
+      <VantaLoader />
       <div className="relative z-10 max-w-5xl mx-auto px-12 md:px-16 lg:px-20 text-center scale-110">
 
         <motion.div

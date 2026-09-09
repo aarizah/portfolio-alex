@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CaseStudyPage } from "@/components/Projects/CaseStudy/CaseStudyPage";
 import { getCaseStudy, getAllSlugs } from "@/lib/case-studies";
-
-const SITE_URL = "https://alexariza.dev";
+import { SITE_URL } from "@/lib/site";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

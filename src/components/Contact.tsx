@@ -94,8 +94,7 @@ export function Contact() {
 
                 <div className="flex flex-col sm:flex-row gap-3 justify-center mt-4">
                   <Button asChild className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arizah2020@gmail.com
-">Email: arizah2020@gmail.com</a>
+                    <a href="mailto:arizah2020@gmail.com">Email: arizah2020@gmail.com</a>
                   </Button>
 
                   <Button asChild variant="outline" className="w-full sm:w-auto">

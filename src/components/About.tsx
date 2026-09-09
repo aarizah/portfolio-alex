@@ -1,8 +1,8 @@
 "use client";
 
 import { Brain, Zap, Shield } from "lucide-react";
+import Image from "next/image";
 import { Card } from "./ui/card";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ScrollReveal, ScrollStagger, StaggerChild } from "@/components/motion/ScrollReveal";
 import { fadeIn, fadeInRight, fadeInUpTight, scaleIn } from "@/lib/motion";
 
@@ -58,11 +58,13 @@ export function About() {
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-20 blur-2xl" />
             <Card className="relative border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:shadow-[0_24px_80px_rgba(99,102,241,0.12)]">
               <ScrollReveal variants={fadeIn}>
-                <div className="mb-6 flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-blue-500/20 to-purple-500/20">
-                  <ImageWithFallback
+                <div className="relative mb-6 flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-blue-500/20 to-purple-500/20">
+                  <Image
                     src="/profile2.jpg"
                     alt="AI Engineer Profile"
-                    className="h-full w-full rounded-xl object-cover"
+                    fill
+                    sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 90vw"
+                    className="rounded-xl object-cover"
                   />
                 </div>
               </ScrollReveal>
