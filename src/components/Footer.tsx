@@ -13,6 +13,8 @@ export function Footer() {
               <a href="#about" className="text-gray-500 hover:text-gray-300 transition-colors">About</a>
               <a href="#projects" className="text-gray-500 hover:text-gray-300 transition-colors">Projects</a>
               <a href="#skills" className="text-gray-500 hover:text-gray-300 transition-colors">Skills</a>
+              <a href="/legal/privacy" className="text-gray-500 hover:text-gray-300 transition-colors">Privacy</a>
+              <a href="/legal/terms" className="text-gray-500 hover:text-gray-300 transition-colors">Terms</a>
             </div>
           </div>
 

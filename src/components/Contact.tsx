@@ -105,6 +105,10 @@ export function Contact() {
                     <a href="https://github.com/aarizah" target="_blank" rel="noopener noreferrer">GitHub</a>
                   </Button>
                 </div>
+
+                <p className="text-xs text-gray-500 mt-4">
+                  Scope defined before kickoff · Direct communication with Alex · Milestone-based delivery
+                </p>
               </div>
             </Card>
           </motion.div>

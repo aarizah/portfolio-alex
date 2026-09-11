@@ -29,9 +29,9 @@ const steps: Step[] = [
   {
     number: "03",
     icon: <Code className="h-8 w-8" />,
-    title: "Development & Training",
-    description: "Building, training, and fine-tuning AI models alongside full-stack development.",
-    deliverables: ["Model development", "API creation", "Frontend interface", "Testing & validation"],
+    title: "Development & Integration",
+    description: "Building the application, integrating the right AI components, and validating each piece against the metrics we defined.",
+    deliverables: ["LLM/API integration", "API creation", "Frontend interface", "Testing & validation"],
   },
   {
     number: "04",
@@ -45,7 +45,7 @@ const steps: Step[] = [
     icon: <BarChart className="h-8 w-8" />,
     title: "Optimization & Support",
     description: "Continuous monitoring, improvement, and support for maximum ROI.",
-    deliverables: ["Performance monitoring", "Model retraining", "Feature updates", "Ongoing support"],
+    deliverables: ["Performance monitoring", "Cost & quality tuning", "Feature updates", "Ongoing support"],
   },
 ];
 
@@ -66,8 +66,8 @@ export function Process() {
             How I Work
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            A proven process for delivering AI solutions that actually work in production.
-            From initial consultation to ongoing optimization.
+            A clear process for taking an idea to a production-ready delivery.
+            From the first conversation to ongoing optimization.
           </p>
         </motion.div>
 
@@ -138,21 +138,21 @@ export function Process() {
             <div className="text-3xl bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">
               4-12 weeks
             </div>
-            <div className="text-gray-400 text-sm">Typical Project Timeline</div>
+            <div className="text-gray-400 text-sm">Typical timeline (varies by scope)</div>
           </div>
-          
+
           <div className="bg-gradient-to-br from-purple-500/10 to-purple-500/5 border border-purple-500/20 rounded-xl p-6 text-center backdrop-blur-sm">
             <div className="text-3xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2">
-              100%
+              Scope first
             </div>
-            <div className="text-gray-400 text-sm">Production-Ready Code</div>
+            <div className="text-gray-400 text-sm">Clear deliverables before kickoff</div>
           </div>
-          
+
           <div className="bg-gradient-to-br from-green-500/10 to-green-500/5 border border-green-500/20 rounded-xl p-6 text-center backdrop-blur-sm">
             <div className="text-3xl bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-2">
-              Ongoing
+              Direct
             </div>
-            <div className="text-gray-400 text-sm">Support & Optimization</div>
+            <div className="text-gray-400 text-sm">You talk with the person who builds it</div>
           </div>
         </motion.div>
       </div>

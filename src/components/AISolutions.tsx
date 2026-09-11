@@ -133,7 +133,7 @@ export function AISolutions() {
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg text-white transition-all duration-300"
             >
-              Discuss Your AI Project
+              Start your project
             </button>
           </div>
         </motion.div>

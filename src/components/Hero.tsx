@@ -116,7 +116,7 @@ export function Hero() {
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              See AI projects
+              See case studies
             </Button>
             {/* <Button
               variant="outline"
@@ -127,13 +127,13 @@ export function Hero() {
                 Download CV
               </a>
             </Button> */}
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="border-blue-500/30"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Mail className="mr-2 h-4 w-4" />
-              Schedule a call
+              Start your project
             </Button>
           </div>
 
@@ -165,7 +165,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.45, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute bottom left-1/2 -translate-x-1/2"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
