@@ -19,10 +19,10 @@ export function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Let&apos;s Ship Your Next AI Feature
+            Let&apos;s Build What Your Project Needs
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Ready to integrate LLMs or ship a RAG copilot? I turn ideas into production-ready apps with clear metrics on latency, cost, and accuracy.
+            Websites, APIs, databases, or AI copilots — I scope it with you and ship it production-ready, with clear metrics on latency, cost, and accuracy.
           </p>
         </motion.div>
 

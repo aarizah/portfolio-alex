@@ -73,10 +73,10 @@ export function AISolutions() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            AI Solutions I Build
+            What I Build
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Production-ready LLM/RAG features shipped end-to-end. Frontend + backend + cloud, with metrics on latency, cost, and accuracy.
+            Full-stack delivery with AI as a specialty: web applications, backend and data work, and LLM/RAG features — shipped end-to-end with metrics on latency, cost, and accuracy.
           </p>
         </motion.div>
 
@@ -127,7 +127,7 @@ export function AISolutions() {
         >
           <div className="inline-block p-8 bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl backdrop-blur-sm">
             <p className="text-gray-300 mb-4">
-              Don&apos;t see what you need? I build custom AI solutions for unique business challenges.
+              Don&apos;t see your problem here? I build custom solutions for unique business challenges.
             </p>
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}

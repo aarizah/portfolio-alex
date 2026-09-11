@@ -91,7 +91,7 @@ export function Process() {
                   <div className="md:col-span-2 flex flex-col items-center md:items-start">
                     <div className="relative">
                       <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-2 border-blue-500/30 flex items-center justify-center backdrop-blur-sm">
-                        <div className="text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text">
+                        <div className="text-blue-300">
                           {step.icon}
                         </div>
                       </div>

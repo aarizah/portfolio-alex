@@ -100,15 +100,15 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full backdrop-blur-sm"
           >
-            <span className="text-blue-400">🤖 AI Product Engineer · Full-Stack · Remote-first</span>
+            <span className="text-blue-400">Full-Stack + AI Engineer · Remote-first</span>
           </motion.div>
 
           <h1 className="mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-4xl leading-[1.08] md:text-5xl lg:text-6xl">
-            I build end-to-end apps with LLMs that move the business needle
+            I ship production-ready web apps, APIs, and AI features
           </h1>
-            
+
           <p className="mb-8 text-gray max-w-2xl mx-auto text-lg ">
-            I’m Alex Ariza, a Full-Stack Developer focused on integrating LLMs/RAG into real products: Next.js + Node/FastAPI + managed cloud delivery, with latency, cost, and accuracy metrics from day one.
+            I’m Alex Ariza. I build websites and full-stack applications, solve backend and database problems, and integrate LLMs/RAG with measurable latency, cost, and accuracy.
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center mb-12">
