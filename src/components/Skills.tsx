@@ -23,7 +23,7 @@ const skillCategories: Skill[] = [
   {
     category: 'Backend & APIs',
     icon: <Database className="h-8 w-8" />,
-    skills: ['Node.js / NestJS', 'FastAPI', 'PostgreSQL / Prisma', 'MongoDB', 'Auth + RBAC', 'Queues & caching basics'],
+    skills: ['Node.js / NestJS', 'FastAPI', 'PostgreSQL / Prisma', 'MongoDB', 'Auth + RBAC', 'Queues & caching'],
     color: 'from-purple-500 to-pink-500',
     featured: true,
   },
@@ -36,7 +36,7 @@ const skillCategories: Skill[] = [
   {
     category: 'Cloud & DevOps',
     icon: <Cloud className="h-8 w-8" />,
-    skills: ['Managed cloud platforms (serverless & containers)', 'Docker', 'GitHub Actions', 'CI/CD', 'API gateways & CDN basics', 'Secrets & access fundamentals'],
+    skills: ['Managed cloud platforms (serverless & containers)', 'Docker', 'GitHub Actions', 'CI/CD', 'API gateways & CDN', 'Secrets & access management'],
     color: 'from-green-500 to-emerald-500',
   },
   {

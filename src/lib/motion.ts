@@ -5,19 +5,19 @@ export const appleEase: Transition["ease"] = [0.32, 0.72, 0, 1];
 
 export const appleReveal: Transition = {
   type: "tween",
-  duration: 0.95,
+  duration: 0.7,
   ease: appleEase,
 };
 
 export const appleRevealFast: Transition = {
   type: "tween",
-  duration: 0.8,
+  duration: 0.6,
   ease: appleEase,
 };
 
 export const appleStagger = {
-  staggerChildren: 0.07,
-  delayChildren: 0.1,
+  staggerChildren: 0.05,
+  delayChildren: 0.08,
 };
 
 export const viewportOnce = {
@@ -43,7 +43,7 @@ export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { type: "tween", duration: 1.15, ease: appleEase },
+    transition: { type: "tween", duration: 0.8, ease: appleEase },
   },
 };
 
@@ -80,7 +80,7 @@ export const scaleIn: Variants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { ...appleReveal, duration: 1.05 },
+    transition: { ...appleReveal, duration: 0.8 },
   },
 };
 

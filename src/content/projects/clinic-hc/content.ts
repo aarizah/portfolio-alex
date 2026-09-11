@@ -12,7 +12,7 @@ export const clinicHc: CaseStudy = {
     status: "Production",
     ogImage: HERO_IMAGE,
     recruiterShortcut: {
-      label: "Recruiter shortcut",
+      label: "Executive summary",
       summary:
         "Two-minute read: regulatory stakes, append-only clinical records, FHIR RDA pipeline, production AWS deployment, and compliance-by-design engineering.",
     },
@@ -519,13 +519,13 @@ export const clinicHc: CaseStudy = {
             "Production on EC2, RDS PostgreSQL, S3, and ECR — my first end-to-end cloud deployment with GitHub Actions CI/CD.",
         },
         {
-          label: "Certified signatures",
+          label: "Signature coverage (target)",
           value: "100%",
           description:
             "Target: every closed clinical record carries a valid certified digital signature from the treating professional.",
         },
         {
-          label: "RDA / VIDA acceptance",
+          label: "RDA / VIDA pipeline (target)",
           value: "≥ 99%",
           description:
             "Target: signed visits with RDA submitted and VIDA received, allowing for transient MinSalud failures with retries.",

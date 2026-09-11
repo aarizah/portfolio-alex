@@ -73,9 +73,9 @@ export function About() {
                   <StaggerChild variants={scaleIn}>
                     <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-center">
                       <div className="mb-1 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-2xl text-transparent">
-                        3
+                        5
                       </div>
-                      <div className="text-xs text-gray-400">Shipped AI builds</div>
+                      <div className="text-xs text-gray-400">Case studies published</div>
                     </div>
                   </StaggerChild>
                   <StaggerChild variants={scaleIn}>

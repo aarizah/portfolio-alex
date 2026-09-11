@@ -22,6 +22,8 @@ declare const window: WindowWithVanta;
 export function Hero() {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Skip the birds animation on mobile: battery/CPU cost outweighs the effect
+    if (window.innerWidth < 768) return;
 
     let vantaEffect: VantaEffect | null = null;
     let heroVisible = true;
@@ -101,7 +103,7 @@ export function Hero() {
             <span className="text-blue-400">🤖 AI Product Engineer · Full-Stack · Remote-first</span>
           </motion.div>
 
-          <h1 className="mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h1 className="mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-4xl leading-[1.08] md:text-5xl lg:text-6xl">
             I build end-to-end apps with LLMs that move the business needle
           </h1>
             

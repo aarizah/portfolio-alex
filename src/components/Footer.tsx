@@ -7,7 +7,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <p className="text-gray-400">
-              © 2025 Alex Ariza. Full-Stack + AI · RAG/LLMs · Next.js/Node/FastAPI · Managed cloud delivery.
+              © {new Date().getFullYear()} Alex Ariza. Full-Stack + AI · RAG/LLMs · Next.js/Node/FastAPI · Managed cloud delivery.
             </p>
             <div className="mt-2 flex gap-4 justify-center md:justify-start text-sm">
               <a href="#about" className="text-gray-500 hover:text-gray-300 transition-colors">About</a>

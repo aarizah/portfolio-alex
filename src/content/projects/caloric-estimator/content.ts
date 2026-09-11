@@ -8,7 +8,7 @@ export const caloricEstimator: CaseStudy = {
     status: "Prototype",
     ogImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
     recruiterShortcut: {
-      label: "Recruiter shortcut",
+      label: "Executive summary",
       summary:
         "Two-minute read: accuracy problem, sensor fusion approach, embedded + cloud split, and prototype results.",
     },
@@ -273,7 +273,7 @@ export const caloricEstimator: CaseStudy = {
           value: "90%"
         },
         {
-          label: "Accuracy",
+          label: "Mean deviation",
           value: "~10%"
         },
         {

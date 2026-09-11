@@ -127,6 +127,25 @@
     width: 100%;
     position: relative;
   }
+  /* Anchor sections clear the sticky nav */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+  /* Heading hierarchy backstop — never let a heading render as body text */
+  h1 {
+    font-size: clamp(2.25rem, 1.4rem + 3.2vw, 4rem);
+    line-height: 1.06;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem);
+    line-height: 1.15;
+    font-weight: 600;
+  }
+  h3 {
+    font-weight: 600;
+  }
 }
 
 @layer utilities {

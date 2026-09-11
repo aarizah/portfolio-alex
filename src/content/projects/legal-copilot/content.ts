@@ -10,7 +10,7 @@ export const legalCopilot: CaseStudy = {
     status: "Production",
     ogImage: HERO_IMAGE,
     recruiterShortcut: {
-      label: "Recruiter shortcut",
+      label: "Executive summary",
       summary:
         "Two-minute read: product problem, business impact, architecture, decisions, and lessons.",
     },

@@ -11,7 +11,7 @@ export const sgrMga: CaseStudy = {
     status: "Internal",
     ogImage: HERO_IMAGE,
     recruiterShortcut: {
-      label: "Recruiter shortcut",
+      label: "Executive summary",
       summary:
         "Two-minute read: why municipalities lose SGR access, artifact-first formulation (not document generation), 15-step pipeline with human gates, and an internal system already producing pilot deliverables.",
     },

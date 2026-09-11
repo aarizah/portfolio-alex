@@ -11,7 +11,7 @@ export const localRag: CaseStudy = {
     status: "Research",
     ogImage: HERO_IMAGE,
     recruiterShortcut: {
-      label: "Recruiter shortcut",
+      label: "Executive summary",
       summary:
         "Two-minute read: who needs on-machine document Q&A, the business risk of cloud RAG on sensitive PDFs, product outcomes (citations, dedup, measurable pipeline), and how it complements the cloud Knowledge Copilot.",
     },
