@@ -109,6 +109,9 @@ export function Contact() {
                 <p className="text-xs text-gray-500 mt-4">
                   Scope defined before kickoff · Direct communication with Alex · Milestone-based delivery
                 </p>
+                <p className="text-xs text-gray-500 mt-2">
+                  References and client conversations available on request.
+                </p>
               </div>
             </Card>
           </motion.div>
