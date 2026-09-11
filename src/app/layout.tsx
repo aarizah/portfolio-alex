@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "Alex Ariza — Full-Stack + AI",
+    siteName: "Alex Ariza — AI Product Partner",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     locale: "en_US",

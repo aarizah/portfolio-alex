@@ -1,13 +1,4 @@
-import { Navigation } from "../components/Navigation";
-import { Hero } from '../components/Hero';
-import { About } from '../components/About';
-import { Projects } from '../components/Projects';
-import { AISolutions } from '../components/AISolutions';
-import { Process } from '../components/Process';
-import { FAQ } from '../components/FAQ';
-import { Skills } from '../components/Skills';
-import { Contact } from '../components/Contact';
-import { Footer } from '../components/Footer';
+import { BrandHome } from "@/components/BrandHome";
 import { SITE_URL, SOCIAL_LINKS } from '@/lib/site';
 
 const jsonLd = {
@@ -16,7 +7,7 @@ const jsonLd = {
     {
       "@type": "Person",
       name: "Alex Ariza",
-      jobTitle: "Full-Stack Developer — AI Product Engineering",
+      jobTitle: "Independent AI Product Partner",
       url: SITE_URL,
       email: "mailto:arizah2020@gmail.com",
       sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
@@ -24,15 +15,15 @@ const jsonLd = {
     },
     {
       "@type": "ProfessionalService",
-      name: "Alex Ariza — Full-Stack + AI",
+      name: "Alex Ariza — AI Product Partner",
       url: SITE_URL,
       email: "arizah2020@gmail.com",
       founder: { "@type": "Person", name: "Alex Ariza" },
       areaServed: ["United States", "European Union", "Colombia"],
       serviceType: [
-        "Web applications & development",
-        "Backend & database engineering",
-        "AI agents & automation",
+        "AI product sprints",
+        "End-to-end product development",
+        "AI systems advisory",
       ],
     },
   ],
@@ -40,37 +31,12 @@ const jsonLd = {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <Navigation />
-
-      <main>
-        <section id="home">
-          <Hero />
-        </section>
-
-        <Projects />
-
-        <section id="skills">
-          <Skills />
-        </section>
-
-        <About />
-
-        <AISolutions />
-
-        <Process />
-
-        <FAQ />
-
-        <Contact />
-      </main>
-
-      <Footer />
-
+    <>
+      <BrandHome />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </div>
+    </>
   );
 }
