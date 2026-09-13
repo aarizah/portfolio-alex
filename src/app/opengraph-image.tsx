@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Alex Ariza — Full-Stack + AI";
+export const alt = "Alex Ariza — AI Product Engineering";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -27,11 +27,11 @@ export default function OpenGraphImage() {
             color: "#93c5fd",
           }}
         >
-          AI PRODUCT ENGINEER · FULL-STACK
+          AI PRODUCT ENGINEERING
         </div>
         <div style={{ display: "flex", fontSize: 92, margin: "28px 0 18px" }}>Alex Ariza</div>
         <div style={{ display: "flex", fontSize: 34, color: "#c4b5fd" }}>
-          LLM · RAG · Next.js · FastAPI · AWS
+          FROM OPPORTUNITY TO TRUSTED AI PRODUCT
         </div>
         <div style={{ display: "flex", fontSize: 26, color: "#64748b", marginTop: 44 }}>
           www.alexariza.dev

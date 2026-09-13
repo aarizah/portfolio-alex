@@ -1,9 +1,9 @@
 export const SITE_URL = "https://www.alexariza.dev";
 
-export const SITE_TITLE = "Alex Ariza | Full-Stack + AI";
+export const SITE_TITLE = "Alex Ariza | AI Product Engineering";
 
 export const SITE_DESCRIPTION =
-  "Full-Stack Developer focused on LLM/RAG integrations: Next.js + Node/FastAPI + AWS with latency, cost, and accuracy metrics from day one.";
+  "AI product engineering for product and operations leaders improving knowledge-heavy workflows: opportunity framing, grounded pilots, and scoped full-stack delivery.";
 
 export const SOCIAL_LINKS = {
   github: "https://github.com/aarizah",
