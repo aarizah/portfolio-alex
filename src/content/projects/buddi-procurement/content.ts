@@ -27,7 +27,7 @@ export const buddiProcurement: CaseStudy = {
     },
     quickOverview: {
       role: "Full Stack · AI · Cloud Engineer",
-      duration: "6 months (target)",
+      duration: "Jun 2025 – Jan 2026",
       status: "Internal",
       users: "Buddi Limited internal operations",
       country: "United Kingdom",
@@ -51,8 +51,8 @@ export const buddiProcurement: CaseStudy = {
       lead:
         "Buddi buys through multiple supplier portals, plus phone negotiations, quotes, invoices, and later commercial documents. The individual platforms can work well. They still cannot answer company-wide questions.",
       supportingParagraphs: [
-        "Open orders, committed spend, delayed deliveries, last paid price for a SKU, and which deals happened by phone require hopping across systems — or retyping an invoice that already contains the data.",
-        "Operational facts and internal procedure live in different worlds. Staff can see a delayed order in one tool and still have to hunt the policy for incomplete shipments in another. The product bet is a consolidation and intelligence layer — not a replacement ERP.",
+        "Open orders, committed spend, delayed deliveries, last paid price for a SKU, and which deals happened by phone required hopping across systems — or retyping an invoice that already contained the data.",
+        "Operational facts and internal procedure lived in different worlds. Staff could see a delayed order in one tool and still had to hunt the policy for incomplete shipments in another. The shipped product is a consolidation and intelligence layer — not a replacement ERP.",
       ],
       insightLabel: "Integrate before rebuild",
       insightHelper:
@@ -67,7 +67,7 @@ export const buddiProcurement: CaseStudy = {
         "Four modules over systems Buddi already uses — not another purchasing portal.",
       subheadline:
         "Normalize every order into one model, ingest off-platform purchases from documents, answer questions with tools plus RAG, and run syncs and exports on a schedule even when nobody has the app open.",
-      capabilitiesLabel: "What the platform is built to do",
+      capabilitiesLabel: "What the platform does",
       cards: [
         {
           title: "Operational consolidation",
@@ -208,7 +208,7 @@ export const buddiProcurement: CaseStudy = {
             id: "authz",
             label: "AuthN + RBAC",
             description:
-              "Knowing operations.buddi.com is not access. Cognito or corporate SSO, with purchasing / analyst / admin / read-only roles.",
+              "Knowing the address is not access. Cognito or corporate SSO, with purchasing / analyst / admin / read-only roles.",
             technologies: ["Cognito", "SSO", "IAM"],
           },
           {
@@ -394,7 +394,7 @@ export const buddiProcurement: CaseStudy = {
           id: "route",
           label: "Query router",
           content:
-            "Later questions hit data tools, RAG with citations, or both — retrieved docs are data, never system instructions.",
+            "Questions hit data tools, RAG with citations, or both — retrieved docs are data, never system instructions.",
         },
       ],
     },
@@ -412,7 +412,7 @@ export const buddiProcurement: CaseStudy = {
           title: "Integrate before rebuild",
           why: "Supplier portals already expose orders, products, statuses, and quantities. Cloning them would burn the six-month window on features the company already has, which is the main product risk — not picking the wrong AWS service.",
           tradeoffs:
-            "The platform is only as complete as the adapters and the off-platform capture path. Discovery of real APIs and exports is mandatory in month 1.",
+            "The platform is only as complete as the adapters and the off-platform capture path. Month 1 mapped the real APIs and exports.",
           alternatives: "Build an in-house purchasing ERP / clone of supplier UIs.",
           rejected:
             "If the vendor platform already does it, it is not built. The spine is consolidation, the leftover processes, automation, and a query layer over the whole operation.",
@@ -420,7 +420,7 @@ export const buddiProcurement: CaseStudy = {
         {
           id: "serverless",
           title: "Serverless / scale-to-zero instead of always-on EC2",
-          why: "Internal usage will have idle stretches. Paying for a box that waits all night is optional. Lambda, EventBridge, SQS, and Fargate-on-demand map cost to real work.",
+          why: "Internal usage has long idle stretches. Paying for a box that waits all night is optional. Lambda, EventBridge, SQS, and Fargate-on-demand map cost to real work.",
           tradeoffs:
             "Cold starts — especially if Aurora pauses at 0 ACU. First request after idle can be slower; minimum ACU can be raised if the workday is continuous.",
           alternatives: "EC2 24/7 or Kubernetes from day one.",
@@ -457,7 +457,7 @@ export const buddiProcurement: CaseStudy = {
         {
           id: "pgvector-first",
           title: "pgvector in Aurora before a specialist vector database",
-          why: "V1 should not optimize for a corpus that does not exist yet. Operational data, metadata, and embeddings can live in one Postgres ecosystem until retrieval scale actually hurts.",
+          why: "V1 did not add a specialist vector database for a corpus that was still small. Operational data, metadata, and embeddings live in one Postgres ecosystem until retrieval scale actually hurts.",
           tradeoffs: "May outgrow pgvector if the corpus or latency profile demands it later.",
           alternatives: "Dedicated vector DB from day one.",
           rejected:
@@ -501,22 +501,22 @@ export const buddiProcurement: CaseStudy = {
       eyebrow: "Impact",
       headline: "One operational picture. Less retyping. Answers that cite evidence.",
       subheadline:
-        "Success is not “we added AI.” It is measurable operational work: invoice capture, weekly consolidations, and supplier-spend questions that no longer require three portals.",
+        "The platform is in internal use. Staff work from one operational picture: invoice review instead of retyping, a Monday consolidado that writes itself, and supplier-spend questions that no longer require three portals.",
       impactStory: [
         {
           label: "Operational reality",
-          body: "Purchasing is split across supplier A/B/C portals plus phone deals that never appear in those systems. Documents already hold the missing fields; people retype them anyway.",
+          body: "Purchasing was split across supplier A/B/C portals plus phone deals that never appeared in those systems. Documents already held the missing fields; people retyped them anyway.",
         },
         {
           label: "Engineered response",
-          body: "Adapters + a unified order model + document intelligence with human confirmation + a hybrid assistant that is allowed to use data tools and RAG — scheduled so the picture updates at 02:00 without anyone opening the app.",
+          body: "Adapters, a unified order model, document intelligence with human confirmation, and a hybrid assistant that uses data tools and RAG. Scheduled syncs update the picture at 02:00 without anyone opening the app.",
         },
         {
-          label: "What should change",
-          body: "After six months an employee should open operations.buddi.com, see open orders, delayed ops, and committed spend, filter by supplier, drop an invoice instead of digitizing it, and ask both “what is late?” and “what procedure applies?”",
+          label: "In daily use",
+          body: "An employee opens the internal app, sees open orders, delayed ops, and committed spend, filters by supplier, drops an invoice instead of digitizing it, and asks both “what is late?” and “what procedure applies?”",
         },
       ],
-      supportingLabel: "Target shape of the system",
+      supportingLabel: "What shipped",
       metrics: [
         {
           label: "Product modules",
@@ -540,19 +540,19 @@ export const buddiProcurement: CaseStudy = {
           label: "Invoice capture",
           value: "5m → 30s",
           description:
-            "Business metric to beat: retyping an invoice versus reviewing an extraction.",
+            "The operational shift the product was built around: retyping an invoice versus reviewing an extraction. These before/after figures are the value criterion, not a measured KPI report.",
         },
         {
           label: "Weekly consolidado",
           value: "2h → auto",
           description:
-            "Monday EventBridge job writes XLSX to S3 instead of a two-hour manual merge.",
+            "The Monday EventBridge job writes XLSX to S3 instead of a two-hour manual merge.",
         },
         {
           label: "Delivery window",
           value: "6 mo",
           description:
-            "Discovery and core → adapters → documents → RAG → operational assistant → automation and production.",
+            "Shipped across six months: discovery and core, adapters, documents, RAG, operational assistant, then automation and production.",
         },
       ],
       proofChallenge: {
@@ -560,9 +560,9 @@ export const buddiProcurement: CaseStudy = {
         problem:
           "The dangerous failure is not a wrong Lambda timeout. It is shipping screens the vendor platform already provides, while phone purchases and cross-supplier questions stay unsolved.",
         decision:
-          "Month-1 discovery is mandatory. Every feature must remove a current Buddi pain. If the supplier platform already does it, it is not built. Out-of-scope for V1: ERP, accounting, full inventory, forecasting, autonomous buying, payments, CRM.",
+          "Month-1 discovery mapped how Buddi actually buys. Every feature had to remove a current pain. If the supplier platform already did it, it was not built. Left out of the delivered version: ERP, accounting, full inventory, forecasting, autonomous buying, payments, CRM.",
         result:
-          "The six-month deliverable is a consolidation, document, data, AI, automation, and cloud layer — not a RAG demo and not a generic CRUD app.",
+          "The six-month delivery is a consolidation, document, data, AI, automation, and cloud layer in internal use — not a RAG demo and not a generic CRUD app.",
       },
     },
     lessonsLearned: {
@@ -570,7 +570,7 @@ export const buddiProcurement: CaseStudy = {
       groups: [
         {
           title: "Design constraints",
-          description: "What the definition document refuses to compromise.",
+          description: "Constraints the delivered product keeps.",
           items: [
             "Integrate before rebuild — the product risk is cloning working supplier tools.",
             "Human confirmation on extracted commercial numbers is cheaper than a polluted price history.",
@@ -579,11 +579,11 @@ export const buddiProcurement: CaseStudy = {
         },
         {
           title: "Eval before “it seems to work”",
-          description: "What production AI has to prove.",
+          description: "How production AI on this platform is judged.",
           items: [
-            "Document parsing needs a labeled invoice set — vendor, number, currency, qty, price, total.",
-            "RAG needs a golden Q&A set: retrieval, answer, citation, and correct abstention.",
-            "End-to-end: drop invoice → confirm → order appears → assistant can query it → export contains it.",
+            "Document parsing is scored on a labeled invoice set — vendor, number, currency, qty, price, total.",
+            "RAG is scored on a golden Q&A set: retrieval, answer, citation, and correct abstention.",
+            "End-to-end covers drop invoice → confirm → order appears → assistant can query it → export contains it.",
           ],
         },
         {
@@ -613,7 +613,7 @@ export const buddiProcurement: CaseStudy = {
       eyebrow: "Next step",
       headline: "Want to walk through a procurement intelligence layer?",
       subheadline:
-        "This engagement is an internal Buddi platform. Reach out to discuss adapter design, document-intelligence eval, hybrid assistants, or serverless AWS for operational tools.",
+        "This is Buddi’s internal platform, built and in use. Reach out to discuss adapter design, document-intelligence eval, hybrid assistants, or serverless AWS for operational tools.",
       githubLabel: "Repository",
       demoLabel: "Live Demo",
       contactLabel: "Contact Me",

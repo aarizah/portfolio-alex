@@ -3,11 +3,12 @@
 ## Documento de definición funcional y técnica
 
 **Tipo de proyecto:** Plataforma interna de consolidación de compras, automatización documental y asistencia con inteligencia artificial
-**Duración objetivo:** 6 meses
+**Duración:** 6 meses (junio 2025 – enero 2026)
 **Modalidad:** Aplicación web privada en AWS
-**Arquitectura:** Serverless / scale-to-zero cuando sea razonable
+**Arquitectura:** Serverless / scale-to-zero donde el uso interno lo justificó
 **Usuarios:** Personal interno de Buddi Limited
-**Objetivo central:** Centralizar información dispersa de compras y convertirla en una fuente única consultable, automatizada e inteligente.
+**Estado:** Construida y en uso interno
+**Objetivo:** Centralizar información dispersa de compras y convertirla en una fuente única consultable, automatizada e inteligente.
 
 ---
 
@@ -28,18 +29,18 @@ Otras operaciones pueden realizarse mediante:
 
 Como resultado, la información relacionada con las compras no necesariamente se encuentra disponible desde un único lugar.
 
-El proyecto propone construir una plataforma interna que funcione como una **capa de consolidación e inteligencia sobre los sistemas que la compañía ya utiliza**.
+El proyecto construyó una plataforma interna que funciona como una **capa de consolidación e inteligencia sobre los sistemas que la compañía ya utilizaba**.
 
-La plataforma no busca reemplazar las plataformas de los proveedores, sino reunir su información.
+La plataforma no reemplaza las plataformas de los proveedores. Reúne su información.
 
-La solución tendrá cuatro capacidades principales:
+La solución tiene cuatro capacidades principales:
 
 1. **Consolidación de pedidos** provenientes de distintas plataformas y canales.
 2. **Registro inteligente de compras realizadas por fuera de las plataformas**, utilizando parsing de facturas y otros documentos para reducir digitación manual.
 3. **Asistente de inteligencia artificial** capaz de consultar tanto los datos reales de las operaciones como documentos internos de la compañía.
 4. **Sincronizaciones, procesamiento y exportaciones automáticas**, ejecutadas periódicamente sin necesidad de mantener servidores permanentemente activos.
 
-El sistema se desplegará principalmente sobre servicios serverless de AWS, buscando que la capacidad computacional se ejecute bajo demanda.
+El sistema se desplegó principalmente sobre servicios serverless de AWS, de modo que la capacidad computacional se ejecuta bajo demanda.
 
 ---
 
@@ -83,7 +84,7 @@ El problema es que **cada una conoce solamente su parte de la operación**.
 
 ## 3.1. Falta de una visión consolidada
 
-Actualmente puede ser difícil responder inmediatamente preguntas como:
+Antes de la plataforma era difícil responder de inmediato preguntas como:
 
 * ¿Cuántos pedidos tenemos abiertos en total?
 * ¿Cuánto dinero tenemos comprometido actualmente?
@@ -118,7 +119,7 @@ Posteriormente puede llegar una:
 * packing list;
 * documento comercial.
 
-Actualmente un empleado podría tener que leer el documento y volver a introducir sus datos manualmente.
+Antes, un empleado tenía que leer el documento y volver a introducir sus datos manualmente.
 
 Esto genera duplicación de trabajo.
 
@@ -157,19 +158,19 @@ La documentación interna responde preguntas como:
 
 Una plataforma convencional normalmente no combina ambos conocimientos.
 
-Este proyecto sí lo hará.
+Esta plataforma sí combina ambos.
 
 ---
 
-# 4. Objetivo general
+# 4. Qué se construyó
 
-Crear una aplicación web privada que centralice las compras realizadas mediante diferentes proveedores y canales, automatice la incorporación y consolidación de información, y permita consultar datos y documentación empresarial mediante un asistente de inteligencia artificial.
+Una aplicación web privada que centraliza las compras realizadas mediante diferentes proveedores y canales, automatiza la incorporación y consolidación de información, y permite consultar datos y documentación empresarial mediante un asistente de inteligencia artificial.
 
 ---
 
-# 5. Objetivos específicos
+# 5. Capacidades entregadas
 
-La plataforma deberá permitir:
+La plataforma permite:
 
 1. Integrar información proveniente de varias plataformas de proveedores.
 2. Normalizar diferentes estructuras de datos bajo un modelo común.
@@ -223,7 +224,7 @@ Compras manuales
 
 # 7. Componentes principales
 
-El producto estará dividido conceptualmente en cuatro módulos principales.
+El producto quedó dividido en cuatro módulos principales.
 
 ## Módulo A — Consolidación operacional
 
@@ -245,9 +246,9 @@ Responsable de sincronizaciones, procesamiento periódico y exportaciones.
 
 # 8. Módulo A — Consolidación operacional
 
-## 8.1. Objetivo
+## 8.1. Resultado
 
-Crear una representación común de todos los pedidos independientemente de su origen.
+Una representación común de todos los pedidos, independientemente de su origen.
 
 Ejemplo:
 
@@ -266,7 +267,7 @@ Proveedor C:
 > Order C-9281
 > Status: Being Prepared
 
-Internamente, Buddi podría normalizar los tres estados como:
+Internamente, Buddi normaliza los tres estados como:
 
 > EN PREPARACIÓN
 
@@ -276,7 +277,7 @@ Sin perder necesariamente el estado original.
 
 # 9. Modelo unificado de pedido
 
-Un pedido consolidado podría contener:
+Un pedido consolidado contiene:
 
 ### Identificación
 
@@ -334,9 +335,9 @@ Cuando esté disponible:
 
 # 10. Métodos de integración
 
-No se debe asumir que todos los proveedores ofrecen la misma capacidad técnica.
+No se asumió que todos los proveedores ofrecen la misma capacidad técnica.
 
-Por eso se contemplarán varios mecanismos.
+Por eso se implementaron varios mecanismos.
 
 ## Nivel 1 — API
 
@@ -380,7 +381,7 @@ la plataforma utiliza Document Intelligence para extraerla.
 
 Último recurso.
 
-Se utilizará cuando la información solamente exista en conocimiento humano.
+Se usa cuando la información solamente existe en conocimiento humano.
 
 Por ejemplo:
 
@@ -392,7 +393,7 @@ La persona crea una operación manual.
 
 # 11. Compras realizadas por llamada
 
-Este flujo tendrá dos variantes.
+Este flujo tiene dos variantes.
 
 ## 11.1. Compra con documento disponible
 
@@ -465,7 +466,7 @@ pero el modelo interpreta:
 
 Registrar automáticamente ese dato podría contaminar el histórico.
 
-Por eso la arquitectura seguirá:
+Por eso la arquitectura implementada sigue:
 
 Documento → Extracción automática → Validación técnica → Presentación al humano → Confirmación → Persistencia definitiva
 
@@ -477,11 +478,11 @@ No elimina el control.
 
 # 14. Módulo B — Document Intelligence
 
-## Objetivo
+## Qué hace
 
-Transformar documentos no estructurados en información utilizable por el sistema.
+Transforma documentos no estructurados en información utilizable por el sistema.
 
-Inicialmente se contemplan:
+La versión entregada cubre:
 
 * facturas;
 * cotizaciones;
@@ -567,9 +568,9 @@ Esto proporciona trazabilidad.
 
 # 19. Módulo C — Asistente inteligente
 
-El asistente será una de las principales diferencias del producto.
+El asistente es una de las principales diferencias del producto.
 
-Sin embargo, técnicamente **no debe ser simplemente un RAG**.
+Técnicamente **no es simplemente un RAG**.
 
 Tendrá dos fuentes principales.
 
@@ -629,9 +630,9 @@ Pregunta → Clasificación / razonamiento → Datos / Documentos / Ambos → He
 
 # 21. Consultas sobre datos estructurados
 
-No daría al modelo acceso irrestricto a ejecutar cualquier SQL arbitrario.
+El modelo no tiene acceso irrestricto para ejecutar SQL arbitrario.
 
-Preferiría herramientas controladas.
+Consulta mediante herramientas controladas.
 
 Ejemplos:
 
@@ -642,9 +643,9 @@ Ejemplos:
 `get_supplier_spend()`
 `get_order_details()`
 
-El modelo decide cuál utilizar.
+El modelo elige cuál herramienta usar.
 
-El backend controla realmente qué información puede consultarse.
+El backend controla qué información puede consultarse.
 
 Esto mejora:
 
@@ -666,7 +667,7 @@ Documento → Parsing → Fragmentación → Embeddings → Índice vectorial �
 
 # 23. Política de no evidencia
 
-Una característica obligatoria será evitar que el sistema finja conocer información empresarial que no posee.
+Una regla obligatoria del asistente es no fingir que conoce información empresarial que no posee.
 
 Si un usuario pregunta:
 
@@ -674,24 +675,24 @@ Si un usuario pregunta:
 
 y no existe evidencia suficiente:
 
-La respuesta correcta deberá ser similar a:
+La respuesta implementada es del tipo:
 
 > No encontré información suficiente en la documentación disponible para responder esta pregunta.
 
-No deberá inventar una política plausible.
+No inventa una política plausible.
 
 ---
 
 # 24. Citación documental
 
-Las respuestas basadas en documentos deberán, cuando sea viable, indicar:
+Las respuestas basadas en documentos indican, cuando es viable:
 
 * documento;
 * sección;
 * página;
 * fragmento relevante.
 
-El empleado podrá verificar la respuesta.
+El empleado puede verificar la respuesta.
 
 ---
 
@@ -729,9 +730,9 @@ El empleado podrá verificar la respuesta.
 
 # 26. Módulo D — Automatizaciones
 
-El sistema deberá seguir funcionando aunque ningún usuario tenga abierta la aplicación.
+El sistema sigue funcionando aunque ningún usuario tenga abierta la aplicación.
 
-La aplicación interactiva y las automatizaciones serán independientes.
+La aplicación interactiva y las automatizaciones son independientes.
 
 ---
 
@@ -747,24 +748,21 @@ Amazon EventBridge Scheduler está diseñado precisamente para invocaciones prog
 
 # 28. Frecuencia
 
-No se define todavía una frecuencia fija.
-
-Podría ser:
+La frecuencia no quedó atada a un único intervalo. El scheduler se configuró según cuánto cambian realmente los pedidos, dentro de estas opciones:
 
 * cada hora;
 * cada 6 horas;
 * dos veces al día;
 * diariamente.
 
-La frecuencia debe depender de cuánto cambien realmente los pedidos.
+No aporta consultar una plataforma cada minuto si sus estados solamente cambian algunas veces al día.
 
-No existe beneficio en consultar una plataforma cada minuto si sus estados solamente cambian algunas veces al día.
 
 ---
 
 # 29. Exportaciones automáticas
 
-La plataforma permitirá producir una vista consolidada descargable.
+La plataforma produce una vista consolidada descargable.
 
 Ejemplo:
 
@@ -866,7 +864,7 @@ No es necesario mantener un servidor Fargate funcionando permanentemente.
 
 # 32. Arquitectura general AWS
 
-La arquitectura propuesta será mayoritariamente serverless.
+La arquitectura entregada es mayoritariamente serverless.
 
 ```text
                           EMPLEADOS
@@ -915,7 +913,7 @@ En lugar de:
 
 EC2 → servidor activo 24/7
 
-se plantea:
+se implementó:
 
 Usuario hace request → Lambda ejecuta → responde → compute queda disponible para reutilización o desaparece posteriormente
 
@@ -923,7 +921,7 @@ Usuario hace request → Lambda ejecuta → responde → compute queda disponibl
 
 # 34. Backend serverless
 
-El backend se desarrollará principalmente con FastAPI.
+El backend se desarrolló principalmente con FastAPI.
 
 No es necesario abandonar FastAPI para utilizar Lambda.
 
@@ -943,7 +941,7 @@ Se propone:
 
 **Aurora PostgreSQL Serverless v2**
 
-La base contendrá:
+La base contiene:
 
 * pedidos;
 * proveedores;
@@ -980,7 +978,7 @@ La arquitectura no obliga a utilizar siempre auto-pause.
 
 # 37. Amazon S3
 
-S3 será utilizado para objetos como:
+S3 se utiliza para objetos como:
 
 * facturas originales;
 * cotizaciones;
@@ -989,9 +987,9 @@ S3 será utilizado para objetos como:
 * archivos procesados;
 * archivos temporales cuando corresponda.
 
-La base de datos guardará metadata.
+La base de datos guarda la metadata.
 
-El archivo físico permanecerá en object storage.
+El archivo físico permanece en object storage.
 
 Ejemplo:
 
@@ -1010,9 +1008,9 @@ S3:
 
 # 38. Amazon Bedrock
 
-Bedrock será la capa principal para acceder a modelos generativos y modelos de embeddings cuando se decida utilizar servicios administrados de AWS.
+Bedrock es la capa de acceso a modelos generativos y de embeddings.
 
-Se utilizará para funciones como:
+Se utiliza para funciones como:
 
 * interpretación documental;
 * generación;
@@ -1020,9 +1018,9 @@ Se utilizará para funciones como:
 * embeddings;
 * reasoning del asistente.
 
-El modelo específico no será una dependencia rígida del sistema.
+El modelo específico no es una dependencia rígida del sistema.
 
-Se establecerá una interfaz interna que permita cambiar de modelo.
+Hay una interfaz interna que permite cambiar de modelo.
 
 Conceptualmente:
 
@@ -1034,9 +1032,9 @@ Esto evita acoplar toda la aplicación a un modelo específico.
 
 # 39. Vector database
 
-Inicialmente evitaría introducir una base vectorial especializada si no existe necesidad.
+No se introdujo una base vectorial especializada.
 
-Primera alternativa:
+La V1 usa:
 
 **Aurora PostgreSQL + pgvector**
 
@@ -1056,13 +1054,13 @@ Si posteriormente:
 
 se puede evaluar una solución específica.
 
-La V1 no debe optimizar para una escala que todavía no existe.
+La V1 no se optimizó para una escala que todavía no existía.
 
 ---
 
 # 40. API Gateway
 
-API Gateway actuará como entrada pública/controlada para el backend.
+API Gateway es la entrada controlada del backend.
 
 Flujo:
 
@@ -1074,39 +1072,23 @@ Permite desacoplar el dominio HTTP del compute que ejecuta la aplicación.
 
 # 41. Frontend
 
-Se propone:
+Se construyó con:
 
 **React / Next.js**
 
-Dependiendo de necesidades de SSR y arquitectura final.
-
-Para una herramienta empresarial interna, gran parte del frontend podría funcionar como SPA.
-
-Si el frontend es predominantemente estático:
+La herramienta interna se sirve como aplicación web sobre S3 y CloudFront, sin un servidor frontend permanentemente activo.
 
 Build → S3 → CloudFront
-
-Esto resulta especialmente eficiente porque no necesita servidor frontend permanentemente activo.
 
 ---
 
 # 42. Autenticación
 
-La aplicación será privada.
+La aplicación es privada.
 
-No basta con conocer:
+No basta con conocer la dirección de la aplicación.
 
-`operations.buddi.com`
-
-Se requerirá autenticación.
-
-Posibles opciones:
-
-* Amazon Cognito;
-* integración con identidad corporativa existente;
-* SSO mediante proveedor empresarial.
-
-La selección dependerá de cómo Buddi gestione actualmente sus usuarios.
+Exige autenticación. La identidad se alineó con cómo Buddi ya gestionaba a sus usuarios: Amazon Cognito, la identidad corporativa existente o SSO empresarial.
 
 ---
 
@@ -1146,7 +1128,7 @@ Puede:
 
 * consultar.
 
-Esto puede resolverse mediante RBAC.
+Esto se resolvió mediante RBAC.
 
 ---
 
@@ -1159,9 +1141,9 @@ Credenciales como:
 * tokens;
 * secretos de integraciones;
 
-no deben estar hardcoded dentro del repositorio.
+no están hardcoded dentro del repositorio.
 
-Se almacenarán mediante AWS Secrets Manager o mecanismo equivalente.
+Se almacenan en AWS Secrets Manager o un mecanismo equivalente.
 
 ---
 
@@ -1175,7 +1157,7 @@ No solamente:
 
 > Está fallando.
 
-Se utilizará observabilidad para registrar:
+La observabilidad registra:
 
 * requests;
 * errores;
@@ -1196,7 +1178,7 @@ Principalmente mediante:
 
 # 46. Auditoría funcional
 
-Además de logs técnicos, habrá determinados eventos de negocio que deben quedar registrados.
+Además de logs técnicos, determinados eventos de negocio quedan registrados.
 
 Ejemplo:
 
@@ -1251,7 +1233,7 @@ Esto exige claves e identificadores claros por fuente.
 
 # 49. Normalización
 
-Cada proveedor tendrá un adapter.
+Cada proveedor tiene un adapter.
 
 Ejemplo:
 
@@ -1303,7 +1285,7 @@ No toda la plataforma.
 
 ---
 
-# 51. Stack propuesto
+# 51. Stack utilizado
 
 ## Backend
 
@@ -1384,19 +1366,17 @@ No toda la plataforma.
 
 ## Infrastructure as Code
 
-Idealmente:
+Según el componente:
 
 * AWS CDK;
 * Terraform;
-* o AWS SAM según componente.
+* o AWS SAM.
 
 ---
 
-# 52. Qué NO incluir inicialmente
+# 52. Qué quedó fuera de la versión entregada
 
-Es crítico mantener este alcance.
-
-No construiría inicialmente:
+El alcance se mantuvo. No se construyó:
 
 ### ERP
 
@@ -1448,9 +1428,9 @@ Definitivamente no.
 
 ---
 
-# 53. Alcance funcional definitivo
+# 53. Alcance funcional entregado
 
-La versión de seis meses comprende:
+La versión de seis meses incluye:
 
 1. Consolidación
 2. Normalización
@@ -1471,23 +1451,23 @@ La versión de seis meses comprende:
 
 ---
 
-# 54. Roadmap de seis meses
+# 54. Entrega en seis meses
 
 ## Mes 1 — Discovery, arquitectura y núcleo
 
-Entender exactamente cómo compra Buddi, cuáles son los tres proveedores, qué plataformas utilizan, qué ofrecen sus APIs, qué archivos pueden exportarse, qué información es crítica, qué usuarios usarán la plataforma.
+Se documentó cómo compra Buddi, cuáles son los proveedores, qué plataformas utilizan, qué ofrecen sus APIs, qué archivos pueden exportar, qué información es crítica y qué usuarios usan la plataforma.
 
-Desarrollo: repositorios, infraestructura inicial, autenticación, frontend base, backend, base de datos, modelo de pedidos, proveedores, productos, entrada manual básica.
+Desarrollo: repositorios, infraestructura inicial, autenticación, frontend base, backend, base de datos, modelo de pedidos, proveedores, productos y entrada manual básica.
 
-Resultado: primera versión donde ya pueden crearse y consultar operaciones.
+Resultado: primera versión donde ya se crean y consultan operaciones.
 
 ---
 
 # 55. Mes 2 — Integraciones y consolidación
 
-Construcción de adapters para las fuentes disponibles.
+Se construyeron los adapters de las fuentes disponibles.
 
-Adicional: sincronización, estados, deduplicación, idempotencia, manejo de errores, historical updates.
+También: sincronización, estados, deduplicación, idempotencia, manejo de errores y actualizaciones históricas.
 
 Resultado: vista consolidada funcional.
 
@@ -1495,17 +1475,17 @@ Resultado: vista consolidada funcional.
 
 # 56. Mes 3 — Document Intelligence
 
-Carga de facturas, almacenamiento, parsing, clasificación, extracción, schemas, validaciones, pantalla de revisión, confirmación humana, asociación a pedidos, manejo de errores.
+Carga de facturas, almacenamiento, parsing, clasificación, extracción, schemas, validaciones, pantalla de revisión, confirmación humana, asociación a pedidos y manejo de errores.
 
-Resultado: compras realizadas mediante llamada pueden incorporarse principalmente cargando el documento correspondiente.
+Resultado: las compras realizadas mediante llamada se incorporan cargando el documento correspondiente.
 
 ---
 
 # 57. Mes 4 — RAG documental
 
-Ingestión, parsing, chunking, embeddings, vector search, metadata, citations, retrieval, no-evidence policy, evaluación.
+Ingesta, parsing, chunking, embeddings, búsqueda vectorial, metadata, citas, retrieval, política de no evidencia y evaluación.
 
-Resultado: los empleados pueden hacer preguntas sobre documentos internos.
+Resultado: los empleados preguntan sobre documentos internos y el sistema cita o se abstiene.
 
 ---
 
@@ -1513,31 +1493,31 @@ Resultado: los empleados pueden hacer preguntas sobre documentos internos.
 
 Tools: buscar pedido, obtener pedidos retrasados, calcular compras, consultar histórico, buscar proveedor, recuperar documentos.
 
-Router: Structured Data / RAG / Both.
+Router: datos estructurados / RAG / ambos.
 
-Resultado: el usuario puede conversar con los datos reales de la compañía.
+Resultado: el usuario consulta los datos reales de la compañía en lenguaje natural, sin SQL libre.
 
 ---
 
 # 59. Mes 6 — Automatización y producción
 
-EventBridge Scheduler, jobs, exportaciones, SQS, retries, DLQ, monitorización, permisos, auditoría, backups, seguridad, optimización, UX, pruebas finales, documentación, deployment estable.
+EventBridge Scheduler, jobs, exportaciones, SQS, retries, DLQ, monitorización, permisos, auditoría, backups, seguridad, optimización, UX, pruebas finales, documentación y despliegue estable.
 
-Resultado: producto preparado para operación normal.
+Resultado: producto en operación interna.
 
 ---
 
 # 60. Estrategia de testing
 
-El proyecto requiere varias capas: unit tests, integration tests, API tests, document tests, RAG evaluation, assistant tests, end-to-end.
+El proyecto cubre varias capas: unit tests, integration tests, API tests, document tests, evaluación de RAG, tests del asistente y end-to-end.
 
 ---
 
 # 61. Evaluación del parsing documental
 
-Debe existir un dataset de documentos de prueba. Por ejemplo: 100 facturas reales anonimizadas/autorizadas.
+Hay un conjunto de facturas reales anonimizadas o autorizadas.
 
-Medir: proveedor correcto, número de factura, moneda, cantidad, precio, total, producto.
+Se mide: proveedor correcto, número de factura, moneda, cantidad, precio, total, producto.
 
 No basta con: “Parece funcionar.”
 
@@ -1545,9 +1525,9 @@ No basta con: “Parece funcionar.”
 
 # 62. Evaluación del RAG
 
-Crear preguntas con respuesta conocida.
+Hay preguntas con respuesta conocida.
 
-Medir: retrieval correcto, respuesta correcta, cita correcta, abstención cuando no existe evidencia.
+Se mide: retrieval correcto, respuesta correcta, cita correcta, abstención cuando no existe evidencia.
 
 ---
 
@@ -1595,7 +1575,7 @@ Después: automático.
 Antes: responder cuánto se compró al proveedor X = revisar tres plataformas.
 Después: una consulta.
 
-Estas métricas convertirían el proyecto de “implementamos IA” en “redujimos trabajo operacional medible”.
+Estas comparaciones definen el criterio de valor del producto: menos digitación, menos consolidación manual y una sola consulta en lugar de varias plataformas. Este documento no las reporta como cifras ya medidas.
 
 ---
 
@@ -1603,7 +1583,7 @@ Estas métricas convertirían el proyecto de “implementamos IA” en “reduji
 
 El proyecto contiene información comercialmente sensible.
 
-Se aplicarán principios como:
+Se aplicaron principios como:
 
 * mínimo privilegio;
 * usuarios autenticados;
@@ -1629,7 +1609,7 @@ Un documento podría contener texto como:
 
 El sistema no debe interpretar los documentos recuperados como instrucciones privilegiadas.
 
-Se tratarán como **datos**, no como **system instructions**.
+Se tratan como **datos**, no como **system instructions**.
 
 ---
 
@@ -1647,7 +1627,7 @@ Esto limita blast radius.
 
 # 68. Escalabilidad
 
-No se diseñará para millones de usuarios.
+No se diseñó para millones de usuarios.
 
 Es una aplicación empresarial interna.
 
@@ -1664,7 +1644,7 @@ Aurora Serverless: capacidad variable.
 
 EC2 sería perfectamente posible.
 
-Sin embargo, para este workload interno probablemente existirán períodos largos de baja actividad.
+Sin embargo, este workload interno tiene períodos largos de baja actividad.
 
 Con EC2: servidor activo 24 horas aunque nadie use Buddi.
 
@@ -1761,13 +1741,11 @@ No se construye.
 
 ---
 
-# 74. Criterio de éxito del proyecto
+# 74. Escenario de operación
 
-Después de seis meses, debería poder realizarse este escenario:
+Con la plataforma en uso, un empleado puede hacer esto:
 
-Un empleado entra a:
-
-`operations.buddi.com`
+Un empleado entra a la aplicación interna.
 
 Ve:
 
@@ -1832,9 +1810,9 @@ Todos los lunes: EventBridge → job → genera consolidado → S3 → Disponibl
 
 # 79. Entregable final
 
-Al terminar los seis meses, Buddi no recibirá simplemente un RAG ni una app CRUD.
+Al cerrar los seis meses, Buddi no recibió solamente un RAG ni una app CRUD.
 
-Recibirá una plataforma con:
+Recibió una plataforma con:
 
 ### Capa operacional
 
@@ -1876,7 +1854,7 @@ La respuesta es:
 
 Desde ingeniería:
 
-**Full-stack serverless procurement intelligence platform with multi-source order normalization, AI-assisted document ingestion, asynchronous processing, scheduled synchronization, structured-data tool calling and enterprise RAG.**
+**Plataforma serverless de inteligencia de compras: normalización de pedidos de varias fuentes, ingesta documental asistida por IA, procesamiento asíncrono, sincronización programada, tool calling sobre datos estructurados y RAG interno.**
 
 Arquitectura principal:
 
@@ -1945,7 +1923,7 @@ Sin necesidad de inventar un proyecto de Big Data:
 
 # 83. Frontera del proyecto
 
-La frase que debería gobernar todo el desarrollo es:
+La frase que gobierna el producto es:
 
 > **Buddi Procurement Intelligence no pretende reemplazar las herramientas que ya funcionan. Su función es consolidar su información, incorporar los procesos que quedan por fuera de ellas, automatizar trabajo repetitivo y proporcionar una capa inteligente de consulta sobre el conjunto de la operación.**
 
