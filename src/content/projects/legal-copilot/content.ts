@@ -452,7 +452,7 @@ export const legalCopilot: CaseStudy = {
     },
     relatedProjects: [
       "local-rag",
-      "clinic-hc",
+      "buddi-procurement",
     ],
     relatedSection: {
       eyebrow: "Keep exploring",

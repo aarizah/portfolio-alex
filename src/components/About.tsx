@@ -1,145 +1,96 @@
 "use client";
 
-import { Brain, Zap, Shield } from "lucide-react";
+import { useState } from "react";
 import Image from "next/image";
-import { Card } from "./ui/card";
+import { Instrument_Serif } from "next/font/google";
+import { ArrowUpRight } from "lucide-react";
+import { StartProjectButton } from "@/components/StartProjectModal";
 import { ScrollReveal, ScrollStagger, StaggerChild } from "@/components/motion/ScrollReveal";
-import { fadeIn, fadeInRight, fadeInUpTight, scaleIn } from "@/lib/motion";
+import { fadeIn, fadeInRight, fadeInUpTight } from "@/lib/motion";
+import { aboutCopy, brand } from "@/content/brand";
 
-const strengths = [
-  {
-    icon: Brain,
-    iconClass: "from-blue-500/20 to-blue-500/10 border-blue-500/20 text-blue-400",
-    title: "AI/ML Specialist",
-    description:
-      "LLMs, RAG systems, embeddings, and retrieval tuning (chunking, metadata) to keep answers grounded in your data.",
-  },
-  {
-    icon: Zap,
-    iconClass: "from-purple-500/20 to-purple-500/10 border-purple-500/20 text-purple-400",
-    title: "Full-Stack Excellence",
-    description:
-      "Next.js + React frontends, Node/NestJS or FastAPI backends, PostgreSQL/Mongo, and managed cloud delivery (e.g., Vercel for frontends, Supabase or a preferred provider for data) so the AI feature ships with the app and performs well for users.",
-  },
-  {
-    icon: Shield,
-    iconClass: "from-green-500/20 to-green-500/10 border-green-500/20 text-green-400",
-    title: "Measured Outcomes",
-    description:
-      "Obsessed with latency p95, token cost, and accuracy. I add logging, tracing, and evals so we know what's working.",
-  },
-] as const;
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
 
 export function About() {
+  const [photoFailed, setPhotoFailed] = useState(false);
+
   return (
     <section
       id="about"
-      className="relative w-full overflow-hidden bg-gradient-to-b from-black via-slate-950 to-black py-12"
+      className="relative w-full scroll-mt-24 overflow-hidden bg-black py-16 text-white md:py-20"
     >
-      <div className="absolute top-1/4 right-1/4 h-96 w-96 rounded-full bg-purple-500/10 blur-3xl" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-12 md:px-16 lg:px-20">
-        <ScrollStagger className="mb-16 text-center">
-          <StaggerChild variants={fadeInUpTight}>
-            <h2 className="mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-3xl text-transparent md:text-4xl">
-              Why Work With Me
-            </h2>
-          </StaggerChild>
-          <StaggerChild variants={fadeInUpTight}>
-            <p className="mx-auto max-w-2xl text-gray-400">
-              Full-stack developer focused on LLM/RAG integration, measured performance, and
-              production readiness.
-            </p>
-          </StaggerChild>
-        </ScrollStagger>
-
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div className="relative">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-20 blur-2xl" />
-            <Card className="relative border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-[transform,box-shadow] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:shadow-[0_24px_80px_rgba(99,102,241,0.12)]">
-              <ScrollReveal variants={fadeIn}>
-                <div className="relative mb-6 flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-blue-500/20 to-purple-500/20">
-                  <Image
-                    src="/profile2.jpg"
-                    alt="AI Engineer Profile"
-                    fill
-                    sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 90vw"
-                    className="rounded-xl object-cover"
-                  />
-                </div>
-              </ScrollReveal>
-
-                <ScrollStagger className="grid grid-cols-2 gap-4">
-                  <StaggerChild variants={scaleIn}>
-                    <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-center">
-                      <div className="mb-1 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-2xl text-transparent">
-                        3
-                      </div>
-                      <div className="text-xs text-gray-400">Shipped AI builds</div>
-                    </div>
-                  </StaggerChild>
-                  <StaggerChild variants={scaleIn}>
-                    <div className="rounded-lg border border-white/10 bg-white/5 p-4 text-center">
-                      <div className="mb-1 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-2xl text-transparent">
-                        E2E
-                      </div>
-                      <div className="text-xs text-gray-400">Frontend · Backend · Cloud</div>
-                    </div>
-                  </StaggerChild>
-                </ScrollStagger>
-            </Card>
-          </div>
-
-          <ScrollReveal variants={fadeInRight}>
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <h3 className="text-2xl text-white">
-                  Full-Stack + AI builder who ships production-ready features
-                </h3>
-                <p className="leading-relaxed text-gray-300">
-                  I translate business needs into measurable requirements (latency, cost, accuracy)
-                  and build the stack to support them. From frontend UX to backend APIs, vector
-                  search, and cloud delivery, I ship features that users can trust.
-                </p>
-                <p className="leading-relaxed text-gray-300">
-                  My sweet spot: LLM/RAG integrations with guardrails, clear observability, and
-                  deployment on managed platforms with CI/CD so teams can iterate safely and
-                  maximize conversion (low latency, reliable rollouts).
-                </p>
-              </div>
-
-              <ScrollStagger className="space-y-4 pt-4">
-                {strengths.map((strength) => {
-                  const Icon = strength.icon;
-
-                  return (
-                    <StaggerChild key={strength.title} variants={fadeInUpTight}>
-                      <div className="flex items-start gap-4">
-                        <div
-                          className={`rounded-lg border bg-gradient-to-br p-3 ${strength.iconClass}`}
-                        >
-                          <Icon className="h-5 w-5" />
-                        </div>
-                        <div>
-                          <h4 className="mb-1 text-white">{strength.title}</h4>
-                          <p className="text-sm text-gray-400">{strength.description}</p>
-                        </div>
-                      </div>
-                    </StaggerChild>
-                  );
-                })}
-
-                <StaggerChild variants={fadeInUpTight}>
-                  <div className="border-t border-white/10 pt-4">
-                    <p className="text-gray-300">
-                      <span className="text-blue-400">💡 My approach:</span> rapid prototyping +
-                      production discipline. Speed to value, with security, observability, and sensible
-                      costs baked in.
-                    </p>
+      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          <ScrollReveal variants={fadeIn} className="lg:col-span-5">
+            <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10">
+              <div className="relative aspect-[4/5]">
+                {photoFailed ? (
+                  <div className="flex h-full w-full items-center justify-center bg-white/5 text-5xl tracking-[0.2em] text-white/40">
+                    AA
                   </div>
-                </StaggerChild>
-              </ScrollStagger>
+                ) : (
+                  <Image
+                    src="/ima.png"
+                    alt={`${brand.name}, founder`}
+                    fill
+                    sizes="(min-width: 1024px) 420px, 90vw"
+                    unoptimized
+                    className="object-cover object-center"
+                    onError={() => setPhotoFailed(true)}
+                  />
+                )}
+              </div>
             </div>
+            <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-white/45">
+              {aboutCopy.facts.map((fact, index) => (
+                <span key={fact}>
+                  {index > 0 ? <span className="mx-3 text-white/20">·</span> : null}
+                  <span className={index === 0 ? "text-brand" : undefined}>{fact}</span>
+                </span>
+              ))}
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal variants={fadeInRight} className="lg:col-span-7 lg:pt-4">
+            <ScrollStagger>
+              <StaggerChild variants={fadeInUpTight}>
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-brand">
+                  {aboutCopy.eyebrow}
+                </p>
+              </StaggerChild>
+              <StaggerChild variants={fadeInUpTight}>
+                <h2
+                  className={`${instrumentSerif.className} max-w-xl text-[2rem] leading-[1.12] tracking-[-0.02em] text-white md:text-[2.55rem]`}
+                >
+                  {aboutCopy.heading}
+                </h2>
+              </StaggerChild>
+              <StaggerChild variants={fadeInUpTight}>
+                <p className="mt-6 max-w-xl text-base leading-7 text-[#9a9a9a]">
+                  {aboutCopy.body}
+                </p>
+              </StaggerChild>
+            </ScrollStagger>
+
+            <ul className="mt-10 space-y-6 border-t border-white/10 pt-8">
+              {aboutCopy.principles.map((principle) => (
+                <li key={principle.title}>
+                  <p className="text-[15px] text-white">{principle.title}</p>
+                  <p className="mt-1 text-sm leading-6 text-[#9a9a9a]">{principle.line}</p>
+                </li>
+              ))}
+            </ul>
+
+            <StartProjectButton className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-white">
+              {aboutCopy.ctaLabel}
+              <ArrowUpRight className="h-4 w-4" />
+            </StartProjectButton>
           </ScrollReveal>
         </div>
       </div>

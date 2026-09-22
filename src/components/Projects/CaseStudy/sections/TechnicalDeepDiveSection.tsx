@@ -28,7 +28,7 @@ interface TechnicalDeepDiveSectionProps {
 
 function SectionLabel({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <span className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-200/60">
+    <span className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand">
       {icon}
       {label}
     </span>
@@ -49,7 +49,7 @@ export function TechnicalDeepDiveSection({
       variant="dark"
       eyebrow="Technical appendix"
       headline="More depth, only when you want it."
-      subheadline="The main page stays scannable for recruiters. This appendix keeps the implementation details available for technical reviewers."
+      subheadline="The case study stays scannable for a buyer. This appendix keeps implementation details available for technical reviewers."
       align="center"
     >
       <Accordion type="multiple" className="mx-auto grid w-full max-w-5xl gap-3 text-left">
@@ -66,7 +66,7 @@ export function TechnicalDeepDiveSection({
                   <ul className="mt-4 grid gap-2">
                     {(node.technologies ?? []).map((tech) => (
                       <li key={tech} className="flex gap-2 text-sm text-white/52">
-                        <span className="mt-2 size-1.5 shrink-0 rounded-full bg-blue-300" />
+                        <span className="mt-2 size-1.5 shrink-0 rounded-full bg-brand" />
                         <span>{tech}</span>
                       </li>
                     ))}
@@ -147,7 +147,7 @@ export function TechnicalDeepDiveSection({
                 <ul className="mt-4 grid gap-3">
                   {(lessonsLearned.groups[1]?.items ?? []).map((item) => (
                     <li key={item} className="flex gap-2 text-sm leading-relaxed text-white/56">
-                      <span className="mt-2 size-1.5 shrink-0 rounded-full bg-blue-300" />
+                      <span className="mt-2 size-1.5 shrink-0 rounded-full bg-brand" />
                       <span>{item}</span>
                     </li>
                   ))}

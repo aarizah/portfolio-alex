@@ -1,0 +1,24 @@
+/* Mist Hero kit — import this file in the destination project's global CSS. */
+
+:root {
+  --mist-brand: #3db496;
+  --mist-surface: #ebedec;
+  --mist-ink: #111514;
+  --mist-muted: #525957;
+  --mist-eyebrow: #5c6561;
+}
+
+/* Tailwind v4 (optional). Safe to keep even if unused. */
+@theme inline {
+  --color-brand: #3db496;
+  --color-surface: #ebedec;
+}
+
+#vanta-birds,
+#vanta-birds canvas {
+  background: transparent !important;
+}
+
+#vanta-birds canvas {
+  z-index: 0 !important;
+}

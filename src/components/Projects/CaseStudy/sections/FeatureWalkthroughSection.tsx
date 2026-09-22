@@ -79,7 +79,7 @@ export function FeatureWalkthroughSection({ data }: FeatureWalkthroughSectionPro
                 />
               </div>
               <div className="max-w-2xl rounded-3xl border border-white/[0.08] bg-white/[0.035] p-6">
-                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-blue-200/55">
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-brand">
                   Interaction rationale
                 </p>
                 <h3 className="text-xl font-semibold tracking-tight text-white md:text-2xl">

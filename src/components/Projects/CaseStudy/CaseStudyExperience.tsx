@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Mail } from "lucide-react";
 import { cn } from "@/components/ui/utils";
+import { cs } from "./accent";
 import {
   CASE_STUDY_NAV_SECTIONS,
   type CaseStudySectionConfig,
@@ -104,7 +105,7 @@ export function CaseStudyExperience({
   }, []);
 
   return (
-    <div className="case-study-root min-h-screen bg-black text-white selection:bg-fuchsia-500/30 selection:text-white">
+    <div className="case-study-root min-h-screen bg-black text-white selection:bg-brand/30 selection:text-white">
       <a
         href="#overview"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[80] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-black"
@@ -114,16 +115,16 @@ export function CaseStudyExperience({
 
       <div className="fixed inset-x-0 top-0 z-[60] h-[3px] bg-white/5" aria-hidden="true">
         <div
-          className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-400 transition-[width] duration-150"
+          className={`h-full ${cs.progress} transition-[width] duration-150`}
           style={{ width: `${Math.min(scrollProgress * 100, 100)}%` }}
         />
       </div>
 
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-purple-300/15 bg-black/70 shadow-[0_10px_42px_rgba(168,85,247,0.14)] backdrop-blur-2xl transition-all duration-300">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(96,165,250,0.10),transparent_38%),radial-gradient(circle_at_72%_0%,rgba(236,72,153,0.06),transparent_30%)]" />
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/70 shadow-[0_10px_42px_rgba(0,0,0,0.35)] backdrop-blur-2xl transition-all duration-300">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(232,180,74,0.10),transparent_38%)]" />
         <div className="flex h-[4.25rem] items-center justify-between px-5 sm:px-7 md:px-14">
           <Link
-            href="/#projects"
+            href="/#work"
             className="group inline-flex items-center gap-2.5 rounded-full px-3 py-1.5 text-sm font-semibold text-white/64 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/70"
             aria-label="Back to all projects"
           >
@@ -133,14 +134,14 @@ export function CaseStudyExperience({
 
           <div className="min-w-0 text-center">
             <p className="text-[11px] uppercase tracking-[0.28em] text-white/40">Case Study</p>
-            <p className="max-w-[50vw] truncate bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-sm font-semibold text-transparent sm:max-w-none md:text-[15px]">
+            <p className="max-w-[50vw] truncate text-sm font-semibold text-white sm:max-w-none md:text-[15px]">
               {projectName}
             </p>
           </div>
 
           <Link
             href="/#contact"
-            className="inline-flex items-center gap-2.5 rounded-full border border-purple-300/25 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 px-4 py-2 text-sm font-semibold text-purple-100 transition-colors hover:border-pink-300/45 hover:bg-purple-400/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-300"
+            className="inline-flex items-center gap-2.5 rounded-full border border-white/80 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
           >
             <Mail className="hidden size-4 sm:block" />
             Contact
@@ -149,7 +150,7 @@ export function CaseStudyExperience({
 
         <nav
           aria-label="Case study chapter navigation"
-          className="hidden border-t border-purple-300/10 px-5 py-2.5 sm:px-7 md:px-14 md:block"
+          className="hidden border-t border-white/10 px-5 py-2.5 sm:px-7 md:px-14 md:block"
         >
           <div className="mx-auto flex max-w-[1590px] gap-2 overflow-x-auto scrollbar-hide">
             {visibleSections.map((section, index) => {
@@ -163,8 +164,8 @@ export function CaseStudyExperience({
                   className={cn(
                     "shrink-0 rounded-full px-4 py-2 text-[13px] font-semibold transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70",
                     active
-                      ? "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-[0_0_30px_rgba(168,85,247,0.28)]"
-                      : "text-white/48 hover:bg-purple-400/[0.08] hover:text-white"
+                      ? cs.navActive
+                      : cs.navIdle
                   )}
                   aria-current={active ? "location" : undefined}
                 >
@@ -238,7 +239,7 @@ export function CaseStudyExperience({
                 onClick={() => scrollTo(section.id)}
                 className={cn(
                   "shrink-0 rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider transition-colors",
-                  active ? "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white" : "text-white/55 hover:text-white"
+                  active ? `${cs.navActive} text-[10px]` : "text-white/55 hover:text-white"
                 )}
                 aria-current={active ? "location" : undefined}
               >

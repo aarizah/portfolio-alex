@@ -1,113 +1,63 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Mail, MapPin, Calendar } from 'lucide-react';
-import { Card } from './ui/card';
-import { Button } from './ui/button';
+import { brand, contactCopy } from "@/content/brand";
+import { Card } from "./ui/card";
+import { Mail, MapPin } from "lucide-react";
+import { StartProjectButton } from "@/components/StartProjectModal";
 
 export function Contact() {
   return (
-    <section id="contact" className="py-12 bg-gradient-to-b from-black via-slate-950 to-black relative overflow-hidden w-full">
-      <div className="" />
-      
-      <div className="max-w-5xl mx-auto px-12 md:px-16 lg:px-20 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2, margin: "0px 0px -8% 0px" }}
-          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Let&apos;s Ship Your Next AI Feature
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Ready to integrate LLMs or ship a RAG copilot? I turn ideas into production-ready apps with clear metrics on latency, cost, and accuracy.
+    <section
+      id="contact"
+      className="relative w-full scroll-mt-24 overflow-hidden bg-black py-16 md:py-20"
+    >
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
+        <div className="max-w-3xl">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-brand">
+            Contact
           </p>
-        </motion.div>
+          <h2 className="text-3xl text-white md:text-4xl">{contactCopy.heading}</h2>
+          <p className="mt-4 text-lg leading-8 text-[#9a9a9a]">{contactCopy.subhead}</p>
+          <StartProjectButton className="mt-8 inline-flex h-11 items-center rounded-full bg-white px-6 text-[13px] font-medium text-black transition-transform hover:scale-[1.03]">
+            {contactCopy.ctaLabel}
+          </StartProjectButton>
+        </div>
 
-
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -14 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.18, margin: "0px 0px -8% 0px" }}
-            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="space-y-6">
-              <Card className="p-6 bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg">
-                    <Mail className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="mb-2 text-white">Email</h3>
-                    <p className="text-gray-400">arizah2020@gmail.com</p>
-                    <p className="text-xs text-blue-400 mt-1">Replies within 24h</p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6 bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
-                    <MapPin className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="mb-2 text-white">Location</h3>
-                    <p className="text-gray-400">Colombia · Remote-first (USA/EU overlap)</p>
-                    <p className="text-xs text-blue-400 mt-1">Open to travel when needed</p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6 bg-white/5 border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-r from-pink-500 to-orange-500 rounded-lg">
-                    <Calendar className="h-5 w-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="mb-2 text-white">Availability</h3>
-                    <p className="text-gray-400">Accepting new projects</p>
-                    <p className="text-xs text-green-400 mt-1">✓ Ready to start now</p>
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 14 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.18, margin: "0px 0px -8% 0px" }}
-            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Card className="p-8 bg-white/5 border-white/10 backdrop-blur-sm text-center">
-              <div className="space-y-6">
-                <h3 className="text-2xl text-white">Get in touch</h3>
-                <p className="text-gray-400 max-w-xl mx-auto">
-                  Prefer to keep things simple — reach out via email or visit my profiles. I typically reply within 24 hours.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-3 justify-center mt-4">
-                  <Button asChild className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                    <a href="mailto:arizah2020@gmail.com">Email: arizah2020@gmail.com</a>
-                  </Button>
-
-                  <Button asChild variant="outline" className="w-full sm:w-auto">
-                    <a href="https://linkedin.com/in/alex-ariza-herrera" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                  </Button>
-
-                  <Button asChild variant="outline" className="w-full sm:w-auto">
-                    <a href="https://github.com/aarizah" target="_blank" rel="noopener noreferrer">GitHub</a>
-                  </Button>
-                </div>
+        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+          <Card className="border-white/10 bg-white/5 p-6">
+            <div className="flex items-start gap-4">
+              <div className="rounded-lg bg-white/10 p-3">
+                <Mail className="h-5 w-5 text-white" />
               </div>
-            </Card>
-          </motion.div>
+              <div>
+                <h3 className="mb-1 text-white">Email</h3>
+                <a
+                  href={`mailto:${brand.email}`}
+                  className="text-gray-300 underline-offset-4 hover:underline"
+                >
+                  {brand.email}
+                </a>
+                <p className="mt-1 text-xs text-gray-500">{brand.replySla}</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="border-white/10 bg-white/5 p-6">
+            <div className="flex items-start gap-4">
+              <div className="rounded-lg bg-white/10 p-3">
+                <MapPin className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <h3 className="mb-1 text-white">Location</h3>
+                <p className="text-gray-300">{brand.location}</p>
+                <p className="mt-1 text-xs text-gray-500">
+                  Languages: {brand.languages.join(" · ")}
+                </p>
+              </div>
+            </div>
+          </Card>
         </div>
       </div>
     </section>

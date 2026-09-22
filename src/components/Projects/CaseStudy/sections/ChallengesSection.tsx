@@ -34,11 +34,11 @@ export function ChallengesSection({ steps }: ChallengesSectionProps) {
                 <ArrowRight className="size-5" />
               </div>
               <div>
-                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-200/55">
+                <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand">
                   Decision ? Result
                 </p>
                 <p className="text-sm leading-relaxed text-white/60">{step.decision}</p>
-                <p className="mt-3 text-sm font-semibold text-blue-200">{step.result}</p>
+                <p className="mt-3 text-sm font-semibold text-brand">{step.result}</p>
               </div>
             </article>
           </Reveal>

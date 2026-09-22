@@ -579,7 +579,7 @@ export const localRag: CaseStudy = {
       contactLabel: "Contact Me",
       contactHref: "/#contact",
     },
-    relatedProjects: ["legal-copilot", "clinic-hc"],
+    relatedProjects: ["legal-copilot", "buddi-procurement"],
     relatedSection: {
       eyebrow: "Keep exploring",
       headline: "More case studies.",

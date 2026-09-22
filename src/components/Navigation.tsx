@@ -1,120 +1,97 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-// import { Button } from './ui/button';
+import { useState } from "react";
+import Link from "next/link";
+import { Manrope } from "next/font/google";
+import { motion } from "framer-motion";
+import { Menu, Sparkles, X } from "lucide-react";
+import { brand, navCta, navLeft, navRight } from "@/content/brand";
+import { StartProjectButton } from "@/components/StartProjectModal";
 
-const navItems = [
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
-];
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const linkClass =
+  "text-[13px] font-medium text-white/80 transition-colors hover:text-white";
 
 export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const mobileLinks = [...navLeft, ...navRight];
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full border-b ${
-        isScrolled
-          ? 'bg-black/80 backdrop-blur-lg border-white/10'
-          : 'bg-transparent border-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <motion.a
-            href="#home"
-            className="text-xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
-            whileHover={{ scale: 1.05 }}
-          >
-            Alex Ariza · AI Product Engineer
-          </motion.a>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.label}
-                href={item.href}
-                className="text-gray-300 hover:text-white transition-colors relative group"
-                whileHover={{ y: -2 }}
-              >
+    <div className={`${manrope.className} pointer-events-none fixed inset-x-0 top-0 z-50`}>
+      <motion.nav
+        initial={{ y: -16, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        className="pointer-events-auto mx-auto w-full max-w-[1280px] px-5 pt-5 md:px-10"
+      >
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+          <div className="hidden items-center gap-8 md:flex">
+            {navLeft.map((item) => (
+              <a key={item.label} href={item.href} className={linkClass}>
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-300" />
-              </motion.a>
-            ))}
-            {/* <Button
-              size="sm"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-              asChild
-            >
-              <a href="/Alex_CV.pdf" download="Alex_Ariza_CV.pdf">
-                CV
               </a>
-            </Button> */}
+            ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
+          <Link
+            href="/#home"
+            className="flex items-center gap-2 justify-self-start md:justify-self-center"
           >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            <Sparkles className="h-4 w-4 text-brand" aria-hidden />
+            <span className="text-[15px] font-semibold tracking-tight text-white">
+              {brand.name}
+            </span>
+          </Link>
+
+          <div className="hidden items-center justify-end gap-8 md:flex">
+            {navRight.map((item) => (
+              <a key={item.label} href={item.href} className={linkClass}>
+                {item.label}
+              </a>
+            ))}
+            <StartProjectButton className="inline-flex h-9 items-center rounded-full border border-white/80 px-4 text-[13px] font-medium text-white transition-colors hover:bg-white hover:text-black">
+              {navCta.label}
+            </StartProjectButton>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="justify-self-end rounded-full p-2 text-white md:hidden"
+            aria-expanded={isMobileMenuOpen}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 pb-4"
-          >
-            <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
+        {isMobileMenuOpen ? (
+          <div className="mt-4 rounded-2xl border border-white/10 bg-black/80 px-4 py-3 backdrop-blur-md md:hidden">
+            <div className="flex flex-col">
+              {mobileLinks.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-300 hover:text-white transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
+                  className="rounded-lg px-2 py-2 text-[14px] font-medium text-white/80 hover:text-white"
                 >
                   {item.label}
                 </a>
               ))}
-              {/* <Button
-                size="sm"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-                asChild
+              <StartProjectButton
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-2 inline-flex h-10 items-center justify-center rounded-full border border-white/80 text-[13px] font-medium text-white"
               >
-                <a href="/Alex_CV.pdf" download="Alex_Ariza_CV.pdf">
-                  CV
-                </a>
-              </Button> */}
+                {navCta.label}
+              </StartProjectButton>
             </div>
-          </motion.div>
-        )}
-      </div>
-    </motion.nav>
+          </div>
+        ) : null}
+      </motion.nav>
+    </div>
   );
 }

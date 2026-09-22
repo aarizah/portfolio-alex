@@ -4,8 +4,10 @@ import { sgrMga } from "./sgr-mga/content";
 import { legalCopilot } from "./legal-copilot/content";
 import { localRag } from "./local-rag/content";
 import { caloricEstimator } from "./caloric-estimator/content";
+import { buddiProcurement } from "./buddi-procurement/content";
 
 const caseStudies: Record<string, CaseStudy> = {
+  [buddiProcurement.meta.slug]: buddiProcurement,
   [clinicHc.meta.slug]: clinicHc,
   [sgrMga.meta.slug]: sgrMga,
   [legalCopilot.meta.slug]: legalCopilot,

@@ -1,0 +1,104 @@
+<svg width="1200" height="780" viewBox="0 0 1200 780" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="780" fill="#09090b"/>
+  <text x="48" y="44" fill="#fafafa" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="600">Buddi Procurement Intelligence</text>
+  <text x="48" y="72" fill="#71717a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">Serverless AWS · adapters · document workers · hybrid assistant</text>
+
+  <defs>
+    <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#52525b"/>
+    </marker>
+    <marker id="arrTeal" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#3DB496"/>
+    </marker>
+  </defs>
+
+  <text x="48" y="112" fill="#52525b" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="0.1em">INTERACTIVE PATH</text>
+  <rect x="48" y="124" width="1104" height="120" rx="8" fill="#18181b" stroke="#27272a"/>
+
+  <rect x="72" y="148" width="150" height="72" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="88" y="172" fill="#a1a1aa" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">EMPLOYEES</text>
+  <text x="88" y="192" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Authenticated staff</text>
+  <text x="88" y="208" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">RBAC · SSO</text>
+
+  <rect x="262" y="148" width="170" height="72" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="278" y="172" fill="#a1a1aa" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">FRONTEND</text>
+  <text x="278" y="192" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Next.js · CloudFront</text>
+  <text x="278" y="208" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">S3 static / SPA</text>
+
+  <rect x="472" y="148" width="170" height="72" rx="6" fill="#09090b" stroke="#3DB496" stroke-width="1.5"/>
+  <text x="488" y="172" fill="#3DB496" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">API</text>
+  <text x="488" y="192" fill="#fafafa" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">API Gateway</text>
+  <text x="488" y="208" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">Lambda + FastAPI</text>
+
+  <rect x="682" y="148" width="200" height="72" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="698" y="172" fill="#a1a1aa" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">DATA</text>
+  <text x="698" y="192" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Aurora Serverless v2</text>
+  <text x="698" y="208" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">PostgreSQL · pgvector</text>
+
+  <rect x="922" y="148" width="198" height="72" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="938" y="172" fill="#a1a1aa" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">AI SERVICE</text>
+  <text x="938" y="192" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Amazon Bedrock</text>
+  <text x="938" y="208" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">tools · RAG · extract</text>
+
+  <path d="M222 184 H258" stroke="#52525b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <path d="M432 184 H468" stroke="#52525b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <path d="M642 184 H678" stroke="#3DB496" stroke-width="1.5" marker-end="url(#arrTeal)"/>
+  <path d="M882 184 H918" stroke="#52525b" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <text x="48" y="292" fill="#52525b" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="0.1em">SOURCES ’ NORMALIZED MODEL</text>
+  <rect x="48" y="304" width="1104" height="168" rx="8" fill="#18181b" stroke="#27272a"/>
+
+  <rect x="72" y="328" width="150" height="56" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="88" y="352" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Supplier A API</text>
+  <text x="88" y="370" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">Level 1 adapter</text>
+
+  <rect x="242" y="328" width="150" height="56" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="258" y="352" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Supplier B export</text>
+  <text x="258" y="370" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">CSV / XLSX / JSON</text>
+
+  <rect x="412" y="328" width="150" height="56" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="428" y="352" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Documents</text>
+  <text x="428" y="370" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">Invoices · POs</text>
+
+  <rect x="582" y="328" width="150" height="56" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="598" y="352" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Manual / call</text>
+  <text x="598" y="370" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">Human last resort</text>
+
+  <rect x="792" y="320" width="328" height="128" rx="6" fill="#09090b" stroke="#3DB496" stroke-width="1.5"/>
+  <text x="812" y="348" fill="#3DB496" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">UNIFIED ORDER MODEL</text>
+  <text x="812" y="370" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Identity · lines · status · docs · audit</text>
+  <text x="812" y="390" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">Original status kept · normalized shared</text>
+  <text x="812" y="410" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">Idempotent upserts by source ID</text>
+  <text x="812" y="430" fill="#52525b" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">Human confirm before write</text>
+
+  <path d="M147 384 V412 H792" stroke="#52525b" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <path d="M317 384 V412" stroke="#52525b" stroke-width="1.5"/>
+  <path d="M487 384 V412" stroke="#52525b" stroke-width="1.5"/>
+  <path d="M657 384 V412" stroke="#52525b" stroke-width="1.5"/>
+
+  <text x="48" y="520" fill="#52525b" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="0.1em">ASYNC + SCHEDULE</text>
+  <rect x="48" y="532" width="1104" height="200" rx="8" fill="#18181b" stroke="#27272a"/>
+
+  <rect x="72" y="560" width="210" height="80" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="88" y="584" fill="#a1a1aa" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">EVENTBRIDGE</text>
+  <text x="88" y="604" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Sync + Monday export</text>
+  <text x="88" y="622" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">Cadence follows real change</text>
+
+  <rect x="322" y="560" width="210" height="80" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="338" y="584" fill="#a1a1aa" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">S3 + SQS</text>
+  <text x="338" y="604" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Invoices · originals · XLSX</text>
+  <text x="338" y="622" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">Batch workers, not open-tab waits</text>
+
+  <rect x="572" y="560" width="210" height="80" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="588" y="584" fill="#a1a1aa" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">LAMBDA WORKERS</text>
+  <text x="588" y="604" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Short jobs d 15 min</text>
+  <text x="588" y="622" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">Parse · small Excel · sync delta</text>
+
+  <rect x="822" y="560" width="298" height="80" rx="6" fill="#09090b" stroke="#3f3f46"/>
+  <text x="838" y="584" fill="#a1a1aa" font-size="10" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif" letter-spacing="0.06em">ECS FARGATE TASK</text>
+  <text x="838" y="604" fill="#e4e4e7" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Start ’ process ’ store ’ stop</text>
+  <text x="838" y="622" fill="#71717a" font-size="11" font-family="ui-sans-serif, system-ui, sans-serif">Mass re-embed · historical import</text>
+
+  <rect x="72" y="660" width="1048" height="48" rx="6" fill="#09090b" stroke="#27272a"/>
+  <text x="92" y="690" fill="#a1a1aa" font-size="12" font-family="ui-sans-serif, system-ui, sans-serif">Observability CloudWatch · secrets in Secrets Manager · failures keep prior data, retry, then alert</text>
+</svg>

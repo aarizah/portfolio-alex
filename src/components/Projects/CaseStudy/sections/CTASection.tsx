@@ -29,7 +29,7 @@ export function CTASection({ data, github, demo }: CTASectionProps) {
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5 hover:bg-blue-50"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-transform hover:-translate-y-0.5 hover:bg-white/90"
             >
               <Github className="size-4" />
               {data.githubLabel}
@@ -40,7 +40,7 @@ export function CTASection({ data, github, demo }: CTASectionProps) {
               href={demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-blue-500"
+              className="inline-flex items-center gap-2 rounded-full border border-white/80 px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-white hover:text-black"
             >
               <ExternalLink className="size-4" />
               {data.demoLabel}

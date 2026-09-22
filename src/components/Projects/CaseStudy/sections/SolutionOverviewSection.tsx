@@ -35,11 +35,11 @@ export function SolutionOverviewSection({
           {journey.map((item, index) => (
             <Reveal key={item.id} delay={index * 0.05}>
               <article className="relative grid gap-4 border-l border-white/[0.12] pb-8 pl-6 last:pb-0 md:grid-cols-[150px_1fr] md:gap-8">
-                <div className="absolute -left-[17px] top-0 flex size-8 items-center justify-center rounded-full border border-blue-300/20 bg-blue-500 text-xs font-bold text-white shadow-[0_0_30px_rgba(59,130,246,0.28)]">
+                <div className="absolute -left-[17px] top-0 flex size-8 items-center justify-center rounded-full border border-brand/30 bg-brand text-xs font-bold text-black shadow-[0_0_30px_rgba(232,180,74,0.28)]">
                   {String(index + 1).padStart(2, "0")}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-blue-100">{item.label}</p>
+                  <p className="text-sm font-semibold text-white">{item.label}</p>
                   {index < journey.length - 1 && (
                     <ArrowDown className="mt-4 hidden size-4 text-white/18 md:block" />
                   )}
@@ -63,7 +63,7 @@ export function SolutionOverviewSection({
                   key={card.title}
                   className="flex gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.025] p-4"
                 >
-                  <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-blue-200/80" />
+                  <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-brand" />
                   <div>
                     <h3 className="text-sm font-semibold text-white">{card.title}</h3>
                     <p className="mt-1 text-sm leading-relaxed text-white/48">

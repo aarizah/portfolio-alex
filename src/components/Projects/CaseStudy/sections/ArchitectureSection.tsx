@@ -203,7 +203,7 @@ function DeploymentPipeline({ steps }: { steps: { label: string }[] }) {
     <ol className="mx-auto flex max-w-xs flex-col items-center">
       {steps.map((step, index) => (
         <li key={step.label} className="flex w-full flex-col items-center">
-          <div className="w-full rounded-xl border border-blue-300/20 bg-blue-500/[0.08] px-4 py-2.5 text-center text-sm font-medium text-white">
+          <div className="w-full rounded-xl border border-brand/25 bg-brand/[0.08] px-4 py-2.5 text-center text-sm font-medium text-white">
             {step.label}
           </div>
           {index < steps.length - 1 && (

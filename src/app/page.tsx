@@ -1,46 +1,71 @@
 import { Navigation } from "../components/Navigation";
-import { Hero } from '../components/Hero';
-import { About } from '../components/About';
-import { Projects } from '../components/Projects';
-import { AISolutions } from '../components/AISolutions';
-import { Skills } from '../components/Skills';
-import { Contact } from '../components/Contact';
-import { Footer } from '../components/Footer';
-import { SITE_URL, SOCIAL_LINKS } from '@/lib/site';
+import { Hero } from "../components/Hero";
+import { LogoCloud } from "../components/brand/LogoCloud";
+import { WhatIBuild } from "../components/brand/WhatIBuild";
+import { HowWeWork } from "../components/brand/HowWeWork";
+import { About } from "../components/About";
+import { FAQ } from "../components/brand/FAQ";
+import { Contact } from "../components/Contact";
+import { Footer } from "../components/Footer";
+import { SITE_URL, SOCIAL_LINKS } from "@/lib/site";
+import { brand, offers, seo } from "@/content/brand";
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Alex Ariza",
-  jobTitle: "Full-Stack Developer — AI Product Engineering",
-  url: SITE_URL,
-  email: "mailto:arizah2020@gmail.com",
-  sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
-  knowsAbout: ["LLM", "RAG", "Next.js", "Node.js", "FastAPI", "AWS"],
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: brand.name,
+      jobTitle: brand.role,
+      url: SITE_URL,
+      email: `mailto:${brand.email}`,
+      sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
+      knowsLanguage: brand.languages,
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${SITE_URL}/#studio`,
+      name: `${brand.name} — ${brand.role}`,
+      url: SITE_URL,
+      description: seo.description,
+      founder: { "@id": `${SITE_URL}/#person` },
+      areaServed: ["United States", "European Union", "Colombia"],
+      email: brand.email,
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Engagements",
+        itemListElement: offers.map((offer) => ({
+          "@type": "Offer",
+          name: offer.name,
+          description: offer.outcome,
+        })),
+      },
+    },
+  ],
 };
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-black text-white">
+      <a
+        href="#content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black"
+      >
+        Skip to content
+      </a>
       <Navigation />
 
-      <main>
+      <main id="content">
         <section id="home">
           <Hero />
         </section>
-
-        <Projects />
-
-        <section id="skills">
-          <Skills />
-        </section>
-
+        <LogoCloud />
+        <WhatIBuild />
         <About />
-
-        <AISolutions />
-
-
+        <HowWeWork />
         <Contact />
+        <FAQ />
       </main>
 
       <Footer />

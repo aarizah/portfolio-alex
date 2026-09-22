@@ -14,24 +14,25 @@ export function Projects() {
 
   return (
     <section
-      id="projects"
-      className="relative w-full overflow-hidden bg-black py-24 text-white md:py-32"
+      id="work"
+      className="relative w-full scroll-mt-24 overflow-hidden bg-black py-24 text-white md:py-32"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(96,165,250,0.12),transparent_32%),radial-gradient(circle_at_18%_45%,rgba(168,85,247,0.10),transparent_28%),radial-gradient(circle_at_86%_32%,rgba(236,72,153,0.07),transparent_24%)]" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-300/25 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(232,180,74,0.08),transparent_34%)]" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-10 lg:px-12">
         <ScrollStagger className="mb-12 grid gap-8 md:mb-16 lg:grid-cols-[0.82fr_1fr] lg:items-end">
           <StaggerChild variants={fadeInUpTight}>
-            <p className="mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-sm font-semibold uppercase tracking-[0.28em] text-transparent">
-              Selected Projects
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-brand">
+              Proof, not a portfolio
             </p>
+            <h2 className="text-3xl text-white md:text-4xl">Work that already survived production constraints</h2>
           </StaggerChild>
 
           <StaggerChild variants={fadeInUpTight}>
             <p className="max-w-xl text-base leading-8 text-gray-400 md:text-lg lg:justify-self-end">
-              Selected AI and full-stack projects with demos, implementation details, architecture
-              decisions, and measurable product outcomes.
+              Case studies of systems with owners, constraints, and numbers. This is the evidence
+              behind the offer — evidence a buyer can inspect.
             </p>
           </StaggerChild>
         </ScrollStagger>

@@ -33,7 +33,7 @@ export function LessonsLearnedSection({ data }: LessonsLearnedSectionProps) {
                 <div className="grid gap-5 md:grid-cols-[190px_1fr] md:items-start">
                   <div>
                     <div className="mb-4 flex size-10 items-center justify-center rounded-2xl border border-white/10 bg-black/30">
-                      <Icon className="size-4 text-blue-200" />
+                      <Icon className="size-4 text-brand" />
                     </div>
                     <h3 className="text-lg font-semibold text-white">{group.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/42">{group.description}</p>

@@ -6,8 +6,8 @@ export default function CaseStudyNotFound() {
       <h1 className="text-2xl font-bold">Project not found</h1>
       <p className="text-gray-400">This case study doesn&apos;t exist.</p>
       <Link
-        href="/#projects"
-        className="text-blue-400 hover:text-blue-300 transition-colors duration-150"
+        href="/#work"
+        className="text-brand hover:text-brand/80 transition-colors duration-150"
       >
         Back to Projects
       </Link>

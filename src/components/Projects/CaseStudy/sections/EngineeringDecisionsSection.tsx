@@ -39,8 +39,8 @@ export function EngineeringDecisionsSection({ data }: EngineeringDecisionsSectio
             </AccordionTrigger>
             <AccordionContent>
               <div className="grid gap-4 pb-5 text-sm">
-                <div className="rounded-2xl border border-blue-300/10 bg-blue-400/[0.04] p-5">
-                  <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-200/60">
+                <div className="rounded-2xl border border-brand/20 bg-brand/[0.06] p-5">
+                  <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand">
                     {data.labels.why}
                   </p>
                   <p className="leading-relaxed text-white/72">{decision.why}</p>

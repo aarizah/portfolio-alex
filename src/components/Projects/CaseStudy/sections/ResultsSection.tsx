@@ -23,7 +23,7 @@ export function ResultsSection({ data }: ResultsSectionProps) {
     >
       <Reveal>
         <div className="mx-auto max-w-3xl text-center">
-          <p className="cs-eyebrow mb-6 text-emerald-200/70">{data.eyebrow}</p>
+          <p className="cs-eyebrow mb-6">{data.eyebrow}</p>
           <h2 className="cs-headline text-white">{data.headline}</h2>
           <p className="cs-subheadline mt-5 text-white/56">{data.subheadline}</p>
         </div>
@@ -68,7 +68,7 @@ export function ResultsSection({ data }: ResultsSectionProps) {
                 </div>
               ))}
               {proof && (
-                <div className="rounded-2xl border border-emerald-300/10 bg-emerald-400/[0.035] p-4 md:col-span-2">
+                <div className="rounded-2xl border border-brand/20 bg-brand/[0.06] p-4 md:col-span-2">
                   <p className="text-sm font-semibold text-white">{proof.challenge}</p>
                   <p className="mt-2 text-sm leading-relaxed text-white/52">{proof.result}</p>
                 </div>

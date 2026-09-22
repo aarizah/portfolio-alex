@@ -1,14 +1,26 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
-import { Button } from './ui/button';
-import { VantaLoader } from './VantaLoader';
-import { useEffect } from 'react';
+import { Instrument_Serif, Manrope } from "next/font/google";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect } from "react";
+import { VantaLoader } from "./VantaLoader";
+import { heroChips, heroCopy } from "@/content/brand";
 
-// Type definitions for Vanta
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
 interface VantaEffect {
   destroy: () => void;
+  renderer?: { setClearColor: (color: number, alpha: number) => void };
 }
 
 interface WindowWithVanta extends Window {
@@ -21,7 +33,7 @@ declare const window: WindowWithVanta;
 
 export function Hero() {
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let vantaEffect: VantaEffect | null = null;
     let heroVisible = true;
@@ -31,17 +43,22 @@ export function Hero() {
       vantaEffect = window.VANTA.BIRDS({
         el: "#vanta-birds",
         mouseControls: true,
-        touchControls: true,
+        touchControls: false,
         gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
         backgroundColor: 0x000000,
-        separation: 71.00,
-        birdSize: 1.40,
-        quantity: 3.00
+        backgroundAlpha: 0,
+        color1: 0xfdb521,
+        color2: 0xfdb521,
+        colorMode: "lerp",
+        birdSize: 2.0,
+        quantity: 2.0,
+        separation: 90.0,
       });
+      vantaEffect.renderer?.setClearColor(0x000000, 0);
     };
 
     const destroyVanta = () => {
@@ -53,126 +70,118 @@ export function Hero() {
 
     const handleVantaLoaded = () => initVanta();
 
-    // If VANTA already loaded, initialize immediately
     if (window.VANTA) {
       initVanta();
     } else {
-      // Otherwise, wait for the custom event
-      window.addEventListener('vanta-loaded', handleVantaLoaded);
+      window.addEventListener("vanta-loaded", handleVantaLoaded);
     }
 
-    // Pause the animation while the hero is off-screen
     const observer = new IntersectionObserver(
       ([entry]) => {
         heroVisible = entry.isIntersecting;
         if (heroVisible) initVanta();
         else destroyVanta();
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
-    const heroEl = document.getElementById('vanta-birds');
+    const heroEl = document.getElementById("vanta-birds");
     if (heroEl) observer.observe(heroEl);
 
-    // Cleanup
     return () => {
-      window.removeEventListener('vanta-loaded', handleVantaLoaded);
+      window.removeEventListener("vanta-loaded", handleVantaLoaded);
       observer.disconnect();
       destroyVanta();
     };
   }, []);
 
   return (
-
-    <section id="vanta-birds" className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
-      <VantaLoader />
-      <div className="relative z-10 max-w-5xl mx-auto px-12 md:px-16 lg:px-20 text-center scale-110">
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full backdrop-blur-sm"
-          >
-            <span className="text-blue-400">🤖 AI Product Engineer · Full-Stack · Remote-first</span>
-          </motion.div>
-
-          <h1 className="mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            I build end-to-end apps with LLMs that move the business needle
-          </h1>
-            
-          <p className="mb-8 text-gray max-w-2xl mx-auto text-lg ">
-            I’m Alex Ariza, a Full-Stack Developer focused on integrating LLMs/RAG into real products: Next.js + Node/FastAPI + managed cloud delivery, with latency, cost, and accuracy metrics from day one.
-          </p>
-
-          <div className="flex flex-wrap gap-4 justify-center mb-12">
-            <Button 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              See AI projects
-            </Button>
-            {/* <Button
-              variant="outline"
-              className="border-blue-500/30"
-              asChild
-            >
-              <a href="/Alex_CV.pdf" download="Alex_Ariza_FullStack_AI.pdf">
-                Download CV
-              </a>
-            </Button> */}
-            <Button 
-              variant="outline" 
-              className="border-blue-500/30"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              <Mail className="mr-2 h-4 w-4" />
-              Schedule a call
-            </Button>
-          </div>
-
-          <div className="flex gap-4 justify-center">
-            <motion.a
-              href="https://github.com/aarizah"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg backdrop-blur-sm transition-colors"
-              title="GitHub Profile"
-            >
-              <Github className="h-5 w-5 text-gray-400" />
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/alex-ariza-herrera"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg backdrop-blur-sm transition-colors"
-              title="LinkedIn Profile"
-            >
-              <Linkedin className="h-5 w-5 text-gray-400" />
-            </motion.a>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.45, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute bottom left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            <ArrowDown className="h-6 w-6 text-gray-600" />
-          </motion.div>
-        </motion.div>
+    <section className="relative isolate flex min-h-svh w-full items-start justify-center overflow-hidden">
+      <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden>
+        <Image
+          src="/hero.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_42%]"
+        />
       </div>
+      <div
+        id="vanta-birds"
+        className="pointer-events-none absolute inset-0 z-[2] opacity-[0.28]"
+        aria-hidden
+      />
+      <VantaLoader />
+
+      <div
+        className={`${manrope.className} relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 pb-40 pt-32 text-center md:px-10 md:pt-36`}
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className={`${instrumentSerif.className} text-[2.35rem] leading-[1.12] tracking-[-0.02em] text-white sm:text-[3.15rem] md:text-[3.7rem] lg:text-[4.15rem]`}
+        >
+          {heroCopy.headlineLine1}
+          <br />
+          <span className="text-[#9a9a9a]">{heroCopy.headlineLine2}</span>
+        </motion.h1>
+
+        <motion.a
+          href="#build"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          className="mt-8 inline-flex h-11 items-center rounded-full bg-white px-7 text-[14px] font-medium text-black"
+        >
+          {heroCopy.primaryCta}
+        </motion.a>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-2 sm:hidden">
+          {heroChips.map((chip) => (
+            <span
+              key={chip.label}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/55 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/90 backdrop-blur-md"
+            >
+              <span
+                className="h-1.5 w-1.5 rounded-full"
+                style={{ backgroundColor: chip.color }}
+                aria-hidden
+              />
+              {chip.label}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {heroChips.map((chip, index) => (
+        <motion.div
+          key={chip.label}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: [0, -6, 0] }}
+          transition={{
+            opacity: { duration: 0.6, delay: 0.4 + index * 0.12 },
+            y: {
+              duration: 4.2 + index * 0.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.6 + index * 0.2,
+            },
+          }}
+          className={`pointer-events-none absolute z-10 hidden sm:flex ${chip.className}`}
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/55 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/90 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md">
+            <span
+              className="h-1.5 w-1.5 rounded-full"
+              style={{ backgroundColor: chip.color }}
+              aria-hidden
+            />
+            {chip.label}
+          </span>
+        </motion.div>
+      ))}
     </section>
   );
 }

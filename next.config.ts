@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
       {
         source: "/profile2.jpg",
         headers: [
-          { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" },
+          { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
         ],
       },
       {

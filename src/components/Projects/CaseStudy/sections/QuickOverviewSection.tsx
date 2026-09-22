@@ -25,7 +25,7 @@ export function QuickOverviewSection({ data }: QuickOverviewSectionProps) {
   return (
     <section
       id="overview"
-      className="relative isolate flex min-h-screen scroll-mt-24 items-center overflow-hidden bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.14),transparent_28%),radial-gradient(circle_at_72%_78%,rgba(14,165,233,0.10),transparent_30%),#050505] px-5 pb-8 pt-32 text-white sm:px-6 md:px-10 md:pb-10 md:pt-36"
+      className="relative isolate flex min-h-screen scroll-mt-24 items-center overflow-hidden bg-[radial-gradient(circle_at_30%_20%,rgba(232,180,74,0.12),transparent_28%),#050505] px-5 pb-8 pt-32 text-white sm:px-6 md:px-10 md:pb-10 md:pt-36"
     >
       <div className="mx-auto grid w-full max-w-[1180px] gap-5 md:gap-6">
         <Reveal>
@@ -45,7 +45,7 @@ export function QuickOverviewSection({ data }: QuickOverviewSectionProps) {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map(({ key, label }, i) => (
             <Reveal key={key} delay={i * 0.05}>
-              <article className="h-full rounded-2xl border border-white/[0.08] bg-white/[0.045] p-4 text-left backdrop-blur transition-all duration-300 hover:border-blue-300/25 hover:bg-white/[0.065] md:p-5">
+              <article className="h-full rounded-2xl border border-white/[0.08] bg-white/[0.045] p-4 text-left backdrop-blur transition-all duration-300 hover:border-brand/35 hover:bg-white/[0.065] md:p-5">
                 <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35">
                   {label}
                 </p>
