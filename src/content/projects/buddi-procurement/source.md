@@ -659,9 +659,9 @@ Esto mejora:
 
 # 22. RAG documental
 
-El pipeline conceptual sería:
+El RAG se construyó en la aplicación, con el mismo enfoque que el RAG online: chunking propio, LangChain para la tubería de retrieval, embeddings y búsqueda sobre los fragmentos.
 
-Documento → Parsing → Fragmentación → Embeddings → Índice vectorial → Usuario pregunta → Retrieval → Reranking si es necesario → Contexto seleccionado → Modelo generativo → Respuesta + referencias
+Documento → Parsing → Chunking (LangChain) → Embeddings → Índice en Neon (pgvector) → Usuario pregunta → Retrieval → Contexto seleccionado → Modelo generativo → Respuesta + referencias
 
 ---
 
@@ -883,8 +883,8 @@ La arquitectura entregada es mayoritariamente serverless.
           ┌───────────────────┼───────────────────────┐
           │                   │                       │
           ▼                   ▼                       ▼
-       Aurora                 S3                    Bedrock
-     PostgreSQL            Documentos                 AI
+       Neon                   S3                  LangChain
+     PostgreSQL            Documentos              RAG propio
           │                   │                       │
           │                   ▼                       │
           │                  SQS                      │
@@ -937,11 +937,9 @@ Esto permite conservar una arquitectura de aplicación familiar.
 
 # 35. Base de datos
 
-Se propone:
+La base es **Neon PostgreSQL**.
 
-**Aurora PostgreSQL Serverless v2**
-
-La base contiene:
+Contiene:
 
 * pedidos;
 * proveedores;
@@ -952,9 +950,9 @@ La base contiene:
 * eventos;
 * metadata;
 * registros normalizados;
-* datos del asistente cuando corresponda.
+* chunks y embeddings del asistente.
 
-Las versiones compatibles de Aurora Serverless v2 permiten actualmente configurar una capacidad mínima de `0 ACU`, pausando automáticamente la capacidad de cómputo después de un período sin conexiones y reanudándola cuando vuelve una conexión. AWS menciona explícitamente aplicaciones internas que pueden tolerar una breve demora de reanudación como caso de uso apropiado.
+Neon es Postgres serverless. El cómputo puede suspenderse cuando no hay conexiones y reanudarse con el siguiente request, así que una app interna no paga un Postgres encendido toda la noche.
 
 ---
 
@@ -964,15 +962,13 @@ Scale-to-zero tiene un trade-off.
 
 Si la aplicación lleva mucho tiempo sin utilizarse:
 
-Usuario entra → Lambda despierta → Aurora está pausada → Aurora reanuda → respuesta
+Usuario entra → Lambda despierta → Neon reanuda el cómputo → respuesta
 
 El primer request podría tardar más.
 
 Para una aplicación interna de uso esporádico esto puede ser aceptable.
 
-Si posteriormente el sistema tiene uso constante durante toda la jornada, se puede mantener una capacidad mínima superior a cero.
-
-La arquitectura no obliga a utilizar siempre auto-pause.
+Si el sistema tiene uso constante durante toda la jornada, el cómputo de Neon puede quedarse activo.
 
 ---
 
@@ -1006,27 +1002,13 @@ S3:
 
 ---
 
-# 38. Amazon Bedrock
+# 38. RAG con LangChain
 
-Bedrock es la capa de acceso a modelos generativos y de embeddings.
+El sistema RAG se implementó en la aplicación, del mismo modo que el RAG online: a mí me tocó el chunking y armar la tubería con LangChain. El documento se parte, se embebe y se recupera antes de generar la respuesta.
 
-Se utiliza para funciones como:
+LangChain cubre splitters, embeddings y retrieval. Los vectores quedan en Neon con pgvector, junto a los datos operacionales. La respuesta cita el fragmento o se abstiene si no hay evidencia.
 
-* interpretación documental;
-* generación;
-* clasificación;
-* embeddings;
-* reasoning del asistente.
-
-El modelo específico no es una dependencia rígida del sistema.
-
-Hay una interfaz interna que permite cambiar de modelo.
-
-Conceptualmente:
-
-Application → AI Service → Bedrock → Modelo seleccionado
-
-Esto evita acoplar toda la aplicación a un modelo específico.
+No es una knowledge base administrada. El chunking, el índice y la recuperación son código del proyecto.
 
 ---
 
@@ -1036,7 +1018,7 @@ No se introdujo una base vectorial especializada.
 
 La V1 usa:
 
-**Aurora PostgreSQL + pgvector**
+**Neon PostgreSQL + pgvector**
 
 Esto permite mantener:
 
@@ -1165,7 +1147,7 @@ La observabilidad registra:
 * documentos procesados;
 * jobs ejecutados;
 * duración;
-* errores de Bedrock;
+* errores del pipeline RAG;
 * fallos de proveedor;
 * colas;
 * retries.
@@ -1302,14 +1284,14 @@ No toda la plataforma.
 
 ## Database
 
-* PostgreSQL
-* Aurora PostgreSQL Serverless v2
+* Neon PostgreSQL
 * pgvector
 
 ## AI
 
-* Amazon Bedrock
-* embeddings mediante Bedrock
+* LangChain
+* chunking propio
+* embeddings y retrieval en la aplicación
 * RAG propio/controlado
 * tool calling para consultas operacionales
 
@@ -1319,7 +1301,7 @@ No toda la plataforma.
 * parsing PDF
 * OCR cuando sea necesario
 * extracción estructurada con schemas
-* Bedrock cuando se requiera interpretación semántica
+* modelo de lenguaje cuando se requiera interpretación semántica
 
 ## Files
 
@@ -1636,7 +1618,7 @@ Sin embargo, su arquitectura permite escalar horizontalmente.
 Lambda: más requests → más ejecuciones.
 SQS: más documentos → cola → más workers.
 Fargate: jobs pesados puntuales.
-Aurora Serverless: capacidad variable.
+Neon: cómputo de Postgres que escala con el uso.
 
 ---
 
@@ -1672,16 +1654,14 @@ Se basa en que AWS ofrece de manera administrada todos los componentes necesario
 
 * Lambda;
 * API Gateway;
-* Aurora;
 * S3;
-* Bedrock;
 * SQS;
 * EventBridge;
 * Fargate;
 * CloudWatch;
 * Secrets Manager.
 
-Además permite implementar el patrón serverless buscado sin mantener un servidor general permanentemente encendido.
+Además permite implementar el patrón serverless buscado sin mantener un servidor general permanentemente encendido. La base de datos es Neon. El RAG es LangChain en la aplicación.
 
 ---
 
@@ -1707,9 +1687,9 @@ Mitigación: retrieval evaluation + citations + abstention.
 
 Mitigación: schemas + código determinístico + validación humana.
 
-## Aurora cold start
+## Neon reanuda el cómputo tras un periodo idle
 
-Mitigación: medición real y capacidad mínima > 0 si fuera necesario.
+Mitigación: medición real y dejar el cómputo activo si la jornada es continua.
 
 ## Integraciones caídas
 
@@ -1858,7 +1838,7 @@ Desde ingeniería:
 
 Arquitectura principal:
 
-**React/Next.js + FastAPI + Lambda + API Gateway + Aurora PostgreSQL Serverless + pgvector + S3 + Bedrock + SQS + EventBridge + ECS Fargate + CloudWatch.**
+**React/Next.js + FastAPI + Lambda + API Gateway + Neon PostgreSQL + pgvector + LangChain + S3 + SQS + EventBridge + ECS Fargate + CloudWatch.**
 
 ---
 

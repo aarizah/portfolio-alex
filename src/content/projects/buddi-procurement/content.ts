@@ -22,7 +22,7 @@ export const buddiProcurement: CaseStudy = {
       tagline:
         "Buddi already buys across supplier platforms, calls, quotes, and invoices. This layer unifies that operational picture, automates the repetitive capture, and lets staff query both live orders and internal documentation.",
       status: "Internal",
-      stack: ["Next.js", "FastAPI", "Aurora Serverless", "Bedrock", "Lambda", "SQS"],
+      stack: ["Next.js", "FastAPI", "Neon", "LangChain", "Lambda", "SQS"],
       backgroundImage: HERO_IMAGE,
     },
     quickOverview: {
@@ -33,7 +33,7 @@ export const buddiProcurement: CaseStudy = {
       country: "United Kingdom",
       domain: "Procurement / Operations Intelligence",
       cloud: "AWS serverless · scale-to-zero",
-      tech: "FastAPI · Lambda · Aurora · Bedrock · pgvector · EventBridge",
+      tech: "FastAPI · Lambda · Neon · LangChain · pgvector · EventBridge",
     },
     videoDemo: {
       poster: HERO_IMAGE,
@@ -141,7 +141,7 @@ export const buddiProcurement: CaseStudy = {
       systemOverview: {
         title: "System Overview",
         description:
-          "Employees hit a private Next.js app on CloudFront. API Gateway fronts FastAPI on Lambda. Aurora holds the unified order model; S3 holds originals; Bedrock powers extraction and the assistant; EventBridge and SQS keep work moving when the UI is closed.",
+          "Employees hit a private Next.js app on CloudFront. API Gateway fronts FastAPI on Lambda. Neon holds the unified order model and the RAG vectors; S3 holds originals. LangChain runs chunking, embeddings, and retrieval in the application. EventBridge and SQS keep work moving when the UI is closed.",
         nodes: [
           {
             id: "employees",
@@ -163,9 +163,9 @@ export const buddiProcurement: CaseStudy = {
           },
           {
             id: "data",
-            label: "Aurora + S3",
-            description: "Normalized orders, users, events in Postgres; binaries and exports in object storage.",
-            technologies: ["Aurora Serverless v2", "pgvector", "S3"],
+            label: "Neon + S3",
+            description: "Normalized orders, users, events, chunks, and embeddings in Neon Postgres; binaries and exports in object storage.",
+            technologies: ["Neon", "pgvector", "S3"],
           },
           {
             id: "workers",
@@ -176,8 +176,8 @@ export const buddiProcurement: CaseStudy = {
           {
             id: "ai",
             label: "AI service",
-            description: "Internal interface over Bedrock for extraction, embeddings, routing, and generation.",
-            technologies: ["Bedrock", "Tool calling", "RAG"],
+            description: "Application RAG: LangChain chunking, embeddings, and retrieval, plus tool calling for live orders.",
+            technologies: ["LangChain", "Tool calling", "RAG"],
           },
         ],
         tableColumns: { layer: "Layer", role: "Role", stack: "Stack" },
@@ -185,8 +185,8 @@ export const buddiProcurement: CaseStudy = {
           "Next.js",
           "FastAPI",
           "Lambda",
-          "Aurora",
-          "Bedrock",
+          "Neon",
+          "LangChain",
           "SQS",
           "EventBridge",
           "Fargate",
@@ -329,7 +329,7 @@ export const buddiProcurement: CaseStudy = {
       deployment: {
         title: "Runtime",
         description:
-          "Mostly serverless so compute is not billed for empty hours. Aurora can pause at 0 ACU for an internal app that tolerates a resume delay; minimum capacity can rise if daytime usage is constant. Short work on Lambda (up to 15 minutes); mass re-embed or historical import on Fargate tasks that exit when done.",
+          "Mostly serverless so compute is not billed for empty hours. Neon can suspend Postgres compute after idle and resume on the next connection; it can stay warm if daytime usage is constant. Short work on Lambda (up to 15 minutes); mass re-embed or historical import on Fargate tasks that exit when done.",
         hosting: "AWS · serverless · private",
         environments: [
           {
@@ -337,9 +337,9 @@ export const buddiProcurement: CaseStudy = {
             services: [
               { name: "Frontend", tech: "Next.js · S3 · CloudFront" },
               { name: "API", tech: "API Gateway · Lambda Web Adapter · FastAPI" },
-              { name: "Database", tech: "Aurora PostgreSQL Serverless v2 · pgvector" },
+              { name: "Database", tech: "Neon PostgreSQL · pgvector" },
               { name: "Files", tech: "S3" },
-              { name: "AI", tech: "Bedrock behind an internal AI service" },
+              { name: "AI", tech: "LangChain RAG · chunking · tool calling" },
               { name: "Auth", tech: "Cognito or corporate SSO" },
             ],
           },
@@ -382,7 +382,7 @@ export const buddiProcurement: CaseStudy = {
           id: "extract",
           label: "Schema extraction",
           content:
-            "Bedrock fills a typed schema when interpretation is needed; numbers still face code-side checks.",
+            "The model fills a typed schema when interpretation is needed; numbers still face code-side checks.",
         },
         {
           id: "human",
@@ -422,7 +422,7 @@ export const buddiProcurement: CaseStudy = {
           title: "Serverless / scale-to-zero instead of always-on EC2",
           why: "Internal usage has long idle stretches. Paying for a box that waits all night is optional. Lambda, EventBridge, SQS, and Fargate-on-demand map cost to real work.",
           tradeoffs:
-            "Cold starts — especially if Aurora pauses at 0 ACU. First request after idle can be slower; minimum ACU can be raised if the workday is continuous.",
+            "Cold starts — especially if Neon suspends compute. First request after idle can be slower; compute can stay warm if the workday is continuous.",
           alternatives: "EC2 24/7 or Kubernetes from day one.",
           rejected:
             "EC2 bills idle hours. Kubernetes adds cluster, networking, and ops cost without a user-scale problem that needs it.",
@@ -439,7 +439,7 @@ export const buddiProcurement: CaseStudy = {
         {
           id: "parse-before-llm",
           title: "Traditional parsing before the language model",
-          why: "Not every PDF needs a model. Extract text, tables, and metadata first; call Bedrock when interpretation actually helps. Math such as qty × price stays in code.",
+          why: "Not every PDF needs a model. Extract text, tables, and metadata first; call the model when interpretation actually helps. Math such as qty × price stays in code.",
           tradeoffs: "Two-stage pipeline and a review UI instead of “PDF in, row out.”",
           alternatives: "Send every document straight to an LLM and trust the JSON.",
           rejected:
@@ -456,8 +456,8 @@ export const buddiProcurement: CaseStudy = {
         },
         {
           id: "pgvector-first",
-          title: "pgvector in Aurora before a specialist vector database",
-          why: "V1 did not add a specialist vector database for a corpus that was still small. Operational data, metadata, and embeddings live in one Postgres ecosystem until retrieval scale actually hurts.",
+          title: "pgvector in Neon before a specialist vector database",
+          why: "V1 did not add a specialist vector database for a corpus that was still small. Operational data, metadata, and embeddings live in the same Neon Postgres until retrieval scale actually hurts. Chunking and retrieval are LangChain in the app, the same shape as the online RAG project.",
           tradeoffs: "May outgrow pgvector if the corpus or latency profile demands it later.",
           alternatives: "Dedicated vector DB from day one.",
           rejected:
@@ -590,9 +590,9 @@ export const buddiProcurement: CaseStudy = {
           title: "Cloud judgment",
           description: "What this architecture is for — and not for.",
           items: [
-            "Scale-to-zero fits internal idle time; raise Aurora minimum ACU if the workday is always hot.",
+            "Scale-to-zero fits internal idle time; keep Neon compute warm if the workday is always hot.",
             "Skip Kubernetes until there is a problem it uniquely solves.",
-            "AWS is the managed set of Lambda, Aurora, Bedrock, SQS, EventBridge, Fargate — not a brand requirement in the abstract.",
+            "AWS covers Lambda, S3, SQS, EventBridge, and Fargate. The database is Neon, and the RAG pipeline is LangChain in the application.",
           ],
         },
       ],
@@ -600,9 +600,9 @@ export const buddiProcurement: CaseStudy = {
     techStack: [
       { name: "Next.js" },
       { name: "FastAPI" },
-      { name: "Aurora PostgreSQL" },
+      { name: "Neon PostgreSQL" },
       { name: "pgvector" },
-      { name: "Amazon Bedrock" },
+      { name: "LangChain" },
       { name: "AWS Lambda" },
       { name: "Amazon SQS" },
       { name: "EventBridge" },
